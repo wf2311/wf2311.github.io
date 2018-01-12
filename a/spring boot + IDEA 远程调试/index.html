@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=64984551"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?db673367eaa18d14a5ec59d6cb0ee5e7"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>spring boot + IDEA 远程调试 | 王峰的个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="SpringBoot,远程调试">
+    <meta name="description" content="配置若想调试远端web容器内部的应用，需要接入web容器的jvm，以Tomcat为例，需修改web容器的配置1234567// bin\startup.bat（.sh）文件，在里面添加 // windowsset CATALINA_OPTS=&quot;-agentlib:jdwp=transport=dt_socket,address=8888（自定义调试端口）,server=y,suspend=n %C">
+<meta name="keywords" content="SpringBoot,远程调试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring boot + IDEA 远程调试">
+<meta property="og:url" content="https://wangfeng.pro/a/spring boot + IDEA 远程调试/index.html">
+<meta property="og:site_name" content="王峰的个人博客">
+<meta property="og:description" content="配置若想调试远端web容器内部的应用，需要接入web容器的jvm，以Tomcat为例，需修改web容器的配置1234567// bin\startup.bat（.sh）文件，在里面添加 // windowsset CATALINA_OPTS=&quot;-agentlib:jdwp=transport=dt_socket,address=8888（自定义调试端口）,server=y,suspend=n %C">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://file.wf2311.com/2017/09/19/15/WechatIMG2478.jpeg">
+<meta property="og:image" content="https://file.wf2311.com/2017/09/19/15/WX20170321-035338@2x.png">
+<meta property="og:image" content="https://file.wf2311.com/2017/09/19/15/WX20170321-035510@2x.png">
+<meta property="og:image" content="https://file.wf2311.com/2017/09/19/15/WX20170321-035733@2x.png">
+<meta property="og:image" content="https://file.wf2311.com/2017/09/19/14/WX20170321-040105@2x.png">
+<meta property="og:image" content="https://file.wf2311.com/2017/09/19/15/WX20170321-040237@2x.png">
+<meta property="og:updated_time" content="2018-01-12T12:08:31.393Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring boot + IDEA 远程调试">
+<meta name="twitter:description" content="配置若想调试远端web容器内部的应用，需要接入web容器的jvm，以Tomcat为例，需修改web容器的配置1234567// bin\startup.bat（.sh）文件，在里面添加 // windowsset CATALINA_OPTS=&quot;-agentlib:jdwp=transport=dt_socket,address=8888（自定义调试端口）,server=y,suspend=n %C">
+<meta name="twitter:image" content="https://file.wf2311.com/2017/09/19/15/WechatIMG2478.jpeg">
+    
+        <link rel="alternate" type="application/atom+xml" title="王峰的个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="https://file.wf2311.com/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://file.wf2311.com/wf2311.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">王峰</h5>
+          <a href="mailto:wf2311@163.com" title="wf2311@163.com" class="mail">wf2311@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/wf2311" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://gitee.com/wf2311" target="_blank" >
+                <i class="icon icon-lg icon-git-square"></i>
+                码云
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://segmentfault.com/u/wf2311" target="_blank" >
+                <i class="icon icon-lg icon-stack-exchange"></i>
+                SegmentFault
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/wf2311" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">spring boot + IDEA 远程调试</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">spring boot + IDEA 远程调试</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-19T02:20:54.000Z" itemprop="datePublished" class="page-time">
+  2017-09-19
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SpringBoot/">SpringBoot</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">配置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#IDEA连接远端调试"><span class="post-toc-number">2.</span> <span class="post-toc-text">IDEA连接远端调试</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article data-id="59055884726308860" id="post-spring boot + IDEA 远程调试"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">spring boot + IDEA 远程调试</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-19 10:20:54" datetime="2017-09-19T02:20:54.000Z"  itemprop="datePublished">2017-09-19 10:20:54</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SpringBoot/">SpringBoot</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>若想调试远端web容器内部的应用，需要接入web容器的jvm，以Tomcat为例，需修改web容器的配置<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// bin\startup.bat（.sh）文件，在里面添加</span><br><span class="line"> </span><br><span class="line">// windows</span><br><span class="line">set CATALINA_OPTS="-agentlib:jdwp=transport=dt_socket,address=8888（自定义调试端口）,server=y,suspend=n %CATALINA_OPTS%"</span><br><span class="line"> </span><br><span class="line">// linux</span><br><span class="line">export CATALINA_OPTS="-agentlib:jdwp=transport=dt_socket,address= 8888（自定义调试端口）,server=y,suspend=n $CATALINA_OPTS"</span><br></pre></td></tr></table></figure></p>
+<p>若是使用了spring boot并将工程打成了可执行JAR包<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 在使用java指令启动程序时需要附加额外的参数以开启外部调试，如下</span><br><span class="line">-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8888（自定义调试端口）</span><br><span class="line"> </span><br><span class="line">// 完整的启动指令是类似下面酱的</span><br><span class="line">java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8888（自定义调试端口） -jar application.jar</span><br></pre></td></tr></table></figure></p>
+<h1 id="IDEA连接远端调试"><a href="#IDEA连接远端调试" class="headerlink" title="IDEA连接远端调试"></a>IDEA连接远端调试</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://file.wf2311.com/2017/09/19/15/WechatIMG2478.jpeg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://file.wf2311.com/2017/09/19/15/WX20170321-035338@2x.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://file.wf2311.com/2017/09/19/15/WX20170321-035510@2x.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>填写远端JMV所在服务器IP和调试端口号，保存即可：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://file.wf2311.com/2017/09/19/15/WX20170321-035733@2x.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>连接远端JVM启动调试：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://file.wf2311.com/2017/09/19/14/WX20170321-040105@2x.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>如若连接成功，调试控制台将输出以下内容，如果没成功，请自行检查服务器防火墙以及网络<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://file.wf2311.com/2017/09/19/15/WX20170321-040237@2x.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>接下来的操作就和在本地调试一样了，打断点，远端JVM会通过网络同步调试信息，和在本地没什么两样，要注意调试的时候和本地一样都是会暂停JVM继续往下执行的。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-01-12T12:08:31.393Z" itemprop="dateUpdated">2018-01-12 20:08:31</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://wangfeng.pro">
+            <img src="https://file.wf2311.com/wf2311.png" alt="王峰">
+            王峰
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/远程调试/">远程调试</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wangfeng.pro/a/spring boot + IDEA 远程调试/&title=《spring boot + IDEA 远程调试》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wangfeng.pro/a/spring boot + IDEA 远程调试/&title=《spring boot + IDEA 远程调试》 — 王峰的个人博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wangfeng.pro/a/spring boot + IDEA 远程调试/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《spring boot + IDEA 远程调试》 — 王峰的个人博客&url=https://wangfeng.pro/a/spring boot + IDEA 远程调试/&via=https://wangfeng.pro" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wangfeng.pro/a/spring boot + IDEA 远程调试/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/a/IDEA 远程调试spring boot项目/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">IDEA 远程调试spring boot项目</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/a/Java面试题/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Java面试题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+
+    <div id="SOHUCS" sid="59055884726308860"></div>
+    <script type="text/javascript">
+        (function () {
+            var appid = 'cyteanoMa';
+            var conf = 'prod_27ac74f72c70e7240b5f924ef92bae6a';
+            var width = window.innerWidth || document.documentElement.clientWidth;
+            if (width < 960) {
+                window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+            } else {
+                var loadJs = function (d, a) {
+                    var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                    var b = document.createElement("script");
+                    b.setAttribute("type", "text/javascript");
+                    b.setAttribute("charset", "UTF-8");
+                    b.setAttribute("src", d);
+                    if (typeof a === "function") {
+                        if (window.attachEvent) {
+                            b.onreadystatechange = function () {
+                                var e = b.readyState;
+                                if (e === "loaded" || e === "complete") {
+                                    b.onreadystatechange = null;
+                                    a()
+                                }
+                            }
+                        } else {
+                            b.onload = a
+                        }
+                    }
+                    c.appendChild(b)
+                };
+                loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+                    window.changyan.api.config({appid: appid, conf: conf})
+                });
+            }
+        })(); </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://file.wf2311.com/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://file.wf2311.com/wechat.png" data-alipay="https://file.wf2311.com/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>王峰 &copy; 2017 - 2018</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">鄂ICP备15002386号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wangfeng.pro/a/spring boot + IDEA 远程调试/&title=《spring boot + IDEA 远程调试》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wangfeng.pro/a/spring boot + IDEA 远程调试/&title=《spring boot + IDEA 远程调试》 — 王峰的个人博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wangfeng.pro/a/spring boot + IDEA 远程调试/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《spring boot + IDEA 远程调试》 — 王峰的个人博客&url=https://wangfeng.pro/a/spring boot + IDEA 远程调试/&via=https://wangfeng.pro" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wangfeng.pro/a/spring boot + IDEA 远程调试/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aQW7DMAwF0dz/0ummiwKF7PmkUtTUeBXEhqznBUGKfL3w9V5c13d/PnO95uqfzZcMGTIeyyCbWP2zWoFs+vddsvJyHRkyZBzA4EvzEHz9lvRj3exZhgwZMsKAeB1kSXIpQ4YMGX0GLz55WkkCvQwZMk5m8FQvPW4jaWJtZRkyZJzD4Kfuf//7I/0NGTJkPIrxDi/C40Gzv5/vdWTIkDGawQNcv3CttTP5fmTIkDGbUTuaTxuTtYO8OFmUIUPGMYy9yP4RHh/gkCFDxlRGZ5yLv76/cvFEUIYMGSMY6QBE7fl+0xSliTJkyBjHqG2OD1JwTCvsypAhYzSDZ1n9F9QO0WrjZTJkyJjEIA/xkpXc5c2AIHmVIUPGaAY/DqsF1tpwGA/3QaYpQ4aMxzLIYFaKrLUB+H5umpcyZMgYyuAYkvDVxjU4+6aIlSFDxlBGJyCmjYS0uN02LSJDhozHMtKxhtoWa2MZMU+GDBkHMEh7IG1S8qBMWhFoOEyGDBmjGZ3gG3Qh8KeJC10ZMmQcwEivtPTtzKmhoC9DhowDGK/SlRarpAzmGNSPlSFDxsMZ/SBbHI/Y2zaQIUPGaEYtsNYSPvKBdhXSMmTImMfYVaySu+lhHA/oMmTIOIHRH3dIt15L9ZZIGTJkyCgdk+0Ku6g9IEOGDBmlcjRtc5Ji9YMBV4YMGf+eQYrYDjg9tiNUGTJknMPgpWPnSd4A4EFWhgwZBzC+AMByiYegR0nSAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

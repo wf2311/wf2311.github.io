@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=64984551"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?db673367eaa18d14a5ec59d6cb0ee5e7"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>微信web协议分析和实现微信机器人 | 王峰的个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="wechat">
+    <meta name="description" content="微信web协议分析和实现微信机器人（微信网页版 wx2.qq.com）时间: 2017-05-22 14:16:34 1.打开首页，分配一个随机uuid，2.根据该uuid获取二维码图片。3.微信客户端扫描该图片，在客户端确认登录。4.浏览器不停的调用一个接口，如果返回登录成功，则调用登录接口5.此时可以获取联系人列表，可以发送消息。然后不断调用同步接口。6.如果同步接口有返回，则可以获取新消息，">
+<meta name="keywords" content="wechat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信web协议分析和实现微信机器人">
+<meta property="og:url" content="https://wangfeng.pro/a/微信web协议分析和实现微信机器人/index.html">
+<meta property="og:site_name" content="王峰的个人博客">
+<meta property="og:description" content="微信web协议分析和实现微信机器人（微信网页版 wx2.qq.com）时间: 2017-05-22 14:16:34 1.打开首页，分配一个随机uuid，2.根据该uuid获取二维码图片。3.微信客户端扫描该图片，在客户端确认登录。4.浏览器不停的调用一个接口，如果返回登录成功，则调用登录接口5.此时可以获取联系人列表，可以发送消息。然后不断调用同步接口。6.如果同步接口有返回，则可以获取新消息，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-12T12:08:31.384Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信web协议分析和实现微信机器人">
+<meta name="twitter:description" content="微信web协议分析和实现微信机器人（微信网页版 wx2.qq.com）时间: 2017-05-22 14:16:34 1.打开首页，分配一个随机uuid，2.根据该uuid获取二维码图片。3.微信客户端扫描该图片，在客户端确认登录。4.浏览器不停的调用一个接口，如果返回登录成功，则调用登录接口5.此时可以获取联系人列表，可以发送消息。然后不断调用同步接口。6.如果同步接口有返回，则可以获取新消息，">
+    
+        <link rel="alternate" type="application/atom+xml" title="王峰的个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="https://file.wf2311.com/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://file.wf2311.com/wf2311.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">王峰</h5>
+          <a href="mailto:wf2311@163.com" title="wf2311@163.com" class="mail">wf2311@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/wf2311" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://gitee.com/wf2311" target="_blank" >
+                <i class="icon icon-lg icon-git-square"></i>
+                码云
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://segmentfault.com/u/wf2311" target="_blank" >
+                <i class="icon icon-lg icon-stack-exchange"></i>
+                SegmentFault
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/wf2311" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">微信web协议分析和实现微信机器人</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">微信web协议分析和实现微信机器人</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-07-14T08:01:19.000Z" itemprop="datePublished" class="page-time">
+  2017-07-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/其它/">其它</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#微信web协议分析和实现微信机器人（微信网页版-wx2-qq-com）"><span class="post-toc-number">1.</span> <span class="post-toc-text">微信web协议分析和实现微信机器人（微信网页版 wx2.qq.com）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#执行流程"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">执行流程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#WebWechat-API"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">WebWechat API</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-获取UUID（参考方法-getUUID）"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">1. 获取UUID（参考方法 getUUID）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-显示二维码（参考方法-showQrCode）"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2. 显示二维码（参考方法 showQrCode）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-等待登录（参考方法-waitForLogin）这里是微信确认登录"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">3. 等待登录（参考方法 waitForLogin）这里是微信确认登录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-登录获取Cookie（参考方法-login）"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">4. 登录获取Cookie（参考方法 login）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-微信初始化（参考方法-wxInit）"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">5. 微信初始化（参考方法 wxInit）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-开启微信状态通知（参考方法-wxStatusNotify）"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">6. 开启微信状态通知（参考方法 wxStatusNotify）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-获取联系人列表（参考方法-getContact）"><span class="post-toc-number">1.2.7.</span> <span class="post-toc-text">7. 获取联系人列表（参考方法 getContact）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-消息检查（参考方法-syncCheck）"><span class="post-toc-number">1.2.8.</span> <span class="post-toc-text">8.消息检查（参考方法 syncCheck）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-获取最新消息（参考方法-webwxsync）"><span class="post-toc-number">1.2.9.</span> <span class="post-toc-text">9. 获取最新消息（参考方法 webwxsync）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-发送消息（参考方法-webwxsendmsg）"><span class="post-toc-number">1.2.10.</span> <span class="post-toc-text">10. 发送消息（参考方法 webwxsendmsg）</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article data-id="34861567736680450" id="post-微信web协议分析和实现微信机器人"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">微信web协议分析和实现微信机器人</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-07-14 16:01:19" datetime="2017-07-14T08:01:19.000Z"  itemprop="datePublished">2017-07-14 16:01:19</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/其它/">其它</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="微信web协议分析和实现微信机器人（微信网页版-wx2-qq-com）"><a href="#微信web协议分析和实现微信机器人（微信网页版-wx2-qq-com）" class="headerlink" title="微信web协议分析和实现微信机器人（微信网页版 wx2.qq.com）"></a>微信web协议分析和实现微信机器人（微信网页版 wx2.qq.com）</h1><p><em>时间: 2017-05-22 14:16:34</em></p>
+<p>1.打开首页，分配一个随机uuid，<br>2.根据该uuid获取二维码图片。<br>3.微信客户端扫描该图片，在客户端确认登录。<br>4.浏览器不停的调用一个接口，如果返回登录成功，则调用登录接口<br>5.此时可以获取联系人列表，可以发送消息。然后不断调用同步接口。<br>6.如果同步接口有返回，则可以获取新消息，然后继续调用同步接口。</p>
+<ul>
+<li>Java版实现源码：<a href="https://github.com/biezhi/wechat-robot" target="_blank" rel="noopener">https://github.com/biezhi/wechat-robot</a></li>
+<li>Python实现：<a href="https://github.com/Urinx/WeixinBot" target="_blank" rel="noopener">https://github.com/Urinx/WeixinBot</a></li>
+<li>C#实现：<a href="https://github.com/sherlockchou86/WeChat.NET" target="_blank" rel="noopener">https://github.com/sherlockchou86/WeChat.NET</a></li>
+<li>QT实现：<a href="https://github.com/xiangzhai/qwx" target="_blank" rel="noopener">https://github.com/xiangzhai/qwx</a></li>
+<li>Perl实现：<a href="https://github.com/sjdy521/Mojo-Weixin" target="_blank" rel="noopener">https://github.com/sjdy521/Mojo-Weixin</a></li>
+</ul>
+<h2 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">       +--------------+     +---------------+   +---------------+</span><br><span class="line">       |              |     |               |   |               |</span><br><span class="line">       |   Get UUID   |     |  Get Contact  |   | Status Notify |</span><br><span class="line">       |              |     |               |   |               |</span><br><span class="line">       +-------+------+     +-------^-------+   +-------^-------+</span><br><span class="line">               |                    |                   |</span><br><span class="line">               |                    +-------+  +--------+</span><br><span class="line">               |                            |  |</span><br><span class="line">       +-------v------+               +-----+--+------+      +--------------+</span><br><span class="line">       |              |               |               |      |              |</span><br><span class="line">       |  Get QRCode  |               |  Weixin Init  +------&gt;  Sync Check  &lt;----+</span><br><span class="line">       |              |               |               |      |              |    |</span><br><span class="line">       +-------+------+               +-------^-------+      +-------+------+    |</span><br><span class="line">               |                              |                      |           |</span><br><span class="line">               |                              |                      +-----------+</span><br><span class="line">               |                              |                      |</span><br><span class="line">       +-------v------+               +-------+--------+     +-------v-------+</span><br><span class="line">       |              | Confirm Login |                |     |               |</span><br><span class="line">+------&gt;    Login     +---------------&gt; New Login Page |     |  Weixin Sync  |</span><br><span class="line">|      |              |               |                |     |               |</span><br><span class="line">|      +------+-------+               +----------------+     +---------------+</span><br><span class="line">|             |</span><br><span class="line">|QRCode Scaned|</span><br><span class="line">+-------------+</span><br></pre></td></tr></table></figure>
+<h2 id="WebWechat-API"><a href="#WebWechat-API" class="headerlink" title="WebWechat API"></a>WebWechat API</h2><h3 id="1-获取UUID（参考方法-getUUID）"><a href="#1-获取UUID（参考方法-getUUID）" class="headerlink" title="1. 获取UUID（参考方法 getUUID）"></a>1. 获取UUID（参考方法 getUUID）</h3><table>
+<thead>
+<tr>
+<th>API</th>
+<th>获取 UUID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td><a href="https://login.weixin.qq.com/jslogin" target="_blank" rel="noopener">https://login.weixin.qq.com/jslogin</a></td>
+</tr>
+<tr>
+<td>method</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>data</td>
+<td>URL Encode</td>
+</tr>
+<tr>
+<td>params</td>
+<td><strong>appid</strong> : wx782c26e4c19acffb <br> <strong>fun</strong> : new <br> <strong>lang</strong>: zh_CN <br> <strong>_</strong> :  时间戳</td>
+</tr>
+</tbody>
+</table>
+<p>返回数据(String):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.QRLogin.code = 200; window.QRLogin.uuid = &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="2-显示二维码（参考方法-showQrCode）"><a href="#2-显示二维码（参考方法-showQrCode）" class="headerlink" title="2. 显示二维码（参考方法 showQrCode）"></a>2. 显示二维码（参考方法 showQrCode）</h3><table>
+<thead>
+<tr>
+<th>API</th>
+<th>显示二维码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td><a href="https://login.weixin.qq.com/qrcode/{uuid}" target="_blank" rel="noopener">https://login.weixin.qq.com/qrcode/{uuid}</a></td>
+</tr>
+<tr>
+<td>method</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>params</td>
+<td><strong>t</strong> : webwx <br> <strong>_</strong> : 时间戳</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="3-等待登录（参考方法-waitForLogin）这里是微信确认登录"><a href="#3-等待登录（参考方法-waitForLogin）这里是微信确认登录" class="headerlink" title="3. 等待登录（参考方法 waitForLogin）这里是微信确认登录"></a>3. 等待登录（参考方法 waitForLogin）这里是微信确认登录</h3><table>
+<thead>
+<tr>
+<th>API</th>
+<th>二维码扫描登录</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td><a href="https://login.weixin.qq.com/cgi-bin/mmwebwx-bin/login" target="_blank" rel="noopener">https://login.weixin.qq.com/cgi-bin/mmwebwx-bin/login</a></td>
+</tr>
+<tr>
+<td>method</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>params</td>
+<td><strong>tip</strong> : 1:未扫描  0:已扫描 <br> <strong>uuid</strong> : 获取到的uuid <br> <strong>_</strong> : 时间戳</td>
+</tr>
+</tbody>
+</table>
+<p>返回数据(String):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">window.code=xxx;</span><br><span class="line"></span><br><span class="line">xxx:</span><br><span class="line">	408 登陆超时</span><br><span class="line">	201 扫描成功</span><br><span class="line">	200 确认登录</span><br><span class="line"></span><br><span class="line">当返回200时，还会有</span><br><span class="line">window.redirect_uri=&quot;https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxnewloginpage?ticket=xxx&amp;uuid=xxx&amp;lang=xxx&amp;scan=xxx&quot;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-登录获取Cookie（参考方法-login）"><a href="#4-登录获取Cookie（参考方法-login）" class="headerlink" title="4. 登录获取Cookie（参考方法 login）"></a>4. 登录获取Cookie（参考方法 login）</h3><table>
+<thead>
+<tr>
+<th>API</th>
+<th>webwxnewloginpage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td><a href="https://wx2.qq.com/cgi-bin/mmwebwx-bin/webwxnewloginpage" target="_blank" rel="noopener">https://wx2.qq.com/cgi-bin/mmwebwx-bin/webwxnewloginpage</a></td>
+</tr>
+<tr>
+<td>method</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>params</td>
+<td><strong>ticket</strong> : xxx <br> <strong>uuid</strong> : xxx <br> <strong>lang</strong> : zh_CN <br> <strong>scan</strong> : xxx <br> <strong>fun</strong> : new</td>
+</tr>
+</tbody>
+</table>
+<p>返回数据(XML):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;error&gt;</span><br><span class="line">	&lt;ret&gt;0&lt;/ret&gt;</span><br><span class="line">	&lt;message&gt;OK&lt;/message&gt;</span><br><span class="line">	&lt;skey&gt;xxx&lt;/skey&gt;</span><br><span class="line">	&lt;wxsid&gt;xxx&lt;/wxsid&gt;</span><br><span class="line">	&lt;wxuin&gt;xxx&lt;/wxuin&gt;</span><br><span class="line">	&lt;pass_ticket&gt;xxx&lt;/pass_ticket&gt;</span><br><span class="line">	&lt;isgrayscale&gt;1&lt;/isgrayscale&gt;</span><br><span class="line">&lt;/error&gt;</span><br></pre></td></tr></table></figure></p>
+<p>在这一步获取xml中的 <code>skey</code>, <code>wxsid</code>, <code>wxuin</code>, <code>pass_ticket</code></p>
+<h3 id="5-微信初始化（参考方法-wxInit）"><a href="#5-微信初始化（参考方法-wxInit）" class="headerlink" title="5. 微信初始化（参考方法 wxInit）"></a>5. 微信初始化（参考方法 wxInit）</h3><table>
+<thead>
+<tr>
+<th>API</th>
+<th>webwxinit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td><a href="https://wx2.qq.com/cgi-bin/mmwebwx-bin/webwxinit" target="_blank" rel="noopener">https://wx2.qq.com/cgi-bin/mmwebwx-bin/webwxinit</a></td>
+</tr>
+<tr>
+<td>method</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>data</td>
+<td>JSON</td>
+</tr>
+<tr>
+<td>header</td>
+<td>Content-Type: application/json; charset=UTF-8</td>
+</tr>
+<tr>
+<td>params</td>
+<td>{ <br> &nbsp;&nbsp;&nbsp;&nbsp; BaseRequest: { <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Uin: xxx, <br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sid: xxx, <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Skey: xxx, <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DeviceID: xxx, <br> &nbsp;&nbsp;&nbsp;&nbsp; } <br> }</td>
+</tr>
+</tbody>
+</table>
+<p>返回数据(JSON):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;BaseResponse&quot;: &#123;</span><br><span class="line">		&quot;Ret&quot;: 0,</span><br><span class="line">		&quot;ErrMsg&quot;: &quot;&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;Count&quot;: 11,</span><br><span class="line">	&quot;ContactList&quot;: [...],</span><br><span class="line">	&quot;SyncKey&quot;: &#123;</span><br><span class="line">		&quot;Count&quot;: 4,</span><br><span class="line">		&quot;List&quot;: [</span><br><span class="line">			&#123;</span><br><span class="line">				&quot;Key&quot;: 1,</span><br><span class="line">				&quot;Val&quot;: 635705559</span><br><span class="line">			&#125;,</span><br><span class="line">			...</span><br><span class="line">		]</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;User&quot;: &#123;</span><br><span class="line">		&quot;Uin&quot;: xxx,</span><br><span class="line">		&quot;UserName&quot;: xxx,</span><br><span class="line">		&quot;NickName&quot;: xxx,</span><br><span class="line">		&quot;HeadImgUrl&quot;: xxx,</span><br><span class="line">		&quot;RemarkName&quot;: &quot;&quot;,</span><br><span class="line">		&quot;PYInitial&quot;: &quot;&quot;,</span><br><span class="line">		&quot;PYQuanPin&quot;: &quot;&quot;,</span><br><span class="line">		&quot;RemarkPYInitial&quot;: &quot;&quot;,</span><br><span class="line">		&quot;RemarkPYQuanPin&quot;: &quot;&quot;,</span><br><span class="line">		&quot;HideInputBarFlag&quot;: 0,</span><br><span class="line">		&quot;StarFriend&quot;: 0,</span><br><span class="line">		&quot;Sex&quot;: 1,</span><br><span class="line">		&quot;Signature&quot;: &quot;Apt-get install B&quot;,</span><br><span class="line">		&quot;AppAccountFlag&quot;: 0,</span><br><span class="line">		&quot;VerifyFlag&quot;: 0,</span><br><span class="line">		&quot;ContactFlag&quot;: 0,</span><br><span class="line">		&quot;WebWxPluginSwitch&quot;: 0,</span><br><span class="line">		&quot;HeadImgFlag&quot;: 1,</span><br><span class="line">		&quot;SnsFlag&quot;: 17</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;ChatSet&quot;: xxx,</span><br><span class="line">	&quot;SKey&quot;: xxx,</span><br><span class="line">	&quot;ClientVersion&quot;: 369297683,</span><br><span class="line">	&quot;SystemTime&quot;: 1453124908,</span><br><span class="line">	&quot;GrayScale&quot;: 1,</span><br><span class="line">	&quot;InviteStartCount&quot;: 40,</span><br><span class="line">	&quot;MPSubscribeMsgCount&quot;: 2,</span><br><span class="line">	&quot;MPSubscribeMsgList&quot;: [...],</span><br><span class="line">	&quot;ClickReportInterval&quot;: 600000</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这一步中获取 <code>SyncKey</code>, <code>User</code> 后面的消息监听用。</p>
+<h3 id="6-开启微信状态通知（参考方法-wxStatusNotify）"><a href="#6-开启微信状态通知（参考方法-wxStatusNotify）" class="headerlink" title="6. 开启微信状态通知（参考方法 wxStatusNotify）"></a>6. 开启微信状态通知（参考方法 wxStatusNotify）</h3><table>
+<thead>
+<tr>
+<th>API</th>
+<th>webwxstatusnotify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td><a href="https://wx2.qq.com/cgi-bin/mmwebwx-bin/webwxstatusnotify" target="_blank" rel="noopener">https://wx2.qq.com/cgi-bin/mmwebwx-bin/webwxstatusnotify</a></td>
+</tr>
+<tr>
+<td>method</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>data</td>
+<td>JSON</td>
+</tr>
+<tr>
+<td>header</td>
+<td>Content-Type: application/json; charset=UTF-8</td>
+</tr>
+<tr>
+<td>params</td>
+<td>{ <br> &nbsp;&nbsp;&nbsp;&nbsp; BaseRequest: { Uin: xxx, Sid: xxx, Skey: xxx, DeviceID: xxx }, <br> &nbsp;&nbsp;&nbsp;&nbsp; Code: 3, <br> &nbsp;&nbsp;&nbsp;&nbsp; FromUserName: 自己的ID, <br> &nbsp;&nbsp;&nbsp;&nbsp; ToUserName: 自己的ID, <br> &nbsp;&nbsp;&nbsp;&nbsp; ClientMsgId: 时间戳 <br> }</td>
+</tr>
+</tbody>
+</table>
+<p>返回数据(JSON):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;BaseResponse&quot;: &#123;</span><br><span class="line">		&quot;Ret&quot;: 0,</span><br><span class="line">		&quot;ErrMsg&quot;: &quot;&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="7-获取联系人列表（参考方法-getContact）"><a href="#7-获取联系人列表（参考方法-getContact）" class="headerlink" title="7. 获取联系人列表（参考方法 getContact）"></a>7. 获取联系人列表（参考方法 getContact）</h3><table>
+<thead>
+<tr>
+<th>API</th>
+<th>webwxgetcontact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td><a href="https://wx2.qq.com/cgi-bin/mmwebwx-bin/webwxgetcontact" target="_blank" rel="noopener">https://wx2.qq.com/cgi-bin/mmwebwx-bin/webwxgetcontact</a></td>
+</tr>
+<tr>
+<td>method</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>data</td>
+<td>JSON</td>
+</tr>
+<tr>
+<td>header</td>
+<td>ContentType: application/json; charset=UTF-8</td>
+</tr>
+<tr>
+<td>params</td>
+<td>{ <br> &nbsp;&nbsp;&nbsp;&nbsp; BaseRequest: { <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Uin: xxx, <br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sid: xxx, <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Skey: xxx, <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DeviceID: xxx, <br> &nbsp;&nbsp;&nbsp;&nbsp; } <br> }</td>
+</tr>
+</tbody>
+</table>
+<p>返回数据(JSON):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;BaseResponse&quot;: &#123;</span><br><span class="line">		&quot;Ret&quot;: 0,</span><br><span class="line">		&quot;ErrMsg&quot;: &quot;&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;MemberCount&quot;: 334,</span><br><span class="line">	&quot;MemberList&quot;: [</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;Uin&quot;: 0,</span><br><span class="line">			&quot;UserName&quot;: xxx,</span><br><span class="line">			&quot;NickName&quot;: &quot;Urinx&quot;,</span><br><span class="line">			&quot;HeadImgUrl&quot;: xxx,</span><br><span class="line">			&quot;ContactFlag&quot;: 3,</span><br><span class="line">			&quot;MemberCount&quot;: 0,</span><br><span class="line">			&quot;MemberList&quot;: [],</span><br><span class="line">			&quot;RemarkName&quot;: &quot;&quot;,</span><br><span class="line">			&quot;HideInputBarFlag&quot;: 0,</span><br><span class="line">			&quot;Sex&quot;: 0,</span><br><span class="line">			&quot;Signature&quot;: &quot;我是二蛋&quot;,</span><br><span class="line">			&quot;VerifyFlag&quot;: 8,</span><br><span class="line">			&quot;OwnerUin&quot;: 0,</span><br><span class="line">			&quot;PYInitial&quot;: &quot;URINX&quot;,</span><br><span class="line">			&quot;PYQuanPin&quot;: &quot;Urinx&quot;,</span><br><span class="line">			&quot;RemarkPYInitial&quot;: &quot;&quot;,</span><br><span class="line">			&quot;RemarkPYQuanPin&quot;: &quot;&quot;,</span><br><span class="line">			&quot;StarFriend&quot;: 0,</span><br><span class="line">			&quot;AppAccountFlag&quot;: 0,</span><br><span class="line">			&quot;Statues&quot;: 0,</span><br><span class="line">			&quot;AttrStatus&quot;: 0,</span><br><span class="line">			&quot;Province&quot;: &quot;&quot;,</span><br><span class="line">			&quot;City&quot;: &quot;&quot;,</span><br><span class="line">			&quot;Alias&quot;: &quot;Urinxs&quot;,</span><br><span class="line">			&quot;SnsFlag&quot;: 0,</span><br><span class="line">			&quot;UniFriend&quot;: 0,</span><br><span class="line">			&quot;DisplayName&quot;: &quot;&quot;,</span><br><span class="line">			&quot;ChatRoomId&quot;: 0,</span><br><span class="line">			&quot;KeyWord&quot;: &quot;gh_&quot;,</span><br><span class="line">			&quot;EncryChatRoomId&quot;: &quot;&quot;</span><br><span class="line">		&#125;,</span><br><span class="line">		...</span><br><span class="line">	],</span><br><span class="line">	&quot;Seq&quot;: 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="8-消息检查（参考方法-syncCheck）"><a href="#8-消息检查（参考方法-syncCheck）" class="headerlink" title="8.消息检查（参考方法 syncCheck）"></a>8.消息检查（参考方法 syncCheck）</h3><table>
+<thead>
+<tr>
+<th>API</th>
+<th>synccheck</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td><a href="https://webpush2.weixin.qq.com/cgi-bin/mmwebwx-bin/synccheck" target="_blank" rel="noopener">https://webpush2.weixin.qq.com/cgi-bin/mmwebwx-bin/synccheck</a></td>
+</tr>
+<tr>
+<td>method</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>data</td>
+<td>JSON</td>
+</tr>
+<tr>
+<td>header</td>
+<td>ContentType: application/json; charset=UTF-8</td>
+</tr>
+<tr>
+<td>params</td>
+<td>{ <br> &nbsp;&nbsp;&nbsp;&nbsp; BaseRequest: { <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Uin: xxx, <br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sid: xxx, <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Skey: xxx, <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DeviceID: xxx, <br> &nbsp;&nbsp;&nbsp;&nbsp; } <br> }</td>
+</tr>
+</tbody>
+</table>
+<p>返回数据(String):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">window.synccheck=&#123;retcode:&quot;xxx&quot;,selector:&quot;xxx&quot;&#125;</span><br><span class="line"></span><br><span class="line">retcode:</span><br><span class="line">	0 正常</span><br><span class="line">	1100 失败/登出微信</span><br><span class="line">selector:</span><br><span class="line">	0 正常</span><br><span class="line">	2 新的消息</span><br><span class="line">	7 进入/离开聊天界面</span><br></pre></td></tr></table></figure></p>
+<h3 id="9-获取最新消息（参考方法-webwxsync）"><a href="#9-获取最新消息（参考方法-webwxsync）" class="headerlink" title="9. 获取最新消息（参考方法 webwxsync）"></a>9. 获取最新消息（参考方法 webwxsync）</h3><table>
+<thead>
+<tr>
+<th>API</th>
+<th>webwxsync</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td><a href="https://wx2.qq.com/cgi-bin/mmwebwx-bin/webwxsync?sid=xxx&amp;skey=xxx&amp;pass_ticket=xxx" target="_blank" rel="noopener">https://wx2.qq.com/cgi-bin/mmwebwx-bin/webwxsync?sid=xxx&amp;skey=xxx&amp;pass_ticket=xxx</a></td>
+</tr>
+<tr>
+<td>method</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>data</td>
+<td>JSON</td>
+</tr>
+<tr>
+<td>header</td>
+<td>ContentType: application/json; charset=UTF-8</td>
+</tr>
+<tr>
+<td>params</td>
+<td>{ <br> &nbsp;&nbsp;&nbsp;&nbsp; BaseRequest: { Uin: xxx, Sid: xxx, Skey: xxx, DeviceID: xxx }, <br> &nbsp;&nbsp;&nbsp;&nbsp; SyncKey: xxx, <br> &nbsp;&nbsp;&nbsp;&nbsp; rr: <code>时间戳取反</code> <br> }</td>
+</tr>
+</tbody>
+</table>
+<p>返回数据(JSON):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&apos;BaseResponse&apos;: &#123;&apos;ErrMsg&apos;: &apos;&apos;, &apos;Ret&apos;: 0&#125;,</span><br><span class="line">	&apos;SyncKey&apos;: &#123;</span><br><span class="line">		&apos;Count&apos;: 7,</span><br><span class="line">		&apos;List&apos;: [</span><br><span class="line">			&#123;&apos;Val&apos;: 636214192, &apos;Key&apos;: 1&#125;,</span><br><span class="line">			...</span><br><span class="line">		]</span><br><span class="line">	&#125;,</span><br><span class="line">	&apos;ContinueFlag&apos;: 0,</span><br><span class="line">	&apos;AddMsgCount&apos;: 1,</span><br><span class="line">	&apos;AddMsgList&apos;: [</span><br><span class="line">		&#123;</span><br><span class="line">			&apos;FromUserName&apos;: &apos;&apos;,</span><br><span class="line">			&apos;PlayLength&apos;: 0,</span><br><span class="line">			&apos;RecommendInfo&apos;: &#123;...&#125;,</span><br><span class="line">			&apos;Content&apos;: &quot;&quot;, </span><br><span class="line">			&apos;StatusNotifyUserName&apos;: &apos;&apos;,</span><br><span class="line">			&apos;StatusNotifyCode&apos;: 5,</span><br><span class="line">			&apos;Status&apos;: 3,</span><br><span class="line">			&apos;VoiceLength&apos;: 0,</span><br><span class="line">			&apos;ToUserName&apos;: &apos;&apos;,</span><br><span class="line">			&apos;ForwardFlag&apos;: 0,</span><br><span class="line">			&apos;AppMsgType&apos;: 0,</span><br><span class="line">			&apos;AppInfo&apos;: &#123;&apos;Type&apos;: 0, &apos;AppID&apos;: &apos;&apos;&#125;,</span><br><span class="line">			&apos;Url&apos;: &apos;&apos;,</span><br><span class="line">			&apos;ImgStatus&apos;: 1,</span><br><span class="line">			&apos;MsgType&apos;: 51,</span><br><span class="line">			&apos;ImgHeight&apos;: 0,</span><br><span class="line">			&apos;MediaId&apos;: &apos;&apos;, </span><br><span class="line">			&apos;FileName&apos;: &apos;&apos;,</span><br><span class="line">			&apos;FileSize&apos;: &apos;&apos;,</span><br><span class="line">			...</span><br><span class="line">		&#125;,</span><br><span class="line">		...</span><br><span class="line">	],</span><br><span class="line">	&apos;ModChatRoomMemberCount&apos;: 0,</span><br><span class="line">	&apos;ModContactList&apos;: [],</span><br><span class="line">	&apos;DelContactList&apos;: [],</span><br><span class="line">	&apos;ModChatRoomMemberList&apos;: [],</span><br><span class="line">	&apos;DelContactCount&apos;: 0,</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="10-发送消息（参考方法-webwxsendmsg）"><a href="#10-发送消息（参考方法-webwxsendmsg）" class="headerlink" title="10. 发送消息（参考方法 webwxsendmsg）"></a>10. 发送消息（参考方法 webwxsendmsg）</h3><table>
+<thead>
+<tr>
+<th>API</th>
+<th>webwxsendmsg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td><a href="https://wx2.qq.com/cgi-bin/mmwebwx-bin/webwxsendmsg?pass_ticket=xxx" target="_blank" rel="noopener">https://wx2.qq.com/cgi-bin/mmwebwx-bin/webwxsendmsg?pass_ticket=xxx</a></td>
+</tr>
+<tr>
+<td>method</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>data</td>
+<td>JSON</td>
+</tr>
+<tr>
+<td>header</td>
+<td>ContentType: application/json; charset=UTF-8</td>
+</tr>
+<tr>
+<td>params</td>
+<td>{ <br> &nbsp;&nbsp;&nbsp;&nbsp; BaseRequest: { Uin: xxx, Sid: xxx, Skey: xxx, DeviceID: xxx }, <br> &nbsp;&nbsp;&nbsp;&nbsp; Msg: { <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type: 1 文字消息, <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Content: 要发送的消息, <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FromUserName: 自己的ID, <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ToUserName: 好友的ID, <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LocalID: 与clientMsgId相同, <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ClientMsgId: 时间戳左移4位随后补上4位随机数 <br> &nbsp;&nbsp;&nbsp;&nbsp; } <br> }</td>
+</tr>
+</tbody>
+</table>
+<p>返回数据(JSON):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;BaseResponse&quot;: &#123;</span><br><span class="line">		&quot;Ret&quot;: 0,</span><br><span class="line">		&quot;ErrMsg&quot;: &quot;&quot;</span><br><span class="line">	&#125;,</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>更多资料：<br><a href="https://github.com/xiangzhai/qwx" target="_blank" rel="noopener">https://github.com/xiangzhai/qwx</a><br><a href="https://github.com/Urinx/WeixinBot" target="_blank" rel="noopener">https://github.com/Urinx/WeixinBot</a><br><a href="http://www.07net01.com/2016/01/1201188.html" target="_blank" rel="noopener">http://www.07net01.com/2016/01/1201188.html</a><br><a href="http://www.cnblogs.com/xiaozhi_5638/p/4923811.html" target="_blank" rel="noopener">http://www.cnblogs.com/xiaozhi_5638/p/4923811.html</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-01-12T12:08:31.384Z" itemprop="dateUpdated">2018-01-12 20:08:31</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://wangfeng.pro">
+            <img src="https://file.wf2311.com/wf2311.png" alt="王峰">
+            王峰
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wechat/">wechat</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wangfeng.pro/a/微信web协议分析和实现微信机器人/&title=《微信web协议分析和实现微信机器人》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wangfeng.pro/a/微信web协议分析和实现微信机器人/&title=《微信web协议分析和实现微信机器人》 — 王峰的个人博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wangfeng.pro/a/微信web协议分析和实现微信机器人/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《微信web协议分析和实现微信机器人》 — 王峰的个人博客&url=https://wangfeng.pro/a/微信web协议分析和实现微信机器人/&via=https://wangfeng.pro" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wangfeng.pro/a/微信web协议分析和实现微信机器人/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/a/MySQL 优化之 index merge(索引合并)/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">MySQL 优化之 index merge(索引合并)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/a/测试markdown语法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">测试markdown语法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+
+    <div id="SOHUCS" sid="34861567736680450"></div>
+    <script type="text/javascript">
+        (function () {
+            var appid = 'cyteanoMa';
+            var conf = 'prod_27ac74f72c70e7240b5f924ef92bae6a';
+            var width = window.innerWidth || document.documentElement.clientWidth;
+            if (width < 960) {
+                window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+            } else {
+                var loadJs = function (d, a) {
+                    var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                    var b = document.createElement("script");
+                    b.setAttribute("type", "text/javascript");
+                    b.setAttribute("charset", "UTF-8");
+                    b.setAttribute("src", d);
+                    if (typeof a === "function") {
+                        if (window.attachEvent) {
+                            b.onreadystatechange = function () {
+                                var e = b.readyState;
+                                if (e === "loaded" || e === "complete") {
+                                    b.onreadystatechange = null;
+                                    a()
+                                }
+                            }
+                        } else {
+                            b.onload = a
+                        }
+                    }
+                    c.appendChild(b)
+                };
+                loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+                    window.changyan.api.config({appid: appid, conf: conf})
+                });
+            }
+        })(); </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://file.wf2311.com/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://file.wf2311.com/wechat.png" data-alipay="https://file.wf2311.com/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>王峰 &copy; 2017 - 2018</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">鄂ICP备15002386号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wangfeng.pro/a/微信web协议分析和实现微信机器人/&title=《微信web协议分析和实现微信机器人》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wangfeng.pro/a/微信web协议分析和实现微信机器人/&title=《微信web协议分析和实现微信机器人》 — 王峰的个人博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wangfeng.pro/a/微信web协议分析和实现微信机器人/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《微信web协议分析和实现微信机器人》 — 王峰的个人博客&url=https://wangfeng.pro/a/微信web协议分析和实现微信机器人/&via=https://wangfeng.pro" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wangfeng.pro/a/微信web协议分析和实现微信机器人/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvElEQVR42u3aQW4jMQwEQP//01lgTwssJu4mJSeHmpMReCyVDiJD8vWKn6+/z7+fn56n7/z/a99/52nd140HDw8Pb7T1ZLuztxLG0y9vjhgPDw/vNq+9lJ8WS44jv+jz4378Ox4eHt6P8p4WaKlJ4j5Lr/Hw8PB+G29WvMjT4uTg8PDw8H4PLy8rzDZ6ttZ6pdaCh4eHF/NmDbCf/Xy9v4eHh4c3uo7b5/sQkl/r7cDB47t4eHh4F3jft+pnt+6scLA/rHoSAQ8PD+9MB+rVXvqzYHAqrS+KuXh4eHiHeMnVPGvqzxLx/KCj7+Dh4eF9hJeEirbwmrepNoWPNzMReHh4eId4s1R1Bk4S8eTv9bACHh4e3lFessVZKpyXjPPib5te4+Hh4X2StylGtMWFdvWkHIyHh4d3j9dudDYQMAsSbRJfTEng4eHhLXh5gpuXWdvRrnbTxbp4eHh4F3izFlT+C5tWWVuGiBJuPDw8vAu8fKyqbVm1726GvV7tg4eHh1fyTm29veI3p76ajMDDw8Nb8NpLOSHNtjUrBL/ZCR4eHt4FXl4gaJtSbVk2T5ejWJd38PDw8PBGvHbT7ZDrLOHejCk8/t+Ah4eHd4iXk4ZJ7ajosE+s8fDw8G7wNqnwps+2WaUIWnh4eHgXeJuNtgu0wwFJiKrDDx4eHt5RXv7afqg0GSNoj2mVoePh4eGVvBzTXtYbZFvejWIdHh4e3lFe255PChmnWmWbKICHh4d3lvdVPnnBYjNWtT8yPDw8vHu8TakiDxXtEFWy9bZ1h4eHh3eWt0mpk3fbUu/h0QE8PDy8a7y2JZZEmH1gyINWUaXGw8PD+yHeZsQqDyTtcNWbcSs8PDy8j/P2afQmUW7Lu3h4eHi3eUkxIk+sN0XbJAzke8PDw8O7wZvNas02l4STWQK9QuLh4eGlvD9Eu5KXL46czQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

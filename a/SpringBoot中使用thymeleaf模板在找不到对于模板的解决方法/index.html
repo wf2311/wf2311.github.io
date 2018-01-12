@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=64984551"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?db673367eaa18d14a5ec59d6cb0ee5e7"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法 | 王峰的个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="SpringBoot,thymeleaf">
+    <meta name="description" content="问题描述SpringBoot中使用thymeleaf模板，在IDEA中以main方法运行可以正常显示页面，但在打包之后就会提示找不到模板页面的错误信息:1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666">
+<meta name="keywords" content="SpringBoot,thymeleaf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法">
+<meta property="og:url" content="https://wangfeng.pro/a/SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法/index.html">
+<meta property="og:site_name" content="王峰的个人博客">
+<meta property="og:description" content="问题描述SpringBoot中使用thymeleaf模板，在IDEA中以main方法运行可以正常显示页面，但在打包之后就会提示找不到模板页面的错误信息:1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-12T12:08:31.390Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法">
+<meta name="twitter:description" content="问题描述SpringBoot中使用thymeleaf模板，在IDEA中以main方法运行可以正常显示页面，但在打包之后就会提示找不到模板页面的错误信息:1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666">
+    
+        <link rel="alternate" type="application/atom+xml" title="王峰的个人博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="https://file.wf2311.com/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://file.wf2311.com/wf2311.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">王峰</h5>
+          <a href="mailto:wf2311@163.com" title="wf2311@163.com" class="mail">wf2311@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/wf2311" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                GitHub
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://gitee.com/wf2311" target="_blank" >
+                <i class="icon icon-lg icon-git-square"></i>
+                码云
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://segmentfault.com/u/wf2311" target="_blank" >
+                <i class="icon icon-lg icon-stack-exchange"></i>
+                SegmentFault
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/wf2311" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-07-28T03:04:21.000Z" itemprop="datePublished" class="page-time">
+  2017-07-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SpringBoot/">SpringBoot</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题描述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#错误原因"><span class="post-toc-number">2.</span> <span class="post-toc-text">错误原因</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解决办法"><span class="post-toc-number">3.</span> <span class="post-toc-text">解决办法</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article data-id="39860262177738750" id="post-SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-07-28 11:04:21" datetime="2017-07-28T03:04:21.000Z"  itemprop="datePublished">2017-07-28 11:04:21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SpringBoot/">SpringBoot</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>SpringBoot中使用thymeleaf模板，在IDEA中以main方法运行可以正常显示页面，但在打包之后就会提示找不到模板页面的错误信息:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line">[THYMELEAF][http-nio-4000-exec-1] Exception processing template "/blog/index": Error resolving template "/blog/index", template might not exist or might not be accessible by any of the configured Template Resolvers</span><br><span class="line">org.thymeleaf.exceptions.TemplateInputException: Error resolving template "/blog/index", template might not exist or might not be accessible by any of the configured Template Resolvers</span><br><span class="line">        at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:870) ~[thymeleaf-3.0.7.RELEASE.jar!/:3.0.7.RELEASE]</span><br><span class="line">        at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607) ~[thymeleaf-3.0.7.RELEASE.jar!/:3.0.7.RELEASE]</span><br><span class="line">        at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098) [thymeleaf-3.0.7.RELEASE.jar!/:3.0.7.RELEASE]</span><br><span class="line">        at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072) [thymeleaf-3.0.7.RELEASE.jar!/:3.0.7.RELEASE]</span><br><span class="line">        at org.thymeleaf.spring4.view.ThymeleafView.renderFragment(ThymeleafView.java:353) [thymeleaf-spring4-3.0.7.RELEASE.jar!/:3.0.7.RELEASE]</span><br><span class="line">        at org.thymeleaf.spring4.view.ThymeleafView.render(ThymeleafView.java:191) [thymeleaf-spring4-3.0.7.RELEASE.jar!/:3.0.7.RELEASE]</span><br><span class="line">        at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1286) [spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1041) [spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:984) [spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901) [spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) [spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861) [spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at javax.servlet.http.HttpServlet.service(HttpServlet.java:635) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) [spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.springframework.web.servlet.resource.ResourceUrlEncodingFilter.doFilter(ResourceUrlEncodingFilter.java:59) [spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:105) [spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81) [spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) [spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_74]</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_74]</span><br><span class="line">        at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at java.lang.Thread.run(Thread.java:745) [?:1.8.0_74]</span><br><span class="line">Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.thymeleaf.exceptions.TemplateInputException: Error resolving template "/blog/index", template might not exist or might not be accessible by any of the</span><br><span class="line"> configured Template Resolvers] with root cause</span><br><span class="line">org.thymeleaf.exceptions.TemplateInputException: Error resolving template "/blog/index", template might not exist or might not be accessible by any of the configured Template Resolvers</span><br><span class="line">        at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:870) ~[thymeleaf-3.0.7.RELEASE.jar!/:3.0.7.RELEASE]</span><br><span class="line">        at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607) ~[thymeleaf-3.0.7.RELEASE.jar!/:3.0.7.RELEASE]</span><br><span class="line">        at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098) ~[thymeleaf-3.0.7.RELEASE.jar!/:3.0.7.RELEASE]</span><br><span class="line">        at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072) ~[thymeleaf-3.0.7.RELEASE.jar!/:3.0.7.RELEASE]</span><br><span class="line">        at org.thymeleaf.spring4.view.ThymeleafView.renderFragment(ThymeleafView.java:353) ~[thymeleaf-spring4-3.0.7.RELEASE.jar!/:3.0.7.RELEASE]</span><br><span class="line">        at org.thymeleaf.spring4.view.ThymeleafView.render(ThymeleafView.java:191) ~[thymeleaf-spring4-3.0.7.RELEASE.jar!/:3.0.7.RELEASE]</span><br><span class="line">        at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1286) ~[spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1041) ~[spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:984) ~[spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901) ~[spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) ~[spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861) ~[spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at javax.servlet.http.HttpServlet.service(HttpServlet.java:635) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) ~[spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) ~[tomcat-embed-websocket-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.springframework.web.servlet.resource.ResourceUrlEncodingFilter.doFilter(ResourceUrlEncodingFilter.java:59) ~[spring-webmvc-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:105) ~[spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81) ~[spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197) ~[spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-4.3.10.RELEASE.jar!/:4.3.10.RELEASE]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_74]</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_74]</span><br><span class="line">        at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.16.jar!/:8.5.16]</span><br><span class="line">        at java.lang.Thread.run(Thread.java:745) [?:1.8.0_74]</span><br></pre></td></tr></table></figure></p>
+<h1 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h1><p>参考<a href="https://stackoverflow.com/questions/26493831/spring-boot-thymeleaf-not-resolving-fragments-after-packaging#answer-26503954" title="stackflow" target="_blank" rel="noopener">stackflow</a> 类似的问题</p>
+<blockquote>
+<p>You don’t need the leading / on the view name, i.e. you should return fragments :: nodeList rather than /fragments :: nodeList. Having made this change Thymeleaf should be able to find the template when run from your IDE or from a jar file.<br>If you’re interested, here’s what’s happening under the hood:<br>The view name is used to search for a resource on the classpath. fragments :: nodeList means that the resource name is /templates/fragments.html and /fragments :: nodeList means that the resource name is /templates//fragments.html (note the double slash). When you’re running in your IDE the resource is available straight off the filesystem and the double slash doesn’t cause a problem. When you’re running from a jar file the resource is nested within that jar and the double slash prevents it from being found. I don’t fully understand why there’s this difference in behaviour and it is rather unfortunate. I’ve opened an issue so that we (the Spring Boot team) can see if there’s anything we can do to make the behaviour consistent.</p>
+</blockquote>
+<p>简单来说就是在springboot配置文件里的<code>spring.thymeleaf.prefix=classpath:/templates/</code>的与返回页面的视图设置<code>mav.setViewName(&quot;/blog/write&quot;);</code> 在组成url路径时会构成一个双斜杠<code>//</code>，在IDEA中运行时是可以被识别的，但在程序打包运行之后就不能被识别了，所以会出现这个问题。</p>
+<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>根据上面的错误原因分析，目前的解决办法就是让模板的路径中不会出现双斜杠<code>//</code>，或者支持双斜杠<code>//</code>路径(目前已经有人在jira中提出了该<a href="https://jira.spring.io/browse/SPR-15596" title="bug" target="_blank" rel="noopener">bug</a> 期待在之后的版本中能狗支持双斜杠<code>//</code>路径)</p>
+<ol>
+<li>去掉返回视图页面最前面的斜杠：<br> <code>mav.setViewName(&quot;/blog/write&quot;);</code><br> 改为<br> <code>mav.setViewName(&quot;blog/write&quot;);</code></li>
+<li>或者在配置文件里去掉最后的斜杠：<br> <code>spring.thymeleaf.prefix=classpath:/templates/</code><br> 改为<br> <code>spring.thymeleaf.prefix=classpath:/templates</code><br> 同时需要修改thymeleaf模板文件中的相关内容，比如<br> <code>layout:decorate=&quot;~{blog/common/common}</code><br> 此时应变为<br> <code>layout:decorate=&quot;~{/blog/common/common}</code></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-01-12T12:08:31.390Z" itemprop="dateUpdated">2018-01-12 20:08:31</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://wangfeng.pro">
+            <img src="https://file.wf2311.com/wf2311.png" alt="王峰">
+            王峰
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wangfeng.pro/a/SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法/&title=《SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wangfeng.pro/a/SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法/&title=《SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法》 — 王峰的个人博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wangfeng.pro/a/SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法》 — 王峰的个人博客&url=https://wangfeng.pro/a/SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法/&via=https://wangfeng.pro" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wangfeng.pro/a/SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/a/Maven常用命令/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Maven常用命令</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/a/Java NIO源码分析之Buffer/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Java NIO源码分析之Buffer</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+
+    <div id="SOHUCS" sid="39860262177738750"></div>
+    <script type="text/javascript">
+        (function () {
+            var appid = 'cyteanoMa';
+            var conf = 'prod_27ac74f72c70e7240b5f924ef92bae6a';
+            var width = window.innerWidth || document.documentElement.clientWidth;
+            if (width < 960) {
+                window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+            } else {
+                var loadJs = function (d, a) {
+                    var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                    var b = document.createElement("script");
+                    b.setAttribute("type", "text/javascript");
+                    b.setAttribute("charset", "UTF-8");
+                    b.setAttribute("src", d);
+                    if (typeof a === "function") {
+                        if (window.attachEvent) {
+                            b.onreadystatechange = function () {
+                                var e = b.readyState;
+                                if (e === "loaded" || e === "complete") {
+                                    b.onreadystatechange = null;
+                                    a()
+                                }
+                            }
+                        } else {
+                            b.onload = a
+                        }
+                    }
+                    c.appendChild(b)
+                };
+                loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+                    window.changyan.api.config({appid: appid, conf: conf})
+                });
+            }
+        })(); </script>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://file.wf2311.com/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://file.wf2311.com/wechat.png" data-alipay="https://file.wf2311.com/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>王峰 &copy; 2017 - 2018</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">鄂ICP备15002386号</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wangfeng.pro/a/SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法/&title=《SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wangfeng.pro/a/SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法/&title=《SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法》 — 王峰的个人博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wangfeng.pro/a/SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法》 — 王峰的个人博客&url=https://wangfeng.pro/a/SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法/&via=https://wangfeng.pro" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wangfeng.pro/a/SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJ0lEQVR42u3awW4bMQwE0Pz/T6fXAkXsGVIFvMrbk7FJLT3lwHKor6/4+f7r+enN6/f//s5Pn1+vlezh2IONjY39EPb3yydZIHnffp69SSzY2NjYt7JnZSYvQknZS3aVlLToD4ONjY2NHcCSzbVFMWmQsLGxsbHzJiEvZrPoqg2VsLGxsX8zOy85+XaTo2zXTdiHszRsbGzsj2fnpeXzP/+X+TY2Njb2B7O/y2e2TDtCzsOs2YONjY19E3sWxL8Obmbj4X28VcdV2NjY2Nex8yX3RaX9tk1nUc8isLGxsR/IToKkU+Xq1FD5VNHFxsbGfjo7+YrXBWa/uYTatiurJgQbGxv7UexZxJ+PWtvLN5vR8uywsLGxsZ/OTuKezVB2FkvlrcuBvyE2Njb2w9mzg5j921ND5c0YAxsbG/tWdhsS5b/fjmPbliP/aZGoYWNjYz+KnW+iHdYmy+ej4vx9FC1hY2NjX8TOh7ubZmNzfO1O2otH2NjY2E9n5/HNrC3ZjGPbGKsYS2BjY2NfxJ4F68nwtQ2h2uHBpuBhY2Nj38Se9S6bECq/iNNeG8p3hY2NjX0TexP6t4VkVsBOtTTY2NjYt7I3S+YlcHYpZ8ZOSiM2Njb2Tey8GMzet9uaXdZpLwxhY2Nj38TehD55M9AGRvmKbUnDxsbGvpu9IbVHM5tItyPnN5NtbGxs7CvY+ZBgdo2mLY1tkzMrctjY2Nj3sWclpG0JNld2Zof+Zp/Y2NjYV7DbSzbFPaCgTM6K5f46ETY2NvZN7PZ/5rPS0pbAZPXN0WBjY2Pfx06+dH+NJj/K5DkQjWFjY2Nfx24LxmYQ25a3WZz0pnHCxsbGvo7dhuyzEGoWS7UHGh0cNjY29hXsUw1A3n7MIv780Ie9FzY2NvZj2bMBbZvS5MeRX6zMy+HqULCxsbEfwk6KVv51sxKSjxna0cWwemNjY2M/kN02FbMoKh8DnDrQH6XY2NjY2OVQto2T2gip3g82Njb2L2afOqBTw4NZyIWNjY19H3t2KacduCZXOU+1Rm/CKWxsbOyL2LO2oS0bs/HtqVK3mm9jY2Njfy77Dw2Mzkok3ci4AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
