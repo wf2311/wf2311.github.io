@@ -36,11 +36,11 @@
 <meta name="keywords" content="nio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java NIO源码分析之Buffer">
-<meta property="og:url" content="https://wangfeng.pro/a/Java NIO源码分析之Buffer/index.html">
+<meta property="og:url" content="https://www.wf2311.com/a/Java NIO源码分析之Buffer/index.html">
 <meta property="og:site_name" content="王峰的个人博客">
 <meta property="og:description" content="Buffer是特定基元类型数据的容器Buffer(缓冲区)是一种特定基元类型的线性、有限序列。除了内容之外，缓冲区的基本属性是capacity(容量)、limit(上限)和position(位置)以及mark(标记):  capacity 缓冲区能够容纳的数据元素的最大数量。这一容量在缓冲区创建时被设定，并且永远不能被改变。limit 缓冲区的第一个不能被读或写的元素。或者说，缓冲区中现存元素的计">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-12T12:08:31.390Z">
+<meta property="og:updated_time" content="2018-01-15T13:57:36.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java NIO源码分析之Buffer">
 <meta name="twitter:description" content="Buffer是特定基元类型数据的容器Buffer(缓冲区)是一种特定基元类型的线性、有限序列。除了内容之外，缓冲区的基本属性是capacity(容量)、limit(上限)和position(位置)以及mark(标记):  capacity 缓冲区能够容纳的数据元素的最大数量。这一容量在缓冲区创建时被设定，并且永远不能被改变。limit 缓冲区的第一个不能被读或写的元素。或者说，缓冲区中现存元素的计">
@@ -228,14 +228,14 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-01-12T12:08:31.390Z" itemprop="dateUpdated">2018-01-12 20:08:31</time>
+    最后更新时间：<time datetime="2018-01-15T13:57:36.452Z" itemprop="dateUpdated">2018-01-15 21:57:36</time>
 </span><br>
 
 
         
     </div>
     <footer>
-        <a href="https://wangfeng.pro">
+        <a href="https://www.wf2311.com">
             <img src="https://file.wf2311.com/wf2311.png" alt="王峰">
             王峰
         </a>
@@ -261,7 +261,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wangfeng.pro/a/Java NIO源码分析之Buffer/&title=《Java NIO源码分析之Buffer》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.wf2311.com/a/Java NIO源码分析之Buffer/&title=《Java NIO源码分析之Buffer》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -271,22 +271,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wangfeng.pro/a/Java NIO源码分析之Buffer/&title=《Java NIO源码分析之Buffer》 — 王峰的个人博客&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.wf2311.com/a/Java NIO源码分析之Buffer/&title=《Java NIO源码分析之Buffer》 — 王峰的个人博客&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wangfeng.pro/a/Java NIO源码分析之Buffer/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.wf2311.com/a/Java NIO源码分析之Buffer/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java NIO源码分析之Buffer》 — 王峰的个人博客&url=https://wangfeng.pro/a/Java NIO源码分析之Buffer/&via=https://wangfeng.pro" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java NIO源码分析之Buffer》 — 王峰的个人博客&url=https://www.wf2311.com/a/Java NIO源码分析之Buffer/&via=https://www.wf2311.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wangfeng.pro/a/Java NIO源码分析之Buffer/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.wf2311.com/a/Java NIO源码分析之Buffer/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -458,7 +458,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wangfeng.pro/a/Java NIO源码分析之Buffer/&title=《Java NIO源码分析之Buffer》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.wf2311.com/a/Java NIO源码分析之Buffer/&title=《Java NIO源码分析之Buffer》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -468,22 +468,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wangfeng.pro/a/Java NIO源码分析之Buffer/&title=《Java NIO源码分析之Buffer》 — 王峰的个人博客&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.wf2311.com/a/Java NIO源码分析之Buffer/&title=《Java NIO源码分析之Buffer》 — 王峰的个人博客&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wangfeng.pro/a/Java NIO源码分析之Buffer/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.wf2311.com/a/Java NIO源码分析之Buffer/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java NIO源码分析之Buffer》 — 王峰的个人博客&url=https://wangfeng.pro/a/Java NIO源码分析之Buffer/&via=https://wangfeng.pro" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java NIO源码分析之Buffer》 — 王峰的个人博客&url=https://www.wf2311.com/a/Java NIO源码分析之Buffer/&via=https://www.wf2311.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wangfeng.pro/a/Java NIO源码分析之Buffer/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.wf2311.com/a/Java NIO源码分析之Buffer/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -494,7 +494,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aQXKDMAwF0Nz/0ukFAnxJ0Bnsx6rTpobH4seS9fnE17d4Vdc8+s3NFwYGxmsZyQMd3SD5r3yF8/+6eFkYGBgbMI4S7Ogzye0TQL7mxTNjYGBgxCGYhGOyGgYGBsYTgXteXVZXxsDAwOgVsZNmXI5/vBbHwMB4ISPvuv//z4+cb2BgYLyK0StEqwGdxPd3cGFgYKzNyAMuJ1WPPHuBi4GBsQ8jL01HjbDWSyk0BDEwMDZg9FpgeRvu/KVUt5g/7ouBgbEBo9rFmhx89vpmF7GOgYGxNOPeYvX8lr1AT4IbAwNjH8ZdIw69EY3kpUTxjYGBsRxj0uifbPvmjbnDdhsGBsZyjOqgQ3WjlkR2dVt5MWyBgYGxNKM6JNGLy7x5lw9qYGBg7MPIA7F3MDkpegtVOAYGxnKM6sPlxeq8kZesg4GBsQOjGrh3HXD2SuKLCMbAwFiUUT0GqLbMnjhr/fEKMDAwlmYkpWO17dUrRJM4jr43MDAwlmYkDbLJyFfU3A8+eRG4GBgYSzMmg1yFm1Ur7JiEgYGxDyO/ZT5akRS01fUxMDD2YXyLV15Yzh/uhr0tBgbGEoxJmFZHIuaDYpMvAwwMjLczqiE7GTmdNNqaO1MMDIyFGNWtXg6YbDcLR6EYGBgYp5u8XrxW/xptDTEwMDCKjbO8lE3C/eJQAQMDYwNG9QAyicXqqFn1wAADA2MfxryX1dsm5uAkyjEwMBZl/AFcaJNhX3XzgwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3aQW7DMAwF0dz/0inQdSvPJ5WiokYrA41tPRcgSJGvF17v7/XbNVn8yevft5YMGTKOZZDXd67Juwjs4dPIkCHjAgYPhSQgpjxy78OeZciQIQOQ0jDNnylDhgwZ/YDL08rOh5AhQ4YMshVedq5f2QnEG2pxGTJkHMjoNwY+d/2n/Q0ZMmT8S8Y7XJxae29xVzJkyBjN4MlcfzCCh9RaWStDhowbGKRA5SVrLdWr7UGGDBmzGTzxSsNlLd0kQfyHnciQIWM0Iw2g69fsOtYnH/GhEytDhozRDL6h2nFbOpYRhHsZMmSMZqTBkY9z8fGv2l3FyREZMmQczmglZ7gcTZPLVp4rQ4aMcQzSBugUsbW0LyiGZciQMY6RthvTJI8f56V/lSFDxj0MfnN6lMafk5apqIUpQ4aMaxhkQzUkSR/XABkyZNzGSDdaG7yIN1QL/TJkyBjHSEe++Ble7fck9McTHDJkyDicUXtEbSu1QE/eK0OGjNkMPtzQiXW1IjZYMmTIuICRhtFaElnDxy0BGTJkjGN0BrMIkqR3nVD78D+RIUPGCMY7XGlyyY/Mah8CfRsZMmQczvhEnZgWwDwF3BCmZciQcSxjV0uy02wI+hjrIlaGDBmjGZ2Ds71bRJX3uhaXIUPGxYzOwT0pd/kRXivgypAh4wIGSSvT1kJtKKQVcGXIkHEggxSx/RYmSfX4kFmxFpchQ8aBjFoByctLHlJ5KrmhvyFDhowzGF893CLgtj5bgAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
