@@ -25,27 +25,30 @@
     
     
     
-    <title>Runnable实现资源共享 | 王峰的个人博客</title>
+    <title>在SpringBoot里面使用thymeleaf3 | 王峰的个人博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="thread,java">
-    <meta name="description" content="参考地址 以抢票或秒杀为例  错误示例1：   Service 12345678910111213class Service implements Runnable &amp;#123;    private int remain = 100;    public AtomicInteger count = new AtomicInteger(0);    @Override    public void">
-<meta name="keywords" content="thread,java">
+    <meta name="keywords" content="SpringBoot,thymeleaf">
+    <meta name="description" content="最近在一个springboot项目里使用thymeleaf模板，访问页面时一直报错。而之前的项目中没发现过这种情况发生。和之前的项目对比发现，在springboot项目中引入1234&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boo">
+<meta name="keywords" content="SpringBoot,thymeleaf">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Runnable实现资源共享">
-<meta property="og:url" content="https://www.wf2311.com/a/Runnable实现资源共享/index.html">
+<meta property="og:title" content="在SpringBoot里面使用thymeleaf3">
+<meta property="og:url" content="https://www.wf2311.com/在SpringBoot里面使用thymeleaf3.html">
 <meta property="og:site_name" content="王峰的个人博客">
-<meta property="og:description" content="参考地址 以抢票或秒杀为例  错误示例1：   Service 12345678910111213class Service implements Runnable &amp;#123;    private int remain = 100;    public AtomicInteger count = new AtomicInteger(0);    @Override    public void">
+<meta property="og:description" content="最近在一个springboot项目里使用thymeleaf模板，访问页面时一直报错。而之前的项目中没发现过这种情况发生。和之前的项目对比发现，在springboot项目中引入1234&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://file.wf2311.com/2017/05/25/17/QQ截图20170525171025.png">
-<meta property="og:updated_time" content="2018-01-15T13:57:36.449Z">
+<meta property="og:image" content="https://file.wf2311.com/2017/05/26/10/QQ截图20170526100433.png">
+<meta property="og:image" content="https://file.wf2311.com/2017/05/26/10/QQ截图20170526100404.png">
+<meta property="og:image" content="https://file.wf2311.com/2017/05/26/10/QQ截图20170526095909.png">
+<meta property="og:image" content="https://file.wf2311.com/2017/05/26/10/QQ截图20170526100534.png">
+<meta property="og:updated_time" content="2018-01-15T13:57:36.450Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Runnable实现资源共享">
-<meta name="twitter:description" content="参考地址 以抢票或秒杀为例  错误示例1：   Service 12345678910111213class Service implements Runnable &amp;#123;    private int remain = 100;    public AtomicInteger count = new AtomicInteger(0);    @Override    public void">
-<meta name="twitter:image" content="https://file.wf2311.com/2017/05/25/17/QQ截图20170525171025.png">
+<meta name="twitter:title" content="在SpringBoot里面使用thymeleaf3">
+<meta name="twitter:description" content="最近在一个springboot项目里使用thymeleaf模板，访问页面时一直报错。而之前的项目中没发现过这种情况发生。和之前的项目对比发现，在springboot项目中引入1234&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;spring-boo">
+<meta name="twitter:image" content="https://file.wf2311.com/2017/05/26/10/QQ截图20170526100433.png">
     
         <link rel="alternate" type="application/atom+xml" title="王峰的个人博客" href="/atom.xml">
     
@@ -147,7 +150,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Runnable实现资源共享</div>
+        <div class="flex-col header-title ellipsis">在SpringBoot里面使用thymeleaf3</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -169,15 +172,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Runnable实现资源共享</h1>
+        <h1 class="title">在SpringBoot里面使用thymeleaf3</h1>
         <h5 class="subtitle">
             
-                <time datetime="2017-05-25T09:03:18.000Z" itemprop="datePublished" class="page-time">
-  2017-05-25
+                <time datetime="2017-05-26T01:53:26.000Z" itemprop="datePublished" class="page-time">
+  2017-05-26
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SpringBoot/">SpringBoot</a></li></ul>
 
             
         </h5>
@@ -191,16 +194,16 @@
 
 <div class="container body-wrap">
     
-<article data-id="34861582819397630" id="post-Runnable实现资源共享"
+<article data-id="34861586061594624" id="post-在SpringBoot里面使用thymeleaf3"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Runnable实现资源共享</h1>
+        <h1 class="post-card-title">在SpringBoot里面使用thymeleaf3</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-05-25 17:03:18" datetime="2017-05-25T09:03:18.000Z"  itemprop="datePublished">2017-05-25 17:03:18</time>
+            <time class="post-time" title="2017-05-26 09:53:26" datetime="2017-05-26T01:53:26.000Z"  itemprop="datePublished">2017-05-26 09:53:26</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SpringBoot/">SpringBoot</a></li></ul>
 
 
 
@@ -212,32 +215,34 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p><strong><a href="http://www.cnblogs.com/skywang12345/p/3479063.html" target="_blank" rel="noopener">参考地址</a></strong></p>
-<p>以抢票或秒杀为例</p>
-<ol>
-<li>错误示例1：</li>
-</ol>
-<ul>
-<li><p>Service</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Service</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> remain = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> AtomicInteger count = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (remain &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" 剩余："</span> + <span class="keyword">this</span>.remain--);</span><br><span class="line">            count.addAndGet(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">buy</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Service service = <span class="keyword">new</span> Service();</span><br><span class="line"></span><br><span class="line">        Thread[] threads = <span class="keyword">new</span> Thread[<span class="number">100</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; threads.length; i++) &#123;</span><br><span class="line">            threads[i] = <span class="keyword">new</span> Thread(service);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; threads.length; i++) &#123;</span><br><span class="line">            threads[i].start();</span><br><span class="line">        &#125;</span><br><span class="line">        Thread.sleep(<span class="number">50</span>);</span><br><span class="line">        <span class="keyword">return</span> service.count.get();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">100</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">            array[i] = buy();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> a = Arrays.stream(array).filter(i -&gt; i &gt; <span class="number">100</span>).count();</span><br><span class="line">        System.out.println(<span class="string">"执行次数大于100的个数："</span> + a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试结果：</p>
-</li>
-</ul>
-<figure class="image-bubble">
+            <p>最近在一个<code>springboot</code>项目里使用<code>thymeleaf</code>模板，访问页面时一直报错。而之前的项目中没发现过这种情况发生。<br>和之前的项目对比发现，在<code>springboot</code>项目中引入<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>引入的<code>thymeleaf</code>版本居然是<code>2.x.x</code>版本，之前项目引入的是<code>3.x.x</code>版本的<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://file.wf2311.com/2017/05/25/17/QQ截图20170525171025.png" alt="截图" title="">
+                    <img src="https://file.wf2311.com/2017/05/26/10/QQ截图20170526100433.png" alt="之前项目" title="">
+                </div>
+                <div class="image-caption">之前项目</div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://file.wf2311.com/2017/05/26/10/QQ截图20170526100404.png" alt="该项目" title="">
+                </div>
+                <div class="image-caption">该项目</div>
+            </figure></p>
+<p>查看相应的pom文件发现，<code>thymeleaf.version</code>确实是<code>2.x.x</code>的。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://file.wf2311.com/2017/05/26/10/QQ截图20170526095909.png" alt="截图" title="">
                 </div>
                 <div class="image-caption">截图</div>
-            </figure>
-<p>执行100次中出现了13次下单次数大于100次的情况</p>
-<ul>
-<li>原因分析:<br>在上述方法中，多个线程共享一个变量，会存在并发争抢资源的问题，可能多买票的现象。</li>
-</ul>
+            </figure><br>究竟怎么回事呢？搜索<code>springboot</code>文档中相关<code>thymeleaf</code>的段落，发现了如下<a href="http://docs.spring.io/spring-boot/docs/1.5.3.RELEASE/reference/htmlsingle/#howto-use-thymeleaf-3" target="_blank" rel="noopener">描述</a>:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://file.wf2311.com/2017/05/26/10/QQ截图20170526100534.png" alt="描述" title="">
+                </div>
+                <div class="image-caption">描述</div>
+            </figure></p>
+<p>原来在<code>spring-boot-starter-thymeleaf</code>中默认引入的版本<code>thymeleaf</code>是<code>2.1</code>,如果需要使用<code>thymeleaf3</code>,需要在<code>pom.xml</code>中加入如下配置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">thymeleaf.version</span>&gt;</span>3.0.2.RELEASE<span class="tag">&lt;/<span class="name">thymeleaf.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span>2.1.1<span class="tag">&lt;/<span class="name">thymeleaf-layout-dialect.version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 
         </div>
 
@@ -245,7 +250,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-01-15T13:57:36.449Z" itemprop="dateUpdated">2018-01-15 21:57:36</time>
+    最后更新时间：<time datetime="2018-01-15T13:57:36.450Z" itemprop="dateUpdated">2018-01-15 21:57:36</time>
 </span><br>
 
 
@@ -268,7 +273,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread/">thread</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thymeleaf/">thymeleaf</a></li></ul>
 
 
             
@@ -278,7 +283,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.wf2311.com/a/Runnable实现资源共享/&title=《Runnable实现资源共享》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.wf2311.com/在SpringBoot里面使用thymeleaf3.html&title=《在SpringBoot里面使用thymeleaf3》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -288,22 +293,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.wf2311.com/a/Runnable实现资源共享/&title=《Runnable实现资源共享》 — 王峰的个人博客&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.wf2311.com/在SpringBoot里面使用thymeleaf3.html&title=《在SpringBoot里面使用thymeleaf3》 — 王峰的个人博客&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.wf2311.com/a/Runnable实现资源共享/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.wf2311.com/在SpringBoot里面使用thymeleaf3.html" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Runnable实现资源共享》 — 王峰的个人博客&url=https://www.wf2311.com/a/Runnable实现资源共享/&via=https://www.wf2311.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在SpringBoot里面使用thymeleaf3》 — 王峰的个人博客&url=https://www.wf2311.com/在SpringBoot里面使用thymeleaf3.html&via=https://www.wf2311.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.wf2311.com/a/Runnable实现资源共享/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.wf2311.com/在SpringBoot里面使用thymeleaf3.html" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -326,18 +331,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/a/在SpringBoot里面使用thymeleaf3/" id="post-prev" class="post-nav-link">
+      <a href="/测试markdown语法.html" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">在SpringBoot里面使用thymeleaf3</h4>
+        <h4 class="title">测试markdown语法</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/a/jquery checkbox选中、改变状态、change和click事件/" id="post-next" class="post-nav-link">
+      <a href="/Runnable实现资源共享.html" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">jquery checkbox选中、改变状态、change和click事件</h4>
+        <h4 class="title">Runnable实现资源共享</h4>
       </a>
     </div>
   
@@ -350,7 +355,7 @@
 
 <section class="comments" id="comments">
 
-    <div id="SOHUCS" sid="34861582819397630"></div>
+    <div id="SOHUCS" sid="34861586061594624"></div>
     <script type="text/javascript">
         (function () {
             var appid = 'cyteanoMa';
@@ -475,7 +480,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.wf2311.com/a/Runnable实现资源共享/&title=《Runnable实现资源共享》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.wf2311.com/在SpringBoot里面使用thymeleaf3.html&title=《在SpringBoot里面使用thymeleaf3》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -485,22 +490,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.wf2311.com/a/Runnable实现资源共享/&title=《Runnable实现资源共享》 — 王峰的个人博客&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.wf2311.com/在SpringBoot里面使用thymeleaf3.html&title=《在SpringBoot里面使用thymeleaf3》 — 王峰的个人博客&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.wf2311.com/a/Runnable实现资源共享/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.wf2311.com/在SpringBoot里面使用thymeleaf3.html" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Runnable实现资源共享》 — 王峰的个人博客&url=https://www.wf2311.com/a/Runnable实现资源共享/&via=https://www.wf2311.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在SpringBoot里面使用thymeleaf3》 — 王峰的个人博客&url=https://www.wf2311.com/在SpringBoot里面使用thymeleaf3.html&via=https://www.wf2311.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.wf2311.com/a/Runnable实现资源共享/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.wf2311.com/在SpringBoot里面使用thymeleaf3.html" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -511,7 +516,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNklEQVR42u3awY6DMAxFUf7/p+l2pFHgPptWwrlZjVAHOKnk2rGPA6/zz/p/ZXWd37n2v/GSIUPGaxnn5SIPINdXd+DPXX1GhgwZ+zDISxAAD5pks4KNkyFDhoxSoExfV4YMGTK+F3D5S6RBVoYMGTLSIpZ8noTmWun7WC0uQ4aMFzJqx/e/+fsr/Q0ZMmS8inGGK308CZG8PF6+lQwZMkYzeIBL07u09O03FWTIkDGVkZap6dhEmupd33l5RYYMGRswailgbZisdsR2sx0yZMgYzSClZi0RTIctyLbepJ4yZMgYykibkXxsohaC06RQhgwZuzFqgxfPNkEfaGHKkCFjHIMfeAWHXzgdbA148epchgwZL2ekgw48vaulgyQRXM6MyJAhYygjDaPpCEWtRUqC+M0vhgwZMsYxyGt1hjP6C22xDBkyhjLSkNoZhiDh9XoLlhgZMmSMZnQO7p9tFQQ57PVRnQwZMjZg9IfDOo1Sfuh2dOK6DBkyXsjgx/GkecAHVdOUNPjFkCFDxlBGpyhNX5qXrLwVKkOGjB0YvGRNH8OTv3T4Q4YMGXsybtIvnD7y9K7T8pQhQ8YOjDNcfAiDH5/VWqQ3ua0MGTIGMWqH+yT565DSZqoMGTJ2YPAgex1eayttpi6/BxkyZGzAIGVqGhbT7eiEfhkyZMjoZ5cpJh3UkCFDhozacdtTobbYwpQhQ8Y4Bm8GpGMTtaKUj1/IkCFjB0Y8nYEfkzYVOkFchgwZQxkfaL9qmFlZv5AAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACmUlEQVR42u3aQW7DMAwEwPz/0+m1QGF7SYpBCoxPQRtEGh0kecnXK37eF8/Vf3///e/vJJ/vRzz84OHh4R2a+mTIe+oVu7o00Xzw8PDw1nhXU0y+k0/lflkTRj5nPDw8vP/L623r+XUcDw8P7/t5+YaeL031O3h4eHjfwKtu0/nxkCxN9fhZyVrw8PDwFqpI3/N5pb6Hh4eHN66qV4th1Qvx9oOHh4e3wcs33Co4bwioziGfJx4eHt4Gr9c41Xvt39j0H0INPDw8vAVegunFppOpVI+TaKHx8PDwDvHyslbeXlANL6pX8LxlAQ8PD2+DN28FmAcWk+hhVM3Dw8PDGzMKL/Zxe0FypZ5crx8OGzw8PLwFXvUCXQ1k88Mmn261TQEPDw/vLK8XyO49eUwczRAPDw9vgTcpTVWj2PmmX72I4+Hh4e3x7oepbs3VglY+eh4N4+Hh4W3zJgHupImqGmf0ohM8PDy8DV5eysoPgHnxLC+tlUfEw8PDG/A2ilWTxoI5+LIAhoeHh7fMmweykzMqb0F4iDDw8PDwFninplUtceWB7KTtAA8PD2+PVy1B9Qpg+aJMmq4eWq/w8PDwPsLrBbXzjT4vszWTaTw8PLwBr1fuOnXlrTZsVWeLh4eH9xlePtGEkZeyeov18Dt4eHh4y7xqmWqjcJWHyIXWKzw8PLyP8CaFsb1CVzm8wMPDwzvKexefe8api3IePTwcPHh4eHgLvMnL/ySu7YUXeUMDHh4e3javV/Q6Fb/m4WzzYMDDw8Nb4+WBabIQyV8my1QIdvHw8PC+gNcLbatjTVpURwcDHh4e3gKvt8XnR0se4yaLgoeHh7fH612U51t5Qq2y8fDw8LZ51Rf+3sAb5bRTcQYeHh5ezPsBTt7uA7hytpoAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

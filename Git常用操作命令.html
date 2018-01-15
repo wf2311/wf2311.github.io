@@ -25,25 +25,25 @@
     
     
     
-    <title>nginx出现413 Request Entity Too Large 解决方法 | 王峰的个人博客</title>
+    <title>Git常用操作命令 | 王峰的个人博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="nginx">
-    <meta name="description" content="nginx.conf中默认没有设置client_max_body_size，这个参数默认只是1M，解决办法：增加如下两行到nginx.conf的http{}段， 增大nginx上传文件大小限制123#设置允许发布内容为8Mclient_max_body_size 8M;client_body_buffer_size 128k;">
-<meta name="keywords" content="nginx">
+    <meta name="keywords" content="git,常用命令">
+    <meta name="description" content="克隆远程制定分支到本地1git clone -b &amp;lt;branch&amp;gt; &amp;lt;remote_repo&amp;gt; ## branch为分支名，remote_repo为远程仓库 标签相关切换到指定分支1git checkout &amp;lt;branch&amp;gt; 检出指定分支1git checkout tags/&amp;lt;tag_name&amp;gt; -b &amp;lt;branch_name&amp;gt; 新建标签">
+<meta name="keywords" content="git,常用命令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx出现413 Request Entity Too Large 解决方法">
-<meta property="og:url" content="https://www.wf2311.com/a/nginx出现413 Request Entity Too Large 解决方法/index.html">
+<meta property="og:title" content="Git常用操作命令">
+<meta property="og:url" content="https://www.wf2311.com/Git常用操作命令.html">
 <meta property="og:site_name" content="王峰的个人博客">
-<meta property="og:description" content="nginx.conf中默认没有设置client_max_body_size，这个参数默认只是1M，解决办法：增加如下两行到nginx.conf的http{}段， 增大nginx上传文件大小限制123#设置允许发布内容为8Mclient_max_body_size 8M;client_body_buffer_size 128k;">
+<meta property="og:description" content="克隆远程制定分支到本地1git clone -b &amp;lt;branch&amp;gt; &amp;lt;remote_repo&amp;gt; ## branch为分支名，remote_repo为远程仓库 标签相关切换到指定分支1git checkout &amp;lt;branch&amp;gt; 检出指定分支1git checkout tags/&amp;lt;tag_name&amp;gt; -b &amp;lt;branch_name&amp;gt; 新建标签">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-15T13:57:36.449Z">
+<meta property="og:updated_time" content="2018-01-15T13:57:36.451Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx出现413 Request Entity Too Large 解决方法">
-<meta name="twitter:description" content="nginx.conf中默认没有设置client_max_body_size，这个参数默认只是1M，解决办法：增加如下两行到nginx.conf的http{}段， 增大nginx上传文件大小限制123#设置允许发布内容为8Mclient_max_body_size 8M;client_body_buffer_size 128k;">
+<meta name="twitter:title" content="Git常用操作命令">
+<meta name="twitter:description" content="克隆远程制定分支到本地1git clone -b &amp;lt;branch&amp;gt; &amp;lt;remote_repo&amp;gt; ## branch为分支名，remote_repo为远程仓库 标签相关切换到指定分支1git checkout &amp;lt;branch&amp;gt; 检出指定分支1git checkout tags/&amp;lt;tag_name&amp;gt; -b &amp;lt;branch_name&amp;gt; 新建标签">
     
         <link rel="alternate" type="application/atom+xml" title="王峰的个人博客" href="/atom.xml">
     
@@ -145,7 +145,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">nginx出现413 Request Entity Too Large 解决方法</div>
+        <div class="flex-col header-title ellipsis">Git常用操作命令</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -167,11 +167,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">nginx出现413 Request Entity Too Large 解决方法</h1>
+        <h1 class="title">Git常用操作命令</h1>
         <h5 class="subtitle">
             
-                <time datetime="2017-05-24T07:50:14.000Z" itemprop="datePublished" class="page-time">
-  2017-05-24
+                <time datetime="2017-07-19T09:24:22.000Z" itemprop="datePublished" class="page-time">
+  2017-07-19
 </time>
 
 
@@ -189,13 +189,20 @@
 
 <div class="container body-wrap">
     
-<article data-id="34861577102561280" id="post-nginx出现413 Request Entity Too Large 解决方法"
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#克隆远程制定分支到本地"><span class="post-toc-number">1.</span> <span class="post-toc-text">克隆远程制定分支到本地</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#标签相关"><span class="post-toc-number">2.</span> <span class="post-toc-text">标签相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#切换到指定分支"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">切换到指定分支</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#检出指定分支"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">检出指定分支</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#新建标签"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">新建标签</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看所有标签"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">查看所有标签</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article data-id="36694405947723780" id="post-Git常用操作命令"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">nginx出现413 Request Entity Too Large 解决方法</h1>
+        <h1 class="post-card-title">Git常用操作命令</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-05-24 15:50:14" datetime="2017-05-24T07:50:14.000Z"  itemprop="datePublished">2017-05-24 15:50:14</time>
+            <time class="post-time" title="2017-07-19 17:24:22" datetime="2017-07-19T09:24:22.000Z"  itemprop="datePublished">2017-07-19 17:24:22</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/其它/">其它</a></li></ul>
@@ -210,7 +217,11 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p><strong>nginx.conf</strong>中默认没有设置<code>client_max_body_size</code>，这个参数默认只是1M，<br>解决办法：<br>增加如下两行到<strong>nginx.conf</strong>的<code>http{}</code>段， 增大nginx上传文件大小限制<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>设置允许发布内容为8M</span><br><span class="line">client_max_body_size 8M;</span><br><span class="line">client_body_buffer_size 128k;</span><br></pre></td></tr></table></figure></p>
+            <h1 id="克隆远程制定分支到本地"><a href="#克隆远程制定分支到本地" class="headerlink" title="克隆远程制定分支到本地"></a>克隆远程制定分支到本地</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone -b &lt;branch&gt; &lt;remote_repo&gt; ## branch为分支名，remote_repo为远程仓库</span><br></pre></td></tr></table></figure>
+<h1 id="标签相关"><a href="#标签相关" class="headerlink" title="标签相关"></a>标签相关</h1><h2 id="切换到指定分支"><a href="#切换到指定分支" class="headerlink" title="切换到指定分支"></a>切换到指定分支</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="检出指定分支"><a href="#检出指定分支" class="headerlink" title="检出指定分支"></a>检出指定分支</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout tags/&lt;tag_name&gt; -b &lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="新建标签"><a href="#新建标签" class="headerlink" title="新建标签"></a>新建标签</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag &lt;tagName&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="查看所有标签"><a href="#查看所有标签" class="headerlink" title="查看所有标签"></a>查看所有标签</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -218,7 +229,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-01-15T13:57:36.449Z" itemprop="dateUpdated">2018-01-15 21:57:36</time>
+    最后更新时间：<time datetime="2018-01-15T13:57:36.451Z" itemprop="dateUpdated">2018-01-15 21:57:36</time>
 </span><br>
 
 
@@ -241,7 +252,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/常用命令/">常用命令</a></li></ul>
 
 
             
@@ -251,7 +262,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.wf2311.com/a/nginx出现413 Request Entity Too Large 解决方法/&title=《nginx出现413 Request Entity Too Large 解决方法》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.wf2311.com/Git常用操作命令.html&title=《Git常用操作命令》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -261,22 +272,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.wf2311.com/a/nginx出现413 Request Entity Too Large 解决方法/&title=《nginx出现413 Request Entity Too Large 解决方法》 — 王峰的个人博客&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.wf2311.com/Git常用操作命令.html&title=《Git常用操作命令》 — 王峰的个人博客&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.wf2311.com/a/nginx出现413 Request Entity Too Large 解决方法/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.wf2311.com/Git常用操作命令.html" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《nginx出现413 Request Entity Too Large 解决方法》 — 王峰的个人博客&url=https://www.wf2311.com/a/nginx出现413 Request Entity Too Large 解决方法/&via=https://www.wf2311.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Git常用操作命令》 — 王峰的个人博客&url=https://www.wf2311.com/Git常用操作命令.html&via=https://www.wf2311.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.wf2311.com/a/nginx出现413 Request Entity Too Large 解决方法/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.wf2311.com/Git常用操作命令.html" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -299,18 +310,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/a/jquery checkbox选中、改变状态、change和click事件/" id="post-prev" class="post-nav-link">
+      <a href="/Java NIO源码分析之Buffer.html" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">jquery checkbox选中、改变状态、change和click事件</h4>
+        <h4 class="title">Java NIO源码分析之Buffer</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/a/水仙花算法/" id="post-next" class="post-nav-link">
+      <a href="/HttpServletRequest常用获取URL的方法.html" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">水仙花算法</h4>
+        <h4 class="title">HttpServletRequest常用获取URL的方法</h4>
       </a>
     </div>
   
@@ -323,7 +334,7 @@
 
 <section class="comments" id="comments">
 
-    <div id="SOHUCS" sid="34861577102561280"></div>
+    <div id="SOHUCS" sid="36694405947723780"></div>
     <script type="text/javascript">
         (function () {
             var appid = 'cyteanoMa';
@@ -448,7 +459,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.wf2311.com/a/nginx出现413 Request Entity Too Large 解决方法/&title=《nginx出现413 Request Entity Too Large 解决方法》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.wf2311.com/Git常用操作命令.html&title=《Git常用操作命令》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -458,22 +469,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.wf2311.com/a/nginx出现413 Request Entity Too Large 解决方法/&title=《nginx出现413 Request Entity Too Large 解决方法》 — 王峰的个人博客&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.wf2311.com/Git常用操作命令.html&title=《Git常用操作命令》 — 王峰的个人博客&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.wf2311.com/a/nginx出现413 Request Entity Too Large 解决方法/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.wf2311.com/Git常用操作命令.html" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《nginx出现413 Request Entity Too Large 解决方法》 — 王峰的个人博客&url=https://www.wf2311.com/a/nginx出现413 Request Entity Too Large 解决方法/&via=https://www.wf2311.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Git常用操作命令》 — 王峰的个人博客&url=https://www.wf2311.com/Git常用操作命令.html&via=https://www.wf2311.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.wf2311.com/a/nginx出现413 Request Entity Too Large 解决方法/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.wf2311.com/Git常用操作命令.html" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -484,7 +495,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3a0U4DMQwEwP7/T4PEK/S66yTtScw9VXAkniDFqZ3HI36+fp7rz9fvXz+//zZ5c9uDh4eHNwr9erhk6Otw258kyxotAR4eHt4xXr655wkg36XbhUtixsPDw7sD73pbfxZEsgTXY86O8nh4eHh34LVb+Up5IlkmPDw8vM/y2glmBYK2YPHWWgseHh7egS7SfT5/oL+Hh4eHVx5t2618ttKzywRPo8XDw8M7wJs18ldaVu2iJEfqF2kDDw8P7wCv/Xq/PmUy/t52Gh4eHt5eXvJSe0Ru/zaPoU4weHh4eAd4SXqImvTx0TlJKm17LDr04+Hh4W3iFefu0VWtWcJYueBV5xw8PDy8Bd6slbWeQvLrXDUSDw8PbyuvPf62JYMkbbTvF+kHDw8P7zAvbzglBYJd17aW0hIeHh7eYV7+9T5ZjlnjP/ltvsR4eHh453j5cO3EbXBtOTjq5uHh4eEd47VtrRlpdvlg2EjDw8PDO8CbXW9qw22Dbg/QG/6feHh4eCVvNtxsyjadtKkrqlXj4eHhLfNaZDHowiLmpZAo7+Hh4eEd5s229TbEtoC7VP7Aw8PD28RrrwjMtuyWlEfyYjQ8PDy8A7z1g/KuS1qP8qnr03h4eHibeLN2V3vMXWmPzS5p4eHh4b2Ht9LUb9v/eRF2Fskf3xjw8PDwNvHa8mh7+F5pj7X4p9Hi4eHhbeW10+fFhaLzFh/W28IEHh4e3mnerrB2VZRn163qDh4eHh7epIJaN5zaN/OCQl7GxcPDw/ssL59spXBwHUoSbnuUx8PDwzvNm5UGZsvRXkRYuYaFh4eH91levnG3JY/ZQkTNNjw8PLzb8NrLTxsqInFDbkNiwMPDw9tUjMhbYm0pNq/BtjPi4eHhneCdaIDtOqa3TbU39ffw8PD+L+8bySUNAQazP/QAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aS3LjMAwFQN//0p5tqjzmPABUakQ1VylHodheIPjw9YrX+8f6/OTb+vlkdc/XFQsDA+O2jPwo6yNWSfn+6z0xMDCew/gWwfKg+fnMP168xORnw8DAwFg/U00Tk+NiYGBg7GLkwXFdoK4/wcDAwOgVn5MQ3Au4m2txDAyMGzLyrvvv/3zJfAMDA+NWjHdxJcikiTY5w19OhYGBcTQjD3CjF4zbc1FJjIGBcSjjumA62TkvmDEwMJ7DqB69d6AqOG/JYWBgnM3I/yBvgVUHkL33YmBgPIdRPe46LOZjyPJFivVXgIGB8TBG0hrLk79ecZvvVo7xGBgYN2RUk7YkjFaPtSuVxMDAOJWRtNUmKV0ypKwmgl/vjGBgYBzKmBSTk0I3CdbJ6DQ6LgYGxtGMauNscs2r99VgYGA8gdErSpNAWR1MJvhC5Y2BgXEoo1w0tp7Z0BH83BMDA+NoRjmL3BSa8zFDfhEWAwPjbMa8QZYni4WEb1eoxcDAOI7Ra5NVR5X5YKAwPMDAwHgAo9fWz0vTSRIZDTIxMDAew+g1yPLiM2/S5WEdAwPjbMa7uHots8kQNBobYGBgHM2YNLkmyPwSGAYGBkavWXZJW7/VaCv898DAwDiCUQ18eUidfE35qTAwMDDyFC35bb5zIaBjYGBgFMvXfJxZHQlcnhpiYGD8x4wkdduVFPYuWxQmsRgYGMcx5nlXrzFXTRM3TDkwMDDux/gDBcdLqRUoV9AAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

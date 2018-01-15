@@ -25,32 +25,25 @@
     
     
     
-    <title>spring boot + IDEA 远程调试 | 王峰的个人博客</title>
+    <title>HttpServletRequest常用获取URL的方法 | 王峰的个人博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="SpringBoot,远程调试">
-    <meta name="description" content="配置若想调试远端web容器内部的应用，需要接入web容器的jvm，以Tomcat为例，需修改web容器的配置1234567// bin\startup.bat（.sh）文件，在里面添加 // windowsset CATALINA_OPTS=&quot;-agentlib:jdwp=transport=dt_socket,address=8888（自定义调试端口）,server=y,suspend=n %C">
-<meta name="keywords" content="SpringBoot,远程调试">
+    <meta name="keywords" content="Servlet,HttpServletRequest,SpringMvc">
+    <meta name="description" content="1、request.getRequestURL()返回的是完整的url，包括Http协议，端口号，servlet名字和映射路径，但它不包含请求参数。2、request.getRequestURI()得到的是request URL的部分值，并且web容器没有decode过的3、request.getContextPath()返回 the context of the request.4、reques">
+<meta name="keywords" content="Servlet,HttpServletRequest,SpringMvc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring boot + IDEA 远程调试">
-<meta property="og:url" content="https://www.wf2311.com/a/spring boot + IDEA 远程调试/index.html">
+<meta property="og:title" content="HttpServletRequest常用获取URL的方法">
+<meta property="og:url" content="https://www.wf2311.com/HttpServletRequest常用获取URL的方法.html">
 <meta property="og:site_name" content="王峰的个人博客">
-<meta property="og:description" content="配置若想调试远端web容器内部的应用，需要接入web容器的jvm，以Tomcat为例，需修改web容器的配置1234567// bin\startup.bat（.sh）文件，在里面添加 // windowsset CATALINA_OPTS=&quot;-agentlib:jdwp=transport=dt_socket,address=8888（自定义调试端口）,server=y,suspend=n %C">
+<meta property="og:description" content="1、request.getRequestURL()返回的是完整的url，包括Http协议，端口号，servlet名字和映射路径，但它不包含请求参数。2、request.getRequestURI()得到的是request URL的部分值，并且web容器没有decode过的3、request.getContextPath()返回 the context of the request.4、reques">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://file.wf2311.com/2017/09/19/15/WechatIMG2478.jpeg">
-<meta property="og:image" content="https://file.wf2311.com/2017/09/19/15/WX20170321-035338@2x.png">
-<meta property="og:image" content="https://file.wf2311.com/2017/09/19/15/WX20170321-035510@2x.png">
-<meta property="og:image" content="https://file.wf2311.com/2017/09/19/15/WX20170321-035733@2x.png">
-<meta property="og:image" content="https://file.wf2311.com/2017/09/19/14/WX20170321-040105@2x.png">
-<meta property="og:image" content="https://file.wf2311.com/2017/09/19/15/WX20170321-040237@2x.png">
-<meta property="og:updated_time" content="2018-01-15T13:57:36.454Z">
+<meta property="og:updated_time" content="2018-01-15T13:57:36.451Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring boot + IDEA 远程调试">
-<meta name="twitter:description" content="配置若想调试远端web容器内部的应用，需要接入web容器的jvm，以Tomcat为例，需修改web容器的配置1234567// bin\startup.bat（.sh）文件，在里面添加 // windowsset CATALINA_OPTS=&quot;-agentlib:jdwp=transport=dt_socket,address=8888（自定义调试端口）,server=y,suspend=n %C">
-<meta name="twitter:image" content="https://file.wf2311.com/2017/09/19/15/WechatIMG2478.jpeg">
+<meta name="twitter:title" content="HttpServletRequest常用获取URL的方法">
+<meta name="twitter:description" content="1、request.getRequestURL()返回的是完整的url，包括Http协议，端口号，servlet名字和映射路径，但它不包含请求参数。2、request.getRequestURI()得到的是request URL的部分值，并且web容器没有decode过的3、request.getContextPath()返回 the context of the request.4、reques">
     
         <link rel="alternate" type="application/atom+xml" title="王峰的个人博客" href="/atom.xml">
     
@@ -152,7 +145,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">spring boot + IDEA 远程调试</div>
+        <div class="flex-col header-title ellipsis">HttpServletRequest常用获取URL的方法</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -174,15 +167,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">spring boot + IDEA 远程调试</h1>
+        <h1 class="title">HttpServletRequest常用获取URL的方法</h1>
         <h5 class="subtitle">
             
-                <time datetime="2017-09-19T02:20:54.000Z" itemprop="datePublished" class="page-time">
-  2017-09-19
+                <time datetime="2017-07-17T02:56:50.000Z" itemprop="datePublished" class="page-time">
+  2017-07-17
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SpringBoot/">SpringBoot</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java-Web/">Java Web</a></li></ul>
 
             
         </h5>
@@ -196,23 +189,16 @@
 
 <div class="container body-wrap">
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">配置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#IDEA连接远端调试"><span class="post-toc-number">2.</span> <span class="post-toc-text">IDEA连接远端调试</span></a></li></ol>
-        </nav>
-    </aside>
-    
-<article data-id="59055884726308860" id="post-spring boot + IDEA 远程调试"
+<article data-id="35872104951975936" id="post-HttpServletRequest常用获取URL的方法"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">spring boot + IDEA 远程调试</h1>
+        <h1 class="post-card-title">HttpServletRequest常用获取URL的方法</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-09-19 10:20:54" datetime="2017-09-19T02:20:54.000Z"  itemprop="datePublished">2017-09-19 10:20:54</time>
+            <time class="post-time" title="2017-07-17 10:56:50" datetime="2017-07-17T02:56:50.000Z"  itemprop="datePublished">2017-07-17 10:56:50</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SpringBoot/">SpringBoot</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java-Web/">Java Web</a></li></ul>
 
 
 
@@ -224,56 +210,22 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>若想调试远端web容器内部的应用，需要接入web容器的jvm，以Tomcat为例，需修改web容器的配置<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// bin\startup.bat（.sh）文件，在里面添加</span><br><span class="line"> </span><br><span class="line">// windows</span><br><span class="line">set CATALINA_OPTS="-agentlib:jdwp=transport=dt_socket,address=8888（自定义调试端口）,server=y,suspend=n %CATALINA_OPTS%"</span><br><span class="line"> </span><br><span class="line">// linux</span><br><span class="line">export CATALINA_OPTS="-agentlib:jdwp=transport=dt_socket,address= 8888（自定义调试端口）,server=y,suspend=n $CATALINA_OPTS"</span><br></pre></td></tr></table></figure></p>
-<p>若是使用了spring boot并将工程打成了可执行JAR包<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 在使用java指令启动程序时需要附加额外的参数以开启外部调试，如下</span><br><span class="line">-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8888（自定义调试端口）</span><br><span class="line"> </span><br><span class="line">// 完整的启动指令是类似下面酱的</span><br><span class="line">java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8888（自定义调试端口） -jar application.jar</span><br></pre></td></tr></table></figure></p>
-<h1 id="IDEA连接远端调试"><a href="#IDEA连接远端调试" class="headerlink" title="IDEA连接远端调试"></a>IDEA连接远端调试</h1><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://file.wf2311.com/2017/09/19/15/WechatIMG2478.jpeg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://file.wf2311.com/2017/09/19/15/WX20170321-035338@2x.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://file.wf2311.com/2017/09/19/15/WX20170321-035510@2x.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>填写远端JMV所在服务器IP和调试端口号，保存即可：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://file.wf2311.com/2017/09/19/15/WX20170321-035733@2x.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>连接远端JVM启动调试：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://file.wf2311.com/2017/09/19/14/WX20170321-040105@2x.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>如若连接成功，调试控制台将输出以下内容，如果没成功，请自行检查服务器防火墙以及网络<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://file.wf2311.com/2017/09/19/15/WX20170321-040237@2x.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>接下来的操作就和在本地调试一样了，打断点，远端JVM会通过网络同步调试信息，和在本地没什么两样，要注意调试的时候和本地一样都是会暂停JVM继续往下执行的。</p>
-
+            <p>1、request.getRequestURL()<br>返回的是完整的url，包括Http协议，端口号，servlet名字和映射路径，但它不包含请求参数。<br>2、request.getRequestURI()<br>得到的是request URL的部分值，并且web容器没有decode过的<br>3、request.getContextPath()<br>返回 the context of the request.<br>4、request.getServletPath()<br>返回调用servlet的部分url.<br>5、request.getQueryString()<br>返回url路径后面的查询字符串  </p>
+<p>示例：</p>
+<pre><code>当前url：http://localhost:8080/CarsiLogCenter_new/idpstat.jsp?action=idp.sptopn
+request.getRequestURL() http://localhost:8080/CarsiLogCenter_new/idpstat.jsp
+request.getRequestURI() /CarsiLogCenter_new/idpstat.jsp
+request.getContextPath()/CarsiLogCenter_new
+request.getServletPath() /idpstat.jsp
+request.getQueryString()action=idp.sptopn
+</code></pre>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-01-15T13:57:36.454Z" itemprop="dateUpdated">2018-01-15 21:57:36</time>
+    最后更新时间：<time datetime="2018-01-15T13:57:36.451Z" itemprop="dateUpdated">2018-01-15 21:57:36</time>
 </span><br>
 
 
@@ -296,7 +248,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringBoot/">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/远程调试/">远程调试</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HttpServletRequest/">HttpServletRequest</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/">Servlet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringMvc/">SpringMvc</a></li></ul>
 
 
             
@@ -306,7 +258,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.wf2311.com/a/spring boot + IDEA 远程调试/&title=《spring boot + IDEA 远程调试》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.wf2311.com/HttpServletRequest常用获取URL的方法.html&title=《HttpServletRequest常用获取URL的方法》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -316,22 +268,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.wf2311.com/a/spring boot + IDEA 远程调试/&title=《spring boot + IDEA 远程调试》 — 王峰的个人博客&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.wf2311.com/HttpServletRequest常用获取URL的方法.html&title=《HttpServletRequest常用获取URL的方法》 — 王峰的个人博客&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.wf2311.com/a/spring boot + IDEA 远程调试/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.wf2311.com/HttpServletRequest常用获取URL的方法.html" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《spring boot + IDEA 远程调试》 — 王峰的个人博客&url=https://www.wf2311.com/a/spring boot + IDEA 远程调试/&via=https://www.wf2311.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HttpServletRequest常用获取URL的方法》 — 王峰的个人博客&url=https://www.wf2311.com/HttpServletRequest常用获取URL的方法.html&via=https://www.wf2311.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.wf2311.com/a/spring boot + IDEA 远程调试/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.wf2311.com/HttpServletRequest常用获取URL的方法.html" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -354,18 +306,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/a/IDEA 远程调试spring boot项目/" id="post-prev" class="post-nav-link">
+      <a href="/Git常用操作命令.html" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">IDEA 远程调试spring boot项目</h4>
+        <h4 class="title">Git常用操作命令</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/a/JetBrains插件推荐/" id="post-next" class="post-nav-link">
+      <a href="/使用thymeleaf变量给onclick属性赋值.html" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">JetBrains插件推荐</h4>
+        <h4 class="title">使用thymeleaf变量给onclick属性赋值</h4>
       </a>
     </div>
   
@@ -378,7 +330,7 @@
 
 <section class="comments" id="comments">
 
-    <div id="SOHUCS" sid="59055884726308860"></div>
+    <div id="SOHUCS" sid="35872104951975936"></div>
     <script type="text/javascript">
         (function () {
             var appid = 'cyteanoMa';
@@ -503,7 +455,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.wf2311.com/a/spring boot + IDEA 远程调试/&title=《spring boot + IDEA 远程调试》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.wf2311.com/HttpServletRequest常用获取URL的方法.html&title=《HttpServletRequest常用获取URL的方法》 — 王峰的个人博客&pic=https://file.wf2311.com/wf2311.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -513,22 +465,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.wf2311.com/a/spring boot + IDEA 远程调试/&title=《spring boot + IDEA 远程调试》 — 王峰的个人博客&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.wf2311.com/HttpServletRequest常用获取URL的方法.html&title=《HttpServletRequest常用获取URL的方法》 — 王峰的个人博客&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.wf2311.com/a/spring boot + IDEA 远程调试/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.wf2311.com/HttpServletRequest常用获取URL的方法.html" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《spring boot + IDEA 远程调试》 — 王峰的个人博客&url=https://www.wf2311.com/a/spring boot + IDEA 远程调试/&via=https://www.wf2311.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HttpServletRequest常用获取URL的方法》 — 王峰的个人博客&url=https://www.wf2311.com/HttpServletRequest常用获取URL的方法.html&via=https://www.wf2311.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.wf2311.com/a/spring boot + IDEA 远程调试/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.wf2311.com/HttpServletRequest常用获取URL的方法.html" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -539,7 +491,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNUlEQVR42u3azW6EMAxF4Xn/l2a2lWZgzrWhUpyTVUUp5GPhxj+vF17Hx/p7nd9z9syzKzcvGTJkLMs4Lhd5wdlfnd1J3s73JkOGjH0Y16+s3UN+e/2xyHtlyJAhIz0C1g6R13fKkCFDRo1BnkASVxKCZciQIYMnsSRcpqkp+Xw35+IyZMhYkMED5f///Eh/Q4YMGUsxjnD1+4a8xBbsSoYMGaMZPMCRgyBJVjuf7MfzZciQsQ2jH/jSrXB8UDWUIUPGIAYve5HmZVror7VIv+xQhgwZoxm1KlY6csEbmWny3CrGyZAhYxHGtemJgj4PmrzAJ0OGjNmMNMh2wDzq8wNl8X+FDBkylmLwIx1PXDmVj5f9+GQyZMjYgIFuxaX8dLs8rJ++V4YMGZsxeEjlDUjOq7UlZMiQsQ8jbSL2m4s8yAbDFjJkyNiMQY6A5EqaJKfDHzJkyNiBkQ5A8C32E+AgiZUhQ8ZQRicF5eW5WpuhOGwhQ4aM0Qz+OL45/oFI8yBoJMiQIWMcIy3l80GuGoCX9r4U3WTIkDGa0RmSSMcpOu1P1B6QIUPGUEbnMBekl3jYolhokyFDxjjGES6efHZGMeI2gwwZMkYz+HqilJ82IeLaoQwZMgYxakEz3To/DtaOjDJkyNiB0Q98afuzk8S2+hsyZMjYhsE3zY+YrTOsDBkyZODQmQZKslHSFpUhQ8YOjHS0Ii3idw6RN5fbZMiQsSCjljrWBr/ISEftY8mQIWMo4w3sqRkGIEyhKQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACwUlEQVR42u3a0W7CMAwFUP7/p5m0Jx5Gem0nhUmnTwh1NCeTYtf24xFfz9/r9fPr9e7+9Z35N+tnbbjw8PDwWktfLyj/vvpX77bv3QrzNePh4eGd5uXBYH3nrnCyZhdWgoeHh/dRXpLsrhPfHJyEHDw8PLz/wstLA3nyXX0iHh4e3jfw8oN4UpjIl1stc2yoteDh4eHFvF4D7LOfj/f38PDw8Fpd9b0BIDm4k+BRWC0eHh7eAV6vINv7Pj/Weyly4Y0BDw8Pb8Crvt7njf9qc6vaZouSbzw8PLwDvPxw3ztoVU3BtxVz8fDw8DbxkuO7Wt6tbly12VYIDHh4eHiHeckPVdPr+ahW/vuFNhgeHh7emJc/oFqqyO+ppt1R2QIPDw/vAK/axMpLtJM2W69QcnEPHh4e3pjXS50nC5psRz6y8Ed/Dw8PD+9GXrW4MBk+qBZKLjYLDw8P7wCvWozIk9peAaLaMCs0wPDw8PA28fIH9EamJgWFXlD5I+7h4eHhbeXl7a5e4jsf5Kq21i7iHh4eHt5WXl42reLnifuoRIKHh4d3C2+9iHUanQ8fPFpXuUWHh4eHt5U3GRKdjB1MSsOFrcHDw8M7wMtf+JO0O9+a3tBAL1nHw8PD28ur/kR+rPdGB+ZjB2/7e3h4eHibeJNWfd7omoy09kav8PDw8M7xJsdusqBJaaOXZOPh4eHdz+stelJm7RU7kn8GHh4e3gleMgJVvSdphuUDCnnAKEwc4OHh4Q14z+KVlAB6pYdJ+SMausLDw8PbxKsmvvNhgiQFv2c0AQ8PD2/C6wWD/CjPG1fVbY0KE3h4eHjHeNXSQ97UnzTYRtEMDw8P7wt4eQlgHlTyLb4IMHh4eHhfw5ukvNXibC+04OHh4Z3mTZpe+SDUrgCTbDQeHh7eOd78jb5azsgDTP70bf09PDw8vBXvBzTOK/AMVdF2AAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
