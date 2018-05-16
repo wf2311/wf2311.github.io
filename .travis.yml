@@ -1,37 +1,28 @@
 language: node_js
 sudo: required
 node_js:
-  - 7.9.0
-
+- 7.9.0
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 branches:
   only:
-    - hexo
-
+  - hexo
 before_install:
-  - npm install -g hexo-cli
-
-# S: Build Lifecycle
+- npm install -g hexo-cli
 install:
-  - npm install
-  - npm install hexo-deployer-git --save
-
-before_script:
- # - npm install -g gulp
-
+- npm install
+- npm install hexo-deployer-git --save
+before_script: 
 script:
-  - hexo clean
-  - hexo generate
-
+- hexo clean
+- hexo generate
 after_script:
-  - git config user.name "wf2311"
-  - git config user.email "wf2311@163.com"
-  - sed -i "s/github_token/${GITHUB_TOKEN}/g" ./_config.yml
-  - sed -i "s/gitee_token/${GITEE_TOKEN}/g" ./_config.yml
-  - cat ./_config.yml
-  - hexo deploy
-# E: Build LifeCycle
-
+- git config user.name "wf2311"
+- git config user.email "wf2311@163.com"
+- sed -i "s/github_token/${GITHUB_TOKEN}/g" ./_config.yml
+- sed -i "s/gitee_token/${GITEE_TOKEN}/g" ./_config.yml
+- cat ./_config.yml
+- hexo deploy
+dd:
+  secure: oNqixwiPmI7uu69iEzJZ7H/xrl+PiknY8ofvtk9sON+yc9xh1/GQkO47yRGstLpsCDlgEqu421QoqDUf3VVixU7pq4mT0tmWNHsTKjx1bu9LHqWUbGtI3KRnTOvP6XTry6uJPY2EDrkipZ2/xPPD2fSsmPjtwvjohhrrNmPApZRuLZsUT8xF6Ms+bIndzCGUpsjv8G92Fvv+v7GrKPM6DZxoVkMndn50ypfbk1VYUcMZw9rK9TtWgRdqRUALfuiMrLMiI2sMgmpI/4Es1bVhehbdGqvI0jTQv8KcJ5Fr+cgC8lUk0zp3zrwR15e9r5h1Is2/iaeKalWtTK06fx/dmbomlYJCFzosRa+03zVEafH9YVbOgx+3adTavZSuG7leZjasYFXOQUYAxn6kID/0X0NBTxRoZW1r80zFiaxNWqO6hAZ9475xAutyeRI+7aVSS0fhoDWGrACxTmTip5K/nIQiQNYKhnfgMEuSaPlKmaL1ko5TctmGibBWsVymT+CKKeUZqDW6tCFL1Od1cw25uBftdZp1fzIr6xkwikXwOiyHp2KYk+wkF+mktR675Zh7gRNDzT7wyf6tal9k82EpwOxdcWi+bi+1ixaOBe18fFMAjVK5+bIlkAiXLlLGzYrxvRVRnWMGYBJIGX00yaDfQ0/TcwOLSrJm1+xuCBgYwcQ=
