@@ -83,5 +83,5 @@ deploy:
   repo: https://github_token@github.com/wf2311/wf2311.github.io.git
   branch: master
 - type: git
-  repo: https://gitee_token@gitee.com/wf2311/wf2311.gitee.io.git
+  repo: https://gitee.com/wf2311/wf2311.gitee.io?private_token=gitee_token
   branch: master
