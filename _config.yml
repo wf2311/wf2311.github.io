@@ -79,15 +79,6 @@ theme: indigo
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-#- type: git
-#  repo: https://github_token@github.com/wf2311/wf2311.github.io.git
-#  branch: master
-- type: ftpsync
-  host: 111.231.224.64
-  user: wf2311.com
-  pass: FTPwf2311!
-  remote: /data/website/wf2311.com
-  port: 21
-  ignore:
-  connections: 1
-  verbose: false
+- type: git
+  repo: https://github_token@github.com/wf2311/wf2311.github.io.git
+  branch: master
