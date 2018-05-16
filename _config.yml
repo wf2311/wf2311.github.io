@@ -79,9 +79,9 @@ theme: indigo
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: https://github.com/wf2311/wf2311.github.io.git
-  name: wf2311
-  email: wf2311@163.com
+- type: git
+  repo: https://github_token@github.com/wf2311/wf2311.github.io.git
   branch: master
-  message: init
+- type: git
+  repo: https://gitee_token@gitee.com/wf2311/wf2311.gitee.io.git
+  branch: master
