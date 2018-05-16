@@ -1,0 +1,12 @@
+<% if(post.comments){ %>
+
+<%- partial('../plugins/changyan',{ post: post}) %>
+
+<%- partial('../plugins/disqus') %>
+
+<%- partial('../plugins/uyan') %>
+
+<%- partial('../plugins/gitment') %>
+
+<%- partial('../plugins/valine') %>
+<%} %>
