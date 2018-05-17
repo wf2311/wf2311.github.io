@@ -27,3 +27,17 @@ git tag <tagName>
 ```shell
 git tag
 ```
+
+### 强制覆盖本地文件
+```shell
+git fetch --all
+git reset --hard origin/master
+git pull
+```
+
+### 提交文件
+```shell
+git add a.file b.fle
+git commit -m "备注"
+git push
+```
