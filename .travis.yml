@@ -27,7 +27,7 @@ after_script:
 - hexo deploy
 after_success:
 - chmod 600 ~/.ssh/id_rsa
-- ssh travis@111.231.224.64 -o StrictHostKeyChecking=no 'cd /data/website/wf2311.com && git checkout master && git pull'   #使用ssh连接服务器
+- ssh travis@111.231.224.64 -o StrictHostKeyChecking=no 'cd /data/website/wf2311.com && git checkout master && git fetch --all && git reset --hard origin/master && git pull'
 env:
   global:
     secure: rwjE4x9CTkWAMalrkiWo6ZrmnyZ1w31DIKqkOwhxJWsNrYwqL0ZqPuD0dbbcojGKgBExzeyOSttSfeLGU6w6q6yc1nFtTSFIbjMm8QiFHmQAt7aHjIKYm/s0QrGUWbqn/LPibJvRgzJWuRUk5VwlL/ftUyoX4pn6qC/4kxsu7HPb4/MGbj5PlJB42mkrWjT0TtDhb7ZqyE06Xzf7KkiSuSudo0C8XiL8XlSIO4LaUXkU5zdIzr/zrIe1zF7A4HzGfKIDM25TCtgqsgh86TIpcDnWjHIpKhayOS1ZFkn8NJLP2aOhxh9pDW+AyrvZgL9FDd9nknEN8K/Fbz37lhq7ZH/Y3Hk2fFlS54CtzNywrb/wYpOrxNEm07wOrMPGNfhXp80BLK5xW2w8r4RyKMAxCBhNdmLMIqNq5r0RnG/I0fT0UpXJ6cDCBDrwd6N5xGgW8zVSwRb0dZRoDBS7ikrN3pUMSDjhhtkqr6+xWuj2ovuErKAnlS0oTy4tbNEOIcTrNrETdXnyMgsMjxReh6fw4xPmBrAbPO+bdfGWF+EBdRLdvKY/efJoYTB2eBxsOKV+P/SZKlZW2Q2LNTQQ2CrLy7YUSIbKbYuR0H1XPy2Ot/IPjCOP9z7qAhxl/U+3y9IaetEadYNLPo8EofYRSXtIjUQF3609PRf2xDEnta/euwM=

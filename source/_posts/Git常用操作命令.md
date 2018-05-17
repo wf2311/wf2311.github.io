@@ -9,6 +9,21 @@ type: 4
 ```shell
 git clone -b <branch> <remote_repo> ## branch为分支名，remote_repo为远程仓库
 ```
+
+### 强制覆盖本地文件
+```shell
+git fetch --all
+git reset --hard origin/master
+git pull
+```
+
+### 提交文件
+```shell
+git add a.file b.fle
+git commit -m "备注"
+git push
+```
+
 # 标签相关
 ## 切换到指定分支
 ```shell
@@ -26,18 +41,4 @@ git tag <tagName>
 ## 查看所有标签
 ```shell
 git tag
-```
-
-### 强制覆盖本地文件
-```shell
-git fetch --all
-git reset --hard origin/master
-git pull
-```
-
-### 提交文件
-```shell
-git add a.file b.fle
-git commit -m "备注"
-git push
 ```
