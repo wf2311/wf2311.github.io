@@ -25,9 +25,9 @@ after_script:
 - git config user.email "wf2311@163.com"
 - sed -i "s/github_token/${GITHUB_TOKEN}/g" ./_config.yml
 - cat ./_config.yml
-- hexo deploy
+- hexo g -d
 - chmod 600 ~/.ssh/id_rsa
-- ssh travis@111.231.224.64 -o StrictHostKeyChecking=no 'cd /data/website/wf2311.com && git checkout master && git fetch --all && git reset --hard origin/master && git pull'
+- ssh travis@111.231.224.64 -o StrictHostKeyChecking=no 'cd ~/ && sh update_wf2311_com.sh'
 
 after_success:
 env:
