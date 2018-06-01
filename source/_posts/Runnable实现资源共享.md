@@ -1,4 +1,4 @@
-id: 34861582819397632
+id: 201705251703
 title: Runnable实现资源共享
 date: 2017-05-25 17:03:18
 categories: Java

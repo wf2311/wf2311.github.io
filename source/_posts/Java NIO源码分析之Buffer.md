@@ -1,9 +1,9 @@
-id: 37085722808815616
+id: 201707201919
 title: Java NIO源码分析之Buffer
 date: 2017-07-20 19:19:19
 categories: Java
 tags: [nio]
-type: 1
+type: 0
 ---------
 # `Buffer`是特定基元类型数据的容器
 `Buffer`(缓冲区)是一种特定基元类型的线性、有限序列。除了内容之外，缓冲区的基本属性是`capacity`(容量)、`limit`(上限)和`position`(位置)以及`mark`(标记):

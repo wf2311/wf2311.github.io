@@ -1,4 +1,4 @@
-id: 61940798861742080
+id: 201709270924
 title: 有了Closeable为什么还要定义AutoCloseable
 date: 2017-09-27 09:24:31
 categories: Java

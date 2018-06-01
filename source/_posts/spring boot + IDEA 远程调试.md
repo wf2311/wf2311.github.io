@@ -1,9 +1,9 @@
-id: 59055884726308864
+id: 201709191020
 title: spring boot + IDEA 远程调试
 date: 2017-09-19 10:20:54
 categories: SpringBoot
 tags: [SpringBoot,远程调试]
-type: 3
+type: 1
 ---------
 # 配置
 若想调试远端web容器内部的应用，需要接入web容器的jvm，以Tomcat为例，需修改web容器的配置

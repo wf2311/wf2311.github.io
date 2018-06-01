@@ -1,9 +1,9 @@
-id: 59889621164756992
+id: 201709210933
 title: IDEA 远程调试spring boot项目
 date: 2017-09-21 09:33:52
 categories: SpringBoot
 tags: [SpringBoot,远程调试]
-type: 4
+type: 1
 ---------
 # IDEA 远程调试spring boot项目
 ## 1. Dokcer容器中

@@ -1,9 +1,9 @@
-id: 56863537749954560
+id: 201709130909
 title: JetBrains插件推荐
 date: 2017-09-13 09:09:17
 categories: 其它
 tags: [插件,app]
-type: 1
+type: 0
 ---------
 # 翻译插件
 ## TranslationPlugin

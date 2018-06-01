@@ -1,8 +1,8 @@
-id: 39947023583154176
-title: Maven常用命令
+id: 201707281649
+title: Maven命令备忘
 date: 2017-07-28 16:49:07
 categories: 其它
-tags: [maven]
+tags: [maven,命令,笔记]
 type: 4
 ---------
 - 更新父模块到指定版本号

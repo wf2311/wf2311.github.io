@@ -1,8 +1,8 @@
-id: 35872104951975936
+id: 201707171056
 title: HttpServletRequest常用获取URL的方法
 date: 2017-07-17 10:56:50
 categories: Java Web
-tags: [Servlet,HttpServletRequest,SpringMvc]
+tags: [Servlet,HttpServletRequest,SpringMvc,笔记]
 type: 4
 ---------
 1、request.getRequestURL()  
