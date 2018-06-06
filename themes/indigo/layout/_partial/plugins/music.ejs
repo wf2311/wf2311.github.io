@@ -1,0 +1,32 @@
+<% if (post.music_id){ %>
+<% if (typeof post.music_type == 'undefined') {
+    post.music_type = 2;
+}
+%>
+<% if (!post.music_width) {
+    post.music_width = 330;
+}
+%>
+
+<% if (post.music_type == 2) {
+    if (!post.music_height) {
+        post.music_height = 86
+    }
+    if (!post.music_min_height) {
+        post.music_min_height = 66
+    }
+}
+%>
+<% if (post.music_type == 0) {
+    if (!post.music_height) {
+        post.music_height = 450
+    }
+    if (!post.music_min_height) {
+        post.music_min_height = 430
+    }
+}
+%>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=<%- post.music_width %> height=<%- post.music_height %>
+        src="//music.163.com/outchain/player?type=<%- post.music_type %>&id=<%- post.music_id %>&auto=1&height=<%- post.music_min_height %>"></iframe>
+<% } %>

@@ -4,6 +4,8 @@ date: 2018-06-01 12:20:24
 categories: 其它
 tags: [docker,命令,笔记]
 type: 4
+music_id: 2200001353
+music_type: 0
 ---------
 # 镜像相关
 ## 列出所有镜像
@@ -21,7 +23,7 @@ docker image rm [选项] <镜像1> [<镜像2> ...]
 docker rmi -f  `docker images | grep '<none>' | awk '{print $3}'`
 ```
 
-#容器相关
+# 容器相关
 ## 创建并启动容器
 ```shell
 $ docker run -d --name MyJenkins -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts

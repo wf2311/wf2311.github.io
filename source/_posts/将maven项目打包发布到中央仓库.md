@@ -4,6 +4,8 @@ date: 2018-06-06 13:02:58
 categories: Java
 tags: [maven]
 type: 2
+music_id: 5246238
+music_type: 2
 ---------
 # 项目配置
 ## groupId 要求
