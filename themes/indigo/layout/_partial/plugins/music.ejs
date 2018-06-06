@@ -3,6 +3,10 @@
     post.music_type = 2;
 }
 %>
+<% if (typeof post.music_auto == 'undefined') {
+    post.music_auto = 1;
+}
+%>
 <% if (!post.music_width) {
     post.music_width = 330;
 }
@@ -28,5 +32,5 @@
 %>
 
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=<%- post.music_width %> height=<%- post.music_height %>
-        src="//music.163.com/outchain/player?type=<%- post.music_type %>&id=<%- post.music_id %>&auto=1&height=<%- post.music_min_height %>"></iframe>
+        src="//music.163.com/outchain/player?type=<%- post.music_type %>&id=<%- post.music_id %>&auto=<%- post.music_auto %>&height=<%- post.music_min_height %>"></iframe>
 <% } %>
