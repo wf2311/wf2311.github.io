@@ -308,7 +308,7 @@ mvn -DskipTests clean deploy
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/pro.wangfeng/common-lang/badge.svg)](https://maven-badges.herokuapp.com/maven-central/pro.wangfeng/common-lang)
 ```
 之后就会出现如下显示：
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/pro.wangfeng/common-lang/badge.svg)](https://maven-badges.herokuapp.com/maven-central/pro.wangfeng/common-lang)
+![svg][26]
 
 最后再给出两个在打包时十分有用的 maven 命令：
 
@@ -324,8 +324,8 @@ mvn -DskipTests clean deploy
  ```
 
 # 参考
-1. [将jar发布到maven中央仓库小记][26]
-2. [向maven中央仓库提交jar][27]
+1. [将jar发布到maven中央仓库小记][27]
+2. [向maven中央仓库提交jar][28]
 
 
   [1]: https://issues.sonatype.org/secure/Signup!default.jspa
@@ -353,5 +353,6 @@ mvn -DskipTests clean deploy
   [23]: https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/06/oss-confirm-release.png
   [24]: http://search.maven.org/
   [25]: https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/06/search-project.png
-  [26]: https://www.ktanx.com/blog/p/4352
-  [27]: http://www.cnblogs.com/gaoxing/p/4359795.html
+  [26]: https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/06/svg.png
+  [27]: https://www.ktanx.com/blog/p/4352
+  [28]: http://www.cnblogs.com/gaoxing/p/4359795.html
