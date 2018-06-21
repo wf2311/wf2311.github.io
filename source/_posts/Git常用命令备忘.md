@@ -42,3 +42,30 @@ git tag <tagName>
 ```shell
 git tag
 ```
+# 统计相关
+## 查看git上个人代码量
+```shell
+git log --author="<username>" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -
+```
+
+## 统计每个人的增删行数
+```shell
+git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
+```
+
+## 查看仓库提交者排名前 5
+```shell
+git log --pretty='%aN' | sort | uniq -c | sort -k1 -n -r | head -n 5
+```
+## 贡献者统计
+```shell
+git log --pretty='%aN' | sort -u | wc -l
+```
+
+## 提交数统计
+```shell
+git log --oneline | wc -l
+```
+
+# 参考
+1. [git统计项目中各成员代码量](https://rzrobert.github.io/2017/02/04/git%E7%BB%9F%E8%AE%A1%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%90%84%E6%88%90%E5%91%98%E4%BB%A3%E7%A0%81%E9%87%8F/)
