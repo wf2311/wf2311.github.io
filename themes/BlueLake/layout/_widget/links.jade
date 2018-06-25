@@ -1,7 +1,8 @@
 if theme.links && theme.links.length > 0
   .widget
     .widget-title
-      i(class='fa fa-you')= ' ' + __('blogroll')
+      i(class='fa fa-you')= ' 更多链接'
+    ul(style="padding-top:10px")
     - for (var i in theme.links)
-      ul
-      a(href='#{theme.links[i].url}' title='#{theme.links[i].title}' target='_blank') #{theme.links[i].title}
+      li(style="padding-top:2px")
+        a(href='#{theme.links[i].url}' title='#{theme.links[i].title}' target='_blank') #{theme.links[i].title}

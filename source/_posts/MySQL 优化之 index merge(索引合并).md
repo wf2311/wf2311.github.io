@@ -137,7 +137,7 @@ SELECT * FROM tbl_name WHERE (key_col1 > 10 OR key_col2 = 20) AND nonkey_col=30;
 复合索引的最左前缀原则：
 
 MySQL中的复合索引，查询时只会使用到最左前缀，比如：
-```shell
+```bash
     mysql> show index from role_goods;
 
 
@@ -155,7 +155,7 @@ MySQL中的复合索引，查询时只会使用到最左前缀，比如：
 ```
 上面有一个复合索引：roleId_2(roleId,status,number)，如果条件是： where roleId=xxx and number=xxx，那么此时只会使用到最左前缀roleId，而不会使用到 number 来进行过滤。因为它们中间存在一个字段 status 没有出现在where条件中。实验如下所示：
 
-```shell
+```bash
 mysql> explain select * from role_goods where roleId=100000001 and status=1 and number=1 limit 1;
 +----+-------------+------------+------+-----------------+----------+---------+-------------------+------+-------+
 | id | select_type | table      | type | possible_keys   | key      | key_len | ref               | rows | Extra |

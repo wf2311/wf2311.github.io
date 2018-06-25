@@ -1,6 +1,7 @@
 blog: Blog
 albums: Albums
 categories: Categories
+console: mweb+
 tags: Tags
 archive: Archive
 links: Links
@@ -22,3 +23,7 @@ belongsto: Categorized in
 contents: Contents
 shareto: Share
 reading_label: Reading articles in
+copy:
+  success: Copy successfully
+  error: Copy error
+  noSupport: The browser does not support

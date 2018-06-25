@@ -1,7 +1,9 @@
 id: 201806011220
 title: Docker命令备忘
 date: 2018-06-01 12:20:24
-categories: 其它
+categories:
+- 其它
+- 命令
 tags: [docker,命令,笔记]
 type: 4
 music_id: 2200001353
@@ -9,23 +11,23 @@ music_type: 0
 ---------
 # 镜像相关
 ## 列出所有镜像
-```shell
+```bash
 docker images
 ```
 
 ## 删除镜像
-```shell
+```bash
 docker image rm [选项] <镜像1> [<镜像2> ...]
 ```
 
 ## 删除名称或标签为none的镜像
-```shell
+```bash
 docker rmi -f  `docker images | grep '<none>' | awk '{print $3}'`
 ```
 
 # 容器相关
 ## 创建并启动容器
-```shell
+```bash
 $ docker run -d --name MyJenkins -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
 ```
 * **docker run** : 由 image 建立 container 并执行之;
@@ -35,31 +37,31 @@ $ docker run -d --name MyJenkins -p 8080:8080 -p 50000:50000 -v jenkins_home:/va
 * **-v** : 建立 `JENKINS_HOME` 环境变量，其目录在 `/var/jenkins_home`，为 Jenkins 的工作目录
 
 ## 重命名容器名称
-```shell
+```bash
 docker rename <old_name> <new_name>
 ```
 
 ## 显示所有容器
-```shell
+```bash
 docker ps -a
 ```
 
 ## 根据容器名称启动/停止容器
-```shell
+```bash
 docker [stop] [start] <container_name>
 ```
 
 ## 进入容器
-```shell
+```bash
 docker exec -it <container_name> /bin/bash
 ```
 ## 退出容器
-```shell
+```bash
 exit
 ```
 
 ## 上传文件到容器
-```shell
+```bash
 docker cp [本地文件路径] <container_name>: [目标路径]
 ```
 
@@ -69,7 +71,7 @@ docker logs -t -f <container_name>
 ```
 
 ## 删除异常停止的docker容器
-```shell
+```bash
 docker rm `docker ps -a | grep Exited | awk '{print $1}'`
 ```
 

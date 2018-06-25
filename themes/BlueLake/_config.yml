@@ -5,6 +5,15 @@
 # Theme version
 version: 2.0.1
 
+# 你的头像url
+avatar: https://file.wf2311.com/wf2311.png
+# avatar link
+avatar_link: /
+# 头像背景图
+brand: /img/brand.jpg
+# favicon
+favicon: https://file.wf2311.com/favicon.ico
+
 # Header
 menu:
   - page: home
@@ -20,30 +29,78 @@ menu:
     directory: atom.xml
     icon: fa-rss
 
+## sub menu
+#submenu:
+#  - page: 技术
+#    directory: categories/技术
+#    icon: fa-right
+#  - page: 工作
+#    directory: categories/工作
+#    icon: fa-right
+#  - page: 生活
+#    directory: categories/生活
+#    icon: fa-right
+#  - page: 杂记
+#    directory: categories/杂记
+#    icon: fa-right
+
 # Sidebar
 widgets:
+  - info
   - recent_posts
   - category
   - tag
   - archive
-  #- weibo
+#  - weibo
   - links
+  - reward
+
+#打赏
+reward:
+  enable: true  #是否开启打赏，关闭设为false
+  title: 如果觉得我的文章对您有帮助，请随意打赏。
+  wechat: https://file.wf2311.com/wechat.png     #微信，关闭设为 false
+  alipay: https://file.wf2311.com/alipay.png     #支付宝，关闭设为 false
 
 # Toc
 toc:
   enable: true
-  number: false
+  number: true
+
+highlight_theme: light
 
 # Static files
 js: js
 css: css
+stylesheets:
+- /css/index.css
+scripts:
+- /js/utils.js
+- /js/fancybox.js
+- /js/copy.js
+- /js/fireworks.js
+- /js/transition.js
+- /js/scroll.js
+- /js/common.js
+
+# cdn for third-party library
+# ---------------
+cdn:
+  css:
+    fontawesome: https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
+  js:
+    anime: /js/third-party/anime.min.js
+    jquery: /js/third-party/jquery.min.js
+    fancybox: /js/third-party/jquery.fancybox.min.js
+    velocity: /js/third-party/velocity.min.js
+    velocity-ui: /js/third-party/velocity.ui.min.js
 
 # Date_formats
 date_formats:
   archive: "MM月DD日"
   category: "YYYY/MM/DD"
-  post: "MMM DD, YYYY"
-  tag: "YYYY/MM/DD"
+  post: "YYYY-MM-DD, "
+  tag: "YYYY-MM"
 
 # Extensions
 Plugins:
@@ -70,18 +127,19 @@ local_search: true ## Use a javascript-based local search engine, true/false.
 comment:
   duoshuo: #chaooo ## duoshuo_shortname
   disqus: ## disqus_shortname
-  livere: ## 来必力(data-uid)
+#  livere: MTAyMC8zNDY0OC8xMTE4NQ== ## 来必力(data-uid)
   uyan: ## 友言(uid)
   cloudTie: ## 网易云跟帖(productKey)
   changyan: ## 畅言需在下方配置两个参数，此处不填。
-    appid: ## 畅言(appid)
-    appkey: ##畅言(appkey)
+    appid: 'cyteanoMa' ## 畅言(appid)
+    appkey: 'prod_27ac74f72c70e7240b5f924ef92bae6a' ##畅言(appkey)
 
 #Share
+self_share: true
 baidu_share: true ## 百度分享
 JiaThis_share: ##true ##JiaThis分享
 duoshuo_share: #true ##true 多说分享必须和多说评论一起使用。
-addToAny_share: # AddToAny share. Empty list hides. List items are service name at url. For ex: email for '<a href="https://www.addtoany.com/add_to/email?linkurl=...'
+addToAny_share: false # AddToAny share. Empty list hides. List items are service name at url. For ex: email for '<a href="https://www.addtoany.com/add_to/email?linkurl=...'
 #  - twitter
 #  - baidu
 #  - facebook
@@ -100,7 +158,7 @@ busuanzi: true ## If you want to use Busuanzi page views please set the value to
 
 # About page
 about:
-  photo_url: http://obzf7z93c.bkt.clouddn.com/themeauthor.jpg ## Your photo e.g. http://obzf7z93c.bkt.clouddn.com/themeauthor.jpg
+  photo_url: https://file.wf2311.com/wf2311.png
   items:
   - label: email
     url: mailto:work@wangfeng.pro

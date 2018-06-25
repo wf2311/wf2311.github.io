@@ -1,4 +1,5 @@
 mixin comment-count(path)
+  a.saveImg-icon(href=url_for(path)+'#saveImg')
   if theme.comment
     a.comment-count(href=url_for(path) + '#comments')
       if theme.comment.duoshuo

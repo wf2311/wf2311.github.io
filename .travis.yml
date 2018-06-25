@@ -18,8 +18,7 @@ install:
 - npm install hexo-deployer-git --save
 - npm install hexo-generator-sitemap --save
 - npm install hexo-generator-baidu-sitemap --save
-- npm install hexo-renderer-jade@0.3.0 --save
-- npm install hexo-renderer-stylus --save
+- npm install hexo-renderer-jade hexo-renderer-stylus --save
 
 before_script: 
 script:

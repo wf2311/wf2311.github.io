@@ -5,7 +5,7 @@ categories: Java Web
 tags: [thymeleaf,笔记]
 type: 4
 ---------
-- 在使用thymeleaf渲染页面时，遇到如下情况：
+在使用thymeleaf渲染页面时，遇到如下情况：
 ```html
 <button onclick="submit('publish');">提交</button>
 ```

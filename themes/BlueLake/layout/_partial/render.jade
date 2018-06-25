@@ -1,0 +1,10 @@
+div#renderShowBtn
+    div
+        a(id='renderShow', onclick="document.getElementById('render').style.display='block';document.getElementById('renderShowBtn').style.display='none';")='渲染'
+div#render
+    script(src="https://s3.mogucdn.com/mlcdn/c45406/1520387600580_dom-to-image.min.js",charset="utf-8")
+    div(class="rInput")
+        input(id="choose-id", type="text", placeholder="cid: | id: + 标签", onkeydown="if(event.keyCode==13) {doRender();}")
+    div(class="rSendBtn")
+        a(id="rImgBtn", onclick="doRender()")='渲染'
+script(type='text/javascript', src=url_for(theme.js) + '/render.js' + '?v=' + theme.version, async)

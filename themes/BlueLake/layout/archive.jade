@@ -6,6 +6,7 @@ block content
   .post
     .post-archive
       .archive-wrap
+        p(style="position: relative;top: -20px;left: 20px;")='太棒了! 目前共计 ' + site.posts.length + ' 篇日志。 继续努力。'
         each posts, year in _.groupBy(page.posts.toArray(), function(p){return -p.date.format('YYYY')})
           h2= -year
           ul.listing

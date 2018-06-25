@@ -7,7 +7,7 @@ type: 1
 ---------
 # 配置
 若想调试远端web容器内部的应用，需要接入web容器的jvm，以Tomcat为例，需修改web容器的配置
-```shell
+```bash
 // bin\startup.bat（.sh）文件，在里面添加
  
 // windows
@@ -18,7 +18,7 @@ export CATALINA_OPTS="-agentlib:jdwp=transport=dt_socket,address= 8888（自定�
 
 ```
 若是使用了spring boot并将工程打成了可执行JAR包
-```shell
+```bash
 // 在使用java指令启动程序时需要附加额外的参数以开启外部调试，如下
 -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8888（自定义调试端口）
  

@@ -1,6 +1,7 @@
 blog: Günce
 albums: Albümler
 categories: Sınıflandırmalar
+console: zweb+
 tags: Etiketler
 archive: Kayıtlar
 links: Bağlantılar
@@ -22,5 +23,4 @@ belongsto: Sınıflandırıldığı
 contents: İçerik
 shareto: Paylaş
 reading_label: Listelenen
-search: Arama
-baidusitemap: Baidu Site Haritası
+search: blog

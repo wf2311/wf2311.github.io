@@ -6,30 +6,30 @@ tags: [maven,命令,笔记]
 type: 4
 ---------
 - 更新父模块到指定版本号
-```shell
+```bash
 mvn versions:set -DnewVersion=1.0.1-SNAPSHOT
 ```
 - 更新子模块版本到与模块相同
-```shell
+```bash
 mvn -N versions:update-child-modules
 ```
 - 发布版本到指定本地仓库
-```shell
+```bash
 mvn deploy -DskipTests -DaltDeploymentRepository=wf2311-mvn-repo::default::file:D:/Projects/open-source/maven-repo/repository/
 ```
 - 跳过测试
-```shell
+```bash
 -DskipTests
 ```
 - 跳过gpg签名
-```shell
+```bash
 -DskipGPG
 ```
 - 查看执行过程
-```shell
+```bash
 -X
 ```
 - 把jar包加入本地仓库
-```shell
+```bash
 mvn install:install-file -Dfile=D:\thrift-0.9.2.jar -DgroupId=org.apache.thrift -DartifactId=libthrift -Dversion=0.9.2 -Dpackaging=jar 
 ```

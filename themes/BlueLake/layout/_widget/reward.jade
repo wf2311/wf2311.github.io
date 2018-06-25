@@ -1,0 +1,19 @@
+if theme.reward.enable
+    .widget
+        .widget-title
+          i(class='fa fa-hit', onclick="var qr = document.getElementById('qrcode'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor:pointer")= " 打赏 "
+
+        ul(class="post-list" id="qrcode" style="display:block;")
+          br
+          if theme.reward.wechat
+              li(class="post-list-item", style="text-align:center")
+                a(href="javascript:void(0)", target="_blank")
+                    img(src="#{theme.reward.wechat}" alt="WeChat Pay" style="width:75%")
+                    br
+                    p(style="text-align:center")= "微信打赏"
+          if theme.reward.alipay
+              li(class="post-list-item", style="text-align:center")
+                a(href="javascript:void(0)", target="_blank")
+                    img(src="#{theme.reward.alipay}" alt="Alipay" style="width:75%")
+                    br
+                    p(style="text-align:center")= "支付宝打赏"

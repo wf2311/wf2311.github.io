@@ -165,7 +165,7 @@ music_id: 5246238
 由于各个系统版本的 gpg 安装方式不尽相同，这里就不写详细安装方式了。具体步骤可以 google 、百度或者按[官网][11]上给的步骤下载安装。
 
 安装完成后在终端或命令行运行以下命令，确认是否安装成功：
-```shell
+```bash
 gpg --version
 ```
 出现类似信息表上安装成功：
@@ -189,7 +189,7 @@ Home: /Users/wf2311/.gnupg
 ## 生成密钥对
 **以 Mac 下操作为例，不同系统的过程可能有所差异**
 运行命令:
-```shell
+```bash
 gpg --gen-key
 ```
 会让你输入**真实姓名**:
@@ -222,13 +222,13 @@ Change (N)ame, (E)mail, or (O)kay/(Q)uit?
 图中的`CD4809496C405C2F72F62B31052A2DC27A064C14`即为生成的公钥
 ## 发布公钥到 PGP 密钥服务器
 运行命令：
-```shell
+```bash
 gpg --keyserver hkp://pool.sks-keyservers.net --send-keys CD4809496C405C2F72F62B31052A2DC27A064C14
 ```
 此操作因为网络原因可能需要等待一定的时间
 ## 查询公钥是否发布成功
 运行命令
-```shell
+```bash
 gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys CD4809496C405C2F72F62B31052A2DC27A064C14
 ```
 出现类似以下信息即表示发布成功：
@@ -262,7 +262,7 @@ gpg:           未改变：1
 # 打包上传
 
 切换到当前项目路径，运行命令:
-```shell
+```bash
 mvn -DskipTests clean deploy
 ```
 正常情况下，如果运行成功未出错，项目会打包并上传的**对应**的仓库中：
@@ -315,12 +315,12 @@ mvn -DskipTests clean deploy
 
  - 更新父模块到指定版本号：
 
- ```shell
+ ```bash
  mvn versions:set -DnewVersion=1.0.1-SNAPSHOT
  ```
  - 更新子模块版本到与模块相同：
 
- ```shell
+ ```bash
  mvn -N versions:update-child-modules
  ```
 

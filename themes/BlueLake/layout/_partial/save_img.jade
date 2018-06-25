@@ -1,0 +1,18 @@
+div
+  script(src="https://s3.mogucdn.com/mlcdn/c45406/1520387600580_dom-to-image.min.js",charset="utf-8")
+  script.
+    var url;
+    console.log('start--->',(new Date()).valueOf());
+    domtoimage.toPng(document.getElementsByClassName('layout-l')[0])
+        .then(function (dataUrl) {
+            url = dataUrl;
+            console.log('end--->',(new Date()).valueOf());
+         })
+        .catch(function (error) {});
+    function link() {
+        var title = document.getElementById('blogTitleCp').children[0].innerText;
+        console.log("blog title: ", title);
+        window.open().document.write('<html><head><title>'+ title + '</title></head><body><div style=\'text-align:center\' ><a download="一灰灰Blog博文_' + title + '.png" href="'+url+'"><img title="点击下载博文图：' + title + '" src="' + url + '" /></a></div></body></html>');
+    }
+  span(style="float:center;font-size:20px;font-weight:solid;color:gray") 渲染：
+  a(id="saveImg" href="javascript:void(0)" onclick="link()" class="save_img")='保存图片'

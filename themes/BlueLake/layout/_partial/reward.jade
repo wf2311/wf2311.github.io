@@ -1,0 +1,18 @@
+if theme.reward.enable && page.type == 2
+    div(style="text-align:center")
+        br
+        button(style="color:red;background-color: #f44336;border: none;border-radius: 8px;color: white;padding: 10px 30px;text-align: center;text-decoration: none;font-size: 16px;" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}")="打赏"
+        br
+        span(style="display: block;color: #9d9d9d;font: 14px/2 &quot;Microsoft Yahei&quot;")= theme.reward.title
+        br
+        div(id="QR" class="row" style="display: none; margin-top: 20px;")
+            if theme.reward.wechat
+                div(id="wechat" style="display: inline-block;width:44%;margin-left:6%;text-align:center;")
+                    a(href="javascript:void(0)")
+                        img(src="#{theme.reward.wechat}" alt="WeChat Pay" style="width:80%;height:80%;max-height:200px;max-width:200px")
+                    p(style="text-align:center")= "微信打赏"
+            if theme.reward.alipay
+            div(id="alipay" style="display: inline-block;width:44%;text-align:center")
+                a(href="javascript:void(0)")
+                    img(src="#{theme.reward.alipay}" alt="Alipay" style="width:80%;height:80%;max-height:200px;max-width:200px")
+                p(style="text-align:center")= "支付宝打赏"

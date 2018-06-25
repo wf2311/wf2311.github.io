@@ -1,29 +1,30 @@
 #footer
   .footer-info
     p
+      a(href="https://zbang.online/webs")
+        img(src="//s3.mogucdn.com/mlcdn/c45406/170419_637cgff527i8k9k8h512iaf36cdia_600x600.jpg", style="max-width: 44px;border-radius:44px")
+    p
       if theme.baidusitemap
-        a(href=config.root+"baidusitemap.xml")= __("baidusitemap")
+        a(href="https://github.com/liuyueyi", target="_blank") GitHub
         |  |  
       if theme.feed
-        a(href=config.root+"atom.xml")= __("rss")
+        a(href="mailto:bangzewu@126.com")= __("email")
         |  |  
       a(href=config.root+"about/")= __("about")
-      //- span 联系博主：
-      //-   a.fa.fa-email(href="mailto:#{theme.about.email}",target="_blank") 
-      //-   a.fa.fa-weibo(href="#{theme.about.weibo_url}",target="_blank")
-      //-   a.fa.fa-github(href="#{theme.about.github_url}",target="_blank") 
-    if theme.busuanzi == true
+        |  |
+      if theme.busuanzi == true
       p 本站总访问量：
         i#busuanzi_container_site_pv
           i#busuanzi_value_site_pv
         | 次
+      //- span 联系博主：
+      //-   a.fa.fa-email(href="mailto:#{theme.about.email}",target="_blank") 
+      //-   a.fa.fa-weibo(href="#{theme.about.weibo_url}",target="_blank")
+      //-   a.fa.fa-github(href="#{theme.about.github_url}",target="_blank") 
     p
       span  Copyright &copy;
         a(href=url_for('.'), rel='nofollow')= (config.author || config.title) + '.'
       span  Theme by
         a(rel='nofollow', target='_blank', href='https://github.com/chaooo/hexo-theme-BlueLake')  BlueLake.
-      if theme.busuanzi == true
-        span  Count by
-          a(href="http://busuanzi.ibruce.info/")  busuanzi.
       span  Powered by
         a(rel='nofollow', target='_blank', href='https://hexo.io')  Hexo.

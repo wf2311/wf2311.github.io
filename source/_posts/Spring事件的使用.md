@@ -127,7 +127,7 @@ public class SpringEventApplicationTests {
 }
 ```
 运行测试方法`testSyncData()`,得到如下结果:
-```shell
+```bash
 2018-01-15 16:37:11.387 DEBUG 132812 --- [           main] c.w.s.e.s.SyncService                    : 开始同步2018-01-15的数据
 2018-01-15 16:37:12.389 DEBUG 132812 --- [           main] c.w.s.e.s.SyncService                    : 2018-01-15的数据同步完成,耗时1001 ms
 2018-01-15 16:37:12.390 DEBUG 132812 --- [           main] c.w.s.e.h.MailHandler                    : MailHandler接收到同步结果:SyncEvent(type=mail)
@@ -174,7 +174,7 @@ public class MqHandler {
 }
 ```
 运行`syncDayData()`测试方法得到如下结果:
-```shell
+```bash
 2018-01-15 16:44:57.280 DEBUG 135208 --- [           main] c.w.s.e.s.SyncService                    : 开始同步2018-01-15的数据
 2018-01-15 16:44:58.281 DEBUG 135208 --- [           main] c.w.s.e.s.SyncService                    : 2018-01-15的数据同步完成,耗时1001 ms
 2018-01-15 16:44:58.282 DEBUG 135208 --- [           main] c.w.s.e.h.CacheHandler                   : CacheHandler接收到同步结果:SyncData(day=2018-01-15, speed=1001, data=java.lang.Object@3f9270ed)
@@ -344,7 +344,7 @@ public class OrderService {
 	}
 ```
 运行后得到如下结果：
-```shell
+```bash
 2018-01-15 18:51:46.677 DEBUG 135904 --- [           main] c.w.s.e.s.OrderService                   : 保存订单信息:OrderInfo(customer=test, orderTime=2018-01-15T18:51:46.674, emailResultId=null, cacheResultId=null, mqResultId=null)
 2018-01-15 18:51:49.702 DEBUG 135904 --- [           main] c.w.s.e.h.MqHandler                      : MqHandler接收到订单信息:OrderEvent(nextListenerType=mq)
 2018-01-15 18:51:49.702 DEBUG 135904 --- [           main] c.w.s.e.h.MqHandler                      : mock push order event ...

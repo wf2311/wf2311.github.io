@@ -5,8 +5,12 @@
   "hexo": {
     "version": "3.7.1"
   },
+  "scripts": {
+    "dev": "hexo s -p 3600 -o"
+  },
   "dependencies": {
-    "hexo": "^3.2.0",
+    "hexo": "^3.3.8",
+    "hexo-browsersync": "^0.2.0",
     "hexo-deployer-ftpsync": "^0.1.1",
     "hexo-deployer-git": "^0.3.1",
     "hexo-generator-archive": "^0.1.4",
@@ -19,10 +23,12 @@
     "hexo-generator-tag": "^0.2.0",
     "hexo-helper-qrcode": "^1.0.2",
     "hexo-renderer-ejs": "^0.3.0",
-    "hexo-renderer-jade": "^0.3.0",
+    "hexo-renderer-jade": "^0.4.1",
     "hexo-renderer-less": "^0.2.0",
     "hexo-renderer-marked": "^0.3.0",
+    "hexo-generator-search": "^2.1.1",
     "hexo-renderer-stylus": "^0.3.3",
-    "hexo-server": "^0.2.0"
+    "hexo-server": "^0.2.0",
+    "hexo-wordcount": "^3.0.2"
   }
 }

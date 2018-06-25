@@ -1,5 +1,8 @@
 .widget
   .widget-title
-    i(class='fa fa-biao')= ' ' + __('tags')
+    i(class='fa fa-biao')= ' ' + __('tags') + '(' + site.posts.length + ')'
+    a(title="点击展开或隐藏分类", href="javascript:void(0)",onclick="showOrHide('tagcloud', 'tag-expand', 'none')")
+        span(id='tag-expand', style='font-size:12px;color:red')=' 点击收起 '
   .tagcloud
-    != tagcloud({min_font: 15, max_font: 15, amount: 100, orderby: 'count'})
+    //!= tagcloud({min_font: 15, max_font: 15, amount: 100, orderby: 'count'})
+    != list_tags({show_count:true, orderby: 'count', order: 'desc', class:'tag'})
