@@ -4,6 +4,8 @@ date: 2017-07-14 16:09:10
 categories: 数据库
 tags: [MySQL,索引]
 type: 3
+author: digdeep
+source_url: https://www.cnblogs.com/digdeep/p/4975977.html
 ---------
 > 深入理解 index merge 是使用索引进行优化的重要基础之一。理解了 index merge 技术，我们才知道应该如何在表上建立索引。
 

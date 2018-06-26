@@ -2,16 +2,11 @@
   .footer-info
     p
       a(href="https://zbang.online/webs")
-        img(src="//s3.mogucdn.com/mlcdn/c45406/170419_637cgff527i8k9k8h512iaf36cdia_600x600.jpg", style="max-width: 44px;border-radius:44px")
+        img(src=theme.avatar, style="max-width: 44px;border-radius:44px")
     p
-      if theme.baidusitemap
-        a(href="https://github.com/liuyueyi", target="_blank") GitHub
-        |  |  
-      if theme.feed
-        a(href="mailto:bangzewu@126.com")= __("email")
-        |  |  
-      a(href=config.root+"about/")= __("about")
-        |  |
+       each item in theme.about.items
+            i(class="fa fa-" + item.label) :
+            a(href=item.url,target="_blank")= item.title
       if theme.busuanzi == true
       p 本站总访问量：
         i#busuanzi_container_site_pv
@@ -20,11 +15,20 @@
       //- span 联系博主：
       //-   a.fa.fa-email(href="mailto:#{theme.about.email}",target="_blank") 
       //-   a.fa.fa-weibo(href="#{theme.about.weibo_url}",target="_blank")
-      //-   a.fa.fa-github(href="#{theme.about.github_url}",target="_blank") 
+      //-   a.fa.fa-github(href="#{theme.about.github_url}",target="_blank")
     p
-      span  Copyright &copy;
-        a(href=url_for('.'), rel='nofollow')= (config.author || config.title) + '.'
-      span  Theme by
-        a(rel='nofollow', target='_blank', href='https://github.com/chaooo/hexo-theme-BlueLake')  BlueLake.
+      - var now = new Date()
+      - var nowYear = now.getFullYear()
+      span
+          if theme.since && theme.since != nowYear
+            span.copyright!= `${config.author} &copy; ${theme.since} - ${nowYear}`
+          else
+            span.copyright!= `${config.author} &copy; ${nowYear}`
+          span
+            a(href=theme.icp.url,target="_blank")= theme.icp.text
+    p
       span  Powered by
-        a(rel='nofollow', target='_blank', href='https://hexo.io')  Hexo.
+        a(rel='nofollow', target='_blank', href='https://hexo.io')  Hexo
+      span  Theme by
+        a(rel='nofollow', target='_blank', href='https://github.com/chaooo/hexo-theme-BlueLake')  BlueLake
+

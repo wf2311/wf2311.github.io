@@ -5,6 +5,7 @@
 # Theme version
 version: 2.0.1
 
+author: 王峰
 # 你的头像url
 avatar: https://file.wf2311.com/wf2311.png
 # avatar link
@@ -53,7 +54,7 @@ widgets:
   - archive
 #  - weibo
   - links
-  - reward
+#  - reward
 
 #打赏
 reward:
@@ -87,7 +88,7 @@ scripts:
 # ---------------
 cdn:
   css:
-    fontawesome: https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
+    fontawesome: https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css
   js:
     anime: /js/third-party/anime.min.js
     jquery: /js/third-party/jquery.min.js
@@ -175,6 +176,10 @@ about:
 # - label: facebook
 #   url:
 #   title:
+since: 2017
+icp:
+  text: 鄂ICP备15002386号
+  url: https://www.miitbeian.gov.cn/
 
 # Links widget. Empty links will hide widget.
 links:
