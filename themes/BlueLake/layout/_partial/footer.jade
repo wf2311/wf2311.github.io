@@ -1,21 +1,10 @@
 #footer
   .footer-info
-    p
-      a(href="https://zbang.online/webs")
-        img(src=theme.avatar, style="max-width: 44px;border-radius:44px")
-    p
-       each item in theme.about.items
-            i(class="fa fa-" + item.label) :
-            a(href=item.url,target="_blank")= item.title
-      if theme.busuanzi == true
+    if theme.busuanzi == true
       p 本站总访问量：
         i#busuanzi_container_site_pv
           i#busuanzi_value_site_pv
         | 次
-      //- span 联系博主：
-      //-   a.fa.fa-email(href="mailto:#{theme.about.email}",target="_blank") 
-      //-   a.fa.fa-weibo(href="#{theme.about.weibo_url}",target="_blank")
-      //-   a.fa.fa-github(href="#{theme.about.github_url}",target="_blank")
     p
       - var now = new Date()
       - var nowYear = now.getFullYear()

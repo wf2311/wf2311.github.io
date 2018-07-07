@@ -6,15 +6,15 @@ block content
   .post
     if config.language === ('zh-CN'||'zh-TW')
       h1.label-title= __('reading_before')
-        i.fa.fa-biao= page.tag
+        i.fa.fa-tag= page.tag
         = __('reading_after')
     else if config.language === 'ko'
       h1.label-title
-        i.fa.fa-biao= page.tag
+        i.fa.fa-tag= page.tag
         = __('reading_label') 
     else
       h1.label-title= __('reading_label')
-        i.fa.fa-biao= page.tag  
+        i.fa.fa-tag= page.tag
     .post-archive
       .archive-wrap.tag-cat
         each posts in _.groupBy(page.posts.toArray(), function(p){return -p.date.format('YYYY')})

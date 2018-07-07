@@ -18,17 +18,6 @@ if theme.baidu_analytics
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
       })();
-script.
-  var GLOBAL_CONFIG = {
-    root: '!{config.root}',
-    algolia: !{algolia},
-    copy: {
-      success: '!{_p("copy.success")}',
-      error: '!{_p("copy.error")}',
-      noSupport: '!{_p("copy.noSupport")}'
-    },
-    localSearch: !{localSearch}
-  }
 if theme.local_search == true
   script(type='text/javascript', src=url_for(theme.js) + '/search.json.js' + '?v=' + theme.version)
 each item in theme.cdn.js

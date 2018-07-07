@@ -100,7 +100,7 @@ cdn:
 date_formats:
   archive: "MM月DD日"
   category: "YYYY/MM/DD"
-  post: "YYYY-MM-DD, "
+  post: "YYYY-MM-DD"
   tag: "YYYY-MM"
 
 # Extensions
@@ -157,25 +157,24 @@ show_category_count: true ## If you want to show the count of categories in the 
 widgets_on_small_screens: true ## Set to true to enable widgets on small screens.
 busuanzi: true ## If you want to use Busuanzi page views please set the value to true.
 
-# About page
-about:
-  photo_url: https://file.wf2311.com/wf2311.png
+
+info:
   items:
-  - label: email
+  - label: envelope
     url: mailto:work@wangfeng.pro
     title: work@wangfeng.pro
   - label: github
     url: https://github.com/wf2311
-    title: wf2311
-  - label: weibo
-    url: http://weibo.com/wf2311
-    title: wf2311
-# - label: twitter
-#   url: 
-#   title:
-# - label: facebook
-#   url:
-#   title:
+    title: https://github.com/wf2311
+  - label: qq
+    url:
+    title: 836219767
+#  - label: weibo
+#    url: https://weibo.com/wf2311
+#    title: wf2311
+# About page
+about:
+  photo_url: https://file.wf2311.com/wf2311.png
 since: 2017
 icp:
   text: 鄂ICP备15002386号

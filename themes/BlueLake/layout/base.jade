@@ -27,7 +27,7 @@ html(lang='#{config.language}')
     if config.keywords
       meta(name="keywords",content=config.keywords)
     block title
-    link(rel="stylesheet", type="text/css", href="//fonts.neworld.org/css?family=Source+Code+Pro")
+    link(rel="stylesheet", type="text/css", href="//fonts.googleapis.com/css?family=Source+Code+Pro")
     if theme.stylesheets !== undefined && theme.stylesheets.length > 0
       each url in theme.stylesheets
         link(rel='stylesheet', href=url_for(url))
@@ -36,13 +36,21 @@ html(lang='#{config.language}')
         link(rel='stylesheet', href=item + '?v=' + theme.version)
     //link(rel='stylesheet', type='text/css', href=url_for(theme.css) + '/style.css' + '?v=' + theme.version)
     //link(rel='stylesheet', type='text/css', href=url_for(theme.css) + '/highlight.css' + '?v=' + theme.version)
-    link(rel='Shortcut Icon', href=url_for('favicon.ico'))
-    link(rel="bookmark", href=url_for('favicon.ico'))
+    link(rel='Shortcut Icon', href=url_for(config.favicon || theme.favicon || '/favicon.ico'))
+    link(rel="bookmark", href=url_for(config.favicon || theme.favicon || '/favicon.ico'))
     link(rel='apple-touch-icon', href=url_for('apple-touch-icon.png'))
     link(rel='apple-touch-icon-precomposed', href=url_for('apple-touch-icon.png'))
     if config.feed
       link(rel='alternate', type=feed_type, href=url_for(config.feed.path))
-
+    script(type="text/javascript").
+        window.GLOBAL_CONFIG = {
+            root: '!{config.root}',
+            copy: {
+                success: '!{_p("copy.success")}',
+                error: '!{_p("copy.error")}',
+                noSupport: '!{_p("copy.noSupport")}'
+            }
+        }
   body
     canvas.fireworks
     .body_container

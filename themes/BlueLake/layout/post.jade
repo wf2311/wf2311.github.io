@@ -6,7 +6,6 @@ block title
 block content
   .post
     h1.post-title= page.title + ' '
-      span(style="font-size:14px;color:#40759b;font-style:italic;border-bottom: 1px solid #e5e5e5;")=">>> by 一灰灰Blog" 
     .post-meta
       if theme.comment
         include _partial/comment_count
@@ -22,6 +21,11 @@ block content
             i#busuanzi_container_page_pv
               i#busuanzi_value_page_pv
               i= '' + __('hits')
+        if page.author
+          span  #{page.author}
+        else
+          span #{theme.author}
+
     .post-content
       != page.content
     include _partial/tag
@@ -31,7 +35,7 @@ block content
     include _partial/copyright
     
     .post-share
-      include _partial/save_img
+      //include _partial/save_img
       include _partial/share
     include _partial/post_nav
     div(id="comments")
@@ -41,7 +45,7 @@ block tocmodel
   if theme.toc.enable == true 
     .widget(id='toc')
       .widget-title
-        i(class='fa fa-fei')= ' ' + __('contents')
+        i(class='fa fa-bars')= ' ' + __('contents')
         a(title="点击展开或隐藏分类", href="javascript:void(0)",onclick="showOrHide('toc', 'toc-expand', 'none')")
           span(id='toc-expand', style='font-size:12px;color:red')=' 点击收起 '
       != toc(page.content, {list_number: theme.toc.number})
