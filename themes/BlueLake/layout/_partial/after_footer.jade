@@ -20,12 +20,6 @@ if theme.baidu_analytics
       })();
 if theme.local_search == true
   script(type='text/javascript', src=url_for(theme.js) + '/search.json.js' + '?v=' + theme.version)
-each item in theme.cdn.js
-  if item !== undefined
-    script(src=url_for(item))
-if theme.scripts !== undefined && theme.scripts.length > 0
-  each url in theme.scripts
-    script(src=url_for(url) + '?v='  + theme.version, async)
 
 //- if theme.tinysou
 //-   script.

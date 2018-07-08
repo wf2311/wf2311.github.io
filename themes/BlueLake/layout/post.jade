@@ -22,9 +22,9 @@ block content
               i#busuanzi_value_page_pv
               i= '' + __('hits')
         if page.author
-          span  #{page.author}
+          span(class="fa fa-user")  #{page.author}
         else
-          span #{theme.author}
+          span(class="fa fa-user") #{theme.author}
 
     .post-content
       != page.content

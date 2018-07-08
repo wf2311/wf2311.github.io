@@ -51,6 +51,13 @@ html(lang='#{config.language}')
                 noSupport: '!{_p("copy.noSupport")}'
             }
         }
+  each item in theme.cdn.js
+    if item !== undefined
+      script(src=url_for(item))
+  //if theme.scripts !== undefined && theme.scripts.length > 0
+  each item in theme.scripts
+    if item !== undefined
+      script(src=url_for(item) + '?v=' + theme.version)
   body
     canvas.fireworks
     .body_container

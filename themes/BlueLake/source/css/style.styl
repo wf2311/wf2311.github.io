@@ -10,10 +10,20 @@ s,i,u,em
   font-style: normal
 img,button
   border: none
-form,input,select,option 
+form,input,select,option
   outline none
 input:-webkit-autofill
   -webkit-box-shadow: 0 0 0px 1000px white inset
+.avatar
+  margin-left: auto;
+  margin-right:auto;
+  display: block;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 div
   box-sizing: border-box
 a, button.submit
@@ -22,7 +32,7 @@ a, button.submit
   -webkit-transition: all .1s ease-in
   -moz-transition: all .1s ease-in
   -o-transition: all .1s ease-in
-  transition: all .1s ease-in  
+  transition: all .1s ease-in
 a
   &:focus
     outline: none
@@ -30,7 +40,7 @@ a
     color: #40759b
 .clear
   clear: both
-.hide 
+.hide
   display none
   opacity: 0
   height: 0px
@@ -45,8 +55,8 @@ blockquote,.stressed
 strong, b, em
   font-weight: bold
 .hidden1
-  display: none 
-  
+  display: none
+
 /* iconfont */
 @font-face
   font-family: "iconfont"
@@ -102,7 +112,7 @@ strong, b, em
   content: "\e014"
 .fa-email:before
   content: "\e015"
-  
+
 /* layout */
 body
   font-family: "Source Code Pro", Tahoma, "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei Light", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif
@@ -112,9 +122,9 @@ body
   color: #333
   width:100%
   height:100%
-  background: #e3e1e2 url(../img/bg.png) no-repeat top center
+  background: #e3e1e2 url(../img/origin.jpg) no-repeat top center
   background-position: -100px -100px
-.layout-g 
+.layout-g
   letter-spacing: -.31em
   *letter-spacing normal
   word-spacing: -.43em
@@ -142,12 +152,10 @@ body
   *width: 24.969%
 .body_container
   padding: 0 20px
-  max-width: 2400px
+  max-width: 1200px
   margin: 0 auto
 .content_container
-  padding-left: 15px
-  padding-right: 15px
-  padding-top: 2px
+  padding-right: 40px
 .save_img
   cursor: pointer;
   font-weight: 800;
@@ -172,9 +180,9 @@ body
 #header
   text-align: left
   position: relative
-  min-height:220px
+  min-height:140px
   .site-name
-    padding-top: 100px
+    padding-top: 10px
     h1
       padding: 0
       margin: 0
@@ -194,7 +202,7 @@ body
   white-space nowrap
   color: #FFF
   text-shadow: 1px 3px 6px #113f6e
-    
+
 #nav-menu
   margin: 20px 0
   padding: 0
@@ -218,8 +226,8 @@ body
       border-bottom: 4px double #44138c;
       color: #673ab7
       font-size: 14px
-/* sidebar */      
-#sidebar 
+/* sidebar */
+#sidebar
   word-wrap: break-word
   -webkit-transition: all .6s ease-in-out;
   transition: all .6s ease-in-out;
@@ -233,9 +241,9 @@ body
     background: #FFF
     i
       color:#40759b
-    a 
+    a
       color:#333
-      &:hover 
+      &:hover
         color: #40759b
         text-decoration underline
     .widget-title,.comments-title
@@ -307,9 +315,9 @@ body
         &:after
             content: ')'
   .search-pla
-    display block 
-    height:52px
-#search-form 
+    display block
+    height:40px
+#search-form
   position: absolute
   bottom: -52px
   right:0
@@ -322,7 +330,7 @@ body
     margin 0
     width 100%
     height 100%
-    &:before  
+    &:before
       font-family: "iconfont" !important
       content: '\e007'
       position: absolute
@@ -339,10 +347,10 @@ body
     -webkit-box-shadow: 1px 2px 3px #adc2d7;
     box-shadow: 1px 2px 3px #adc2d7;
     border: 1px solid #adc2d7;
-#result-wrap 
+#result-wrap
   position: absolute
   top: 56px
-  width: 90%;
+  width: 86%;
   //left: -50px;
   box-sizing content-box
   padding 20px
@@ -361,7 +369,7 @@ body
     border-color: #adc2d7 transparent
     left: 56px
     top: -12px
-  &:after 
+  &:after
     content ''
     position: absolute
     display: inline-block
@@ -369,11 +377,11 @@ body
     border-style: solid
     border-color: #FFF transparent
     left: 56px
-    top: -10px    
+    top: -10px
 #result-mask
   position: fixed
-  left:0 
-  top:0   
+  left:0
+  top:0
 #search-result
   width:100%
   box-sizing content-box
@@ -383,7 +391,7 @@ body
   overflow-y auto
   .tips
     text-align center
-    .fa 
+    .fa
       font-size: 60px
       color: #B3D2EF
   .item
@@ -391,8 +399,8 @@ body
     padding 8px 0
     &:first-child
       border-top none
-    a 
-      &:hover 
+    a
+      &:hover
         text-decoration none
     .title
       white-space: nowrap
@@ -402,19 +410,19 @@ body
       text-overflow: ellipsis
       font-size: 14px
       color: #40759b
-      &:hover 
+      &:hover
         text-decoration underline
     .time
       text-align: right
-      font-size 12px 
+      font-size 12px
     .tags
       overflow: hidden
       white-space: nowrap
       text-overflow: ellipsis
-      span 
+      span
         display inline-block
-        margin-right 5px 
-        font-size 12px 
+        margin-right 5px
+        font-size 12px
         &:before
           font-family: "iconfont" !important
           content: '\e008'
@@ -435,11 +443,11 @@ body
     border-bottom: 1px solid #D8E2EB
     padding-bottom: 10px
     font-weight bold
-    font-size 22px 
+    font-size 22px
     line-height: 1.1
     a
       color: #40759B
-      &:hover 
+      &:hover
         text-decoration underline
   .post-meta
     padding: 0
@@ -473,7 +481,7 @@ body
         font-family: "iconfont"!important
         content: "\e002"
         padding-right: 0.3em
-    .date 
+    .date
       &:before
         font-family: "iconfont"!important
         content: "\e005"
@@ -577,7 +585,7 @@ body
         position: relative
         text-align: center
     blockquote,.stressed
-      p 
+      p
         margin: 0
     img
       max-width: 100%
@@ -599,7 +607,7 @@ body
         color: #4d4d4c
         background: #eee
         font-size: .95em
-      a 
+      a
         color: #40759b
         padding-bottom: 2px
         word-break: break-all
@@ -629,7 +637,7 @@ body
   h2
     margin: 0 0 15px -51px
     font-weight bold
-    font-size 24px 
+    font-size 24px
     letter-spacing: -1px;
     background: #D8E2EB
     height: 100px;
@@ -638,7 +646,7 @@ body
     text-align center
     line-height: 100px;
     color: #5483B1
-    &:before 
+    &:before
       font-family: "iconfont" !important;
       font-weight normal
       content: "\e005";
@@ -663,7 +671,7 @@ body
   &:after
     bottom 0
   .listing
-    li 
+    li
       margin-bottom 50px
       position: relative
       a
@@ -679,7 +687,7 @@ body
           width: 20px
           height: 20px
           border-radius: 50%
-          background: #FFF 
+          background: #FFF
           border 1px solid #D8E2EB
           -webkit-box-shadow: 0 0 4px #D8E2EB inset
           box-shadow: 0 0 4px #D8E2EB inset
@@ -695,19 +703,19 @@ body
           background: #D8E2EB
           -webkit-box-shadow: 0 0 3px #D8E2EB inset
           box-shadow: 0 0 3px #D8E2EB inset
-    li:hover 
-      a:before 
+    li:hover
+      a:before
         border 1px solid #5483B1
         -webkit-box-shadow: 0 0 4px #5483B1 inset
-        box-shadow: 0 0 4px #5483B1 inset 
+        box-shadow: 0 0 4px #5483B1 inset
       a:after
         background: #5483B1
-      .tite 
+      .tite
         border-bottom: 1px solid #5483B1
         &:after
           background: #5483B1
       .date
-        border: 1px solid #5483B1     
+        border: 1px solid #5483B1
   .tite
     position:relative
     bottom: -4px
@@ -751,31 +759,31 @@ body
   .footer-info
     line-height: 2
     color: #333
-    text-align: center 
+    text-align: center
     font-size .925em
     a
       color: #40759b
       margin 0 6px
     span
-      margin 0 6px 
-    .fa 
+      margin 0 6px
+    .fa
       display inline-block
       margin 0 6px 0 0
       padding 0 2px
-      &.fa-github 
+      &.fa-github
         color #000
-        &:hover 
+        &:hover
           color:#4078c0
       &.fa-weibo
         color: #E6162D
-        &:hover 
+        &:hover
           color #FF9933
       &.fa-email
         color: #756E78
-        &:hover 
+        &:hover
           color #000
     p
-      a 
+      a
         margin 0
 /* page navigator */
 .page-navigator
@@ -818,7 +826,7 @@ body
   font-size: 22px
   color: #333
   font-weight: bold
-  .fa 
+  .fa
     display: inline-block
     background: #F2F7FB
     color #5483b1
@@ -839,7 +847,7 @@ body
       padding-left: 0.15em
     &:hover
       -webkit-box-shadow: 0 -1px 4px #5483B1 inset
-      box-shadow: 0 -1px 4px #5483B1 inset   
+      box-shadow: 0 -1px 4px #5483B1 inset
 /* post navigator*/
 .post-nav
   overflow: hidden
@@ -979,7 +987,7 @@ body
 .author-page
   padding 40px 0 20px 0
   text-align center
-  &:after 
+  &:after
     content ""
     clear both
     display block
@@ -990,7 +998,7 @@ body
     padding 0 30px 30px 30px
     width: 180px
     height: 180px
-    img 
+    img
       width: 100%
       height: 100%
       padding 0
@@ -1006,23 +1014,23 @@ body
     text-align left
     .fa
       margin-right .4em
-      &:before 
+      &:before
         margin-right .2em
 /* toc*/
 #toc
-  li 
+  li
     font-weight bold
   .toc-child
     margin-left: .6em
     padding-left: 0
-    li 
+    li
       font-weight normal
     li:first-of-type
       margin-top 0
-    li:last-of-type 
+    li:last-of-type
       margin-bottom 0
 .fixed
-  position:fixed 
+  position:fixed
   top:0
 .fixed.scroll
   overflow-y: scroll
@@ -1077,9 +1085,9 @@ table
     position: relative
     bottom: 0
     width: 100%
-    label 
+    label
       color:#FFF
-    input 
+    input
       color:#FFF
       background: transparent
       border: 1px solid #e2eaf1;
@@ -1145,9 +1153,9 @@ table
     &.tag-cat
       margin-left: 10px
     .listing
-      li 
+      li
         margin-bottom: 30px
-    .tite 
+    .tite
       padding: 0 15px
       font-size 14px
     .date
@@ -1155,11 +1163,11 @@ table
       width: 60px
       border-radius: 15px 15px 0 15px
       font-size: 12px
-@media print,screen and (max-width: 25em) 
+@media print,screen and (max-width: 25em)
   #nav-menu
     a
       padding: 0 10px 0 8px
-      i.fa 
+      i.fa
         font-size 14px
   .post
    .post-title
@@ -1170,7 +1178,7 @@ table
     margin-left: 56px
     &.tag-cat
       margin-left: 0px
-    .tite 
+    .tite
       padding: 0 5px 0 10px
   .author-page
     .author
@@ -1178,7 +1186,7 @@ table
     .photo
       padding 0 0 30px 0
   #result-wrap
-    width: 90%
+    width: 86%
     left: 0
 /* duoshuo style*/
 #ds-recent-comments
@@ -1189,9 +1197,9 @@ table
   a
     &:hover
       color: #40759b !important
-  .ds-post-button 
+  .ds-post-button
     background: #40759b !important
-    &:hover 
+    &:hover
       background: #608CB7 !important
 
 .fireworks

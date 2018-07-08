@@ -1,13 +1,13 @@
 .widget
     .widget-title
-      a(href=url_for('about/'))
+      a(href=url_for('/'))
         i(class='fa fa-user')= theme.title
       a(title="点击展开或收起条目", href="javascript:void(0)",onclick="showOrHide('info-list', 'info-list-expand', 'none')")
           span(id='info-list-expand', style='font-size:12px;color:red')=' 点击收起 '
 
     ul(class="post-list info-list")
       li(style="text-align:center")
-        img(src="https://file.wf2311.com/wf2311.png", style="max-width:80px;radius:80px")
+        img(src=theme.avatar, class="avatar")
         //p(style="text-align:center")= "好好学习，天天搬砖"
         hr(style="height:0.1px;border:none;border-top:1px dashed #0066CC;")
       each item in theme.info.items

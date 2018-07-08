@@ -15,5 +15,5 @@ block content
                   a(href=url_for(post.path), title=post.title)
                     span.date= post.date.format(theme.date_formats.archive)
                     span.tite
-                      +title(post)              
+                      +title(post)
   include _partial/paginator.jade
