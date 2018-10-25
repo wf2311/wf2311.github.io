@@ -51,7 +51,32 @@ html(lang='#{config.language}')
                 noSupport: '!{_p("copy.noSupport")}'
             }
         }
-  each item in theme.cdn.js
+
+    script(type="text/javascript").
+        !function(e,t,n,g,i){e[i]=e[i] || function () {
+            (e[i].q = e[i].q || []).push(arguments)
+        }, n = t.createElement("script"), tag = t.getElementsByTagName("script")[0], n.async = 1, n.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + g, tag.parentNode.insertBefore(n, tag)}(window,document,"script","assets.growingio.com/2.1/gio.js","gio");
+        gio('init','\n' +
+            '<!-- GrowingIO Analytics code version 2.1 -->\n' +
+            '<!-- Copyright 2015-2018 GrowingIO, Inc. More info available at http://www.growingio.com -->\n' +
+            '\n' +
+            '<script type=\'text/javascript\'>\n' +
+            '!function(e,t,n,g,i){e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},n=t.createElement("script"),tag=t.getElementsByTagName("script")[0],n.async=1,n.src=(\'https:\'==document.location.protocol?\'https://\':\'http://\')+g,tag.parentNode.insertBefore(n,tag)}(window,document,"script","assets.growingio.com/2.1/gio.js","gio");\n' +
+            '  gio(\'init\',\'a2a964d9c5ed28c0\', {});\n' +
+            '\n' +
+            '//custom page code begin here\n' +
+            '\n' +
+            '//custom page code end here\n' +
+            '\n' +
+            'gio(\'send\');\n' +
+            '\n' +
+            '</script>\n' +
+            '\n' +
+            '<!-- End GrowingIO Analytics code version: 2.1 -->\n', {});
+
+        gio('send');
+
+each item in theme.cdn.js
     if item !== undefined
       script(src=url_for(item))
   //if theme.scripts !== undefined && theme.scripts.length > 0
