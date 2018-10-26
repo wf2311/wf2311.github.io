@@ -7,7 +7,7 @@ cache:
   - node_modules
 branches:
   only:
-  - hexo
+  - hexo-build
 before_install:
 - export TZ='Asia/Shanghai'
 - openssl aes-256-cbc -K $encrypted_b273e0dd6399_key -iv $encrypted_b273e0dd6399_iv
