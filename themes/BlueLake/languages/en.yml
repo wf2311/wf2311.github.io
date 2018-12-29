@@ -23,6 +23,7 @@ belongsto: Categorized in
 contents: Contents
 shareto: Share
 reading_label: Reading articles in
+search: search
 copy:
   success: Copy successfully
   error: Copy error

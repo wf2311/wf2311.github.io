@@ -8,9 +8,11 @@
     ul(class="post-list info-list")
       li(style="text-align:center")
         img(src=theme.avatar, class="avatar")
-        //p(style="text-align:center")= "好好学习，天天搬砖"
+        p(style="text-align:center")= "好好学习，天天搬砖"
         hr(style="height:0.1px;border:none;border-top:1px dashed #0066CC;")
       each item in theme.info.items
           li.post-list-item
               a(class="post-list-link" href=item.url target="_blank")
                   i(class="fa fa-"+item.label)= "  "+item.title
+              if(item.image)
+                  img(src=item.image style="width:100%")

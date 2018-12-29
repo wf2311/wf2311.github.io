@@ -60,7 +60,7 @@ widgets:
 reward:
   enable: true  #是否开启打赏，关闭设为false
   title: 如果觉得我的文章对您有帮助，请随意打赏。
-  wechat: https://file.wf2311.com/wechat.png     #微信，关闭设为 false
+  wechat: https://file.wf2311.com/wechat_pay.png     #微信，关闭设为 false
   alipay: https://file.wf2311.com/alipay.png     #支付宝，关闭设为 false
 
 # Toc
@@ -149,13 +149,13 @@ addToAny_share: false # AddToAny share. Empty list hides. List items are service
 #  - email
 
 # Analytics
-google_analytics: ## Your Google Analytics tracking id, e.g. UA-42025684-2
-baidu_analytics: ## Your Baidu Analytics tracking id, e.g. 1006843030519956000
+google_analytics: UA-85417096-1 ## Your Google Analytics tracking id, e.g. UA-42025684-2
+baidu_analytics: 97500f623f8c7cc9c77569130121cfa6 ## Your Baidu Analytics tracking id, e.g. 1006843030519956000
 
 # Miscellaneous
 show_category_count: true ## If you want to show the count of categories in the sidebar widget please set the value to true.
 widgets_on_small_screens: true ## Set to true to enable widgets on small screens.
-busuanzi: false ## If you want to use Busuanzi page views please set the value to true.
+busuanzi: true ## If you want to use Busuanzi page views please set the value to true.
 
 
 info:
@@ -166,15 +166,20 @@ info:
   - label: github
     url: https://github.com/wf2311
     title: https://github.com/wf2311
-  - label: qq
-    url:
-    title: 836219767
   - label: git
     url: https://gitee.com/wf2311
     title: https://gitee.com/wf2311
-#  - label: weibo
-#    url: https://weibo.com/wf2311
-#    title: wf2311
+  - label: weixin
+    url:
+    title: wf_2311
+    image: https://file.wf2311.com/wechat.jpeg
+  - label: qq
+    url:
+    title: 836219767
+    image: https://file.wf2311.com/qq.jpeg
+  - label: weibo
+    url: https://weibo.com/wf2311
+    title: wf2311
 since: 2017
 icp:
   text: 鄂ICP备15002386号

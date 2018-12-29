@@ -24,6 +24,7 @@ contents: 文章目录
 shareto: 分享到
 reading_before: 正在查看
 reading_after: 下的文章
+search: 搜索
 copy:
   success: 复制成功
   error: 复制错误
