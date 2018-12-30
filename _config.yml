@@ -4,12 +4,12 @@
 
 # Site
 title: 王峰的博客
-subtitle:
+subtitle: 学习使人进步
 description:
 author: 王峰
 email: work@wangfeng.pro
 language: zh-CN
-timezone:
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -38,7 +38,7 @@ external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
 post_asset_folder: false
-relative_link: false
+relative_link: true
 future: true
 highlight:
   enable: true

@@ -68,7 +68,7 @@ toc:
   enable: true
   number: true
 
-highlight_theme: light
+highlight_theme: pale night
 
 # Static files
 js: js
@@ -77,11 +77,11 @@ stylesheets:
 - /css/index.css
 scripts:
 - /js/utils.js
-- /js/fancybox.js
+#- /js/fancybox.js
 - /js/copy.js
-- /js/fireworks.js
-- /js/transition.js
-- /js/scroll.js
+#- /js/fireworks.js
+#- /js/transition.js
+#- /js/scroll.js
 - /js/common.js
 
 # cdn for third-party library
@@ -89,12 +89,18 @@ scripts:
 cdn:
   css:
     fontawesome: https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css
+    fancybox: https://cdn.bootcss.com/fancybox/3.5.6/jquery.fancybox.min.css
   js:
-    anime: /js/third-party/anime.min.js
-    jquery: /js/third-party/jquery.min.js
-    fancybox: /js/third-party/jquery.fancybox.min.js
-    velocity: /js/third-party/velocity.min.js
-    velocity-ui: /js/third-party/velocity.ui.min.js
+#    anime: /js/third-party/anime.min.js
+#    jquery: /js/third-party/jquery.min.js
+#    fancybox: /js/third-party/jquery.fancybox.min.js
+#    velocity: /js/third-party/velocity.min.js
+#    velocity-ui: /js/third-party/velocity.ui.min.js
+    anime: https://cdn.bootcss.com/animejs/2.2.0/anime.min.js
+    jquery: https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js
+    fancybox: https://cdn.bootcss.com/fancybox/3.5.6/jquery.fancybox.min.js
+    velocity: https://cdn.bootcss.com/velocity/1.5.2/velocity.min.js
+    velocity-ui: https://cdn.bootcss.com/velocity/1.5.2/velocity.ui.min.js
 
 # Date_formats
 date_formats:
@@ -178,7 +184,7 @@ info:
     title: 836219767
     image: https://file.wf2311.com/qq.jpeg
   - label: weibo
-    url: https://weibo.com/wf2311
+    url: https://weibo.com/wangfengpro
     title: wf2311
 since: 2017
 icp:

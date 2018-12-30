@@ -1,6 +1,6 @@
 $(function () {
   // Add copy icon
-  var $copyIcon = $('<i class="fa fa-clipboard" aria-hidden="true"></i>')
+  var $copyIcon = $('<i class="fa fa-clipboard copy-icon" aria-hidden="true"></i>')
   var $notice = $('<div class="copy-notice"></div>')
   $('figure.highlight').prepend($copyIcon)
   $('figure.highlight').prepend($notice)
