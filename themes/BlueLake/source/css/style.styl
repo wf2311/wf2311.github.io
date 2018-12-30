@@ -63,7 +63,7 @@ strong, b, em
   src: url('../iconfont/iconfont.eot?t=1478071541360')
   src: url('../iconfont/iconfont.eot?t=1478071541360#iefix') format('embedded-opentype'), url('../iconfont/iconfont.woff?t=1478071541360') format('woff'), url('../iconfont/iconfont.ttf?t=1478071541360') format('truetype'), url('../iconfont/iconfont.svg?t=1478071541360#iconfont') format('svg')
 .fa
-  font-size: 16px
+  //font-size: 16px
   font-style: normal
   &:before
     //font-family: "iconfont"!important
@@ -1207,9 +1207,8 @@ table
   z-index: 9999
   pointer-events: none
 
-#sidebar .post-list-item:hover img{
-  display:block;
-}
-#sidebar .post-list-item img{
-  display:none;
-}
+#sidebar
+  li.info-icon
+    a
+      margin: 0 4px
+

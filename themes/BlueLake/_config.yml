@@ -166,26 +166,36 @@ busuanzi: true ## If you want to use Busuanzi page views please set the value to
 
 info:
   items:
+  - label: podcast
+    title: 网站
+    url: https://wangfeng.pro
+    content: https://wangfeng.pro
   - label: envelope
+    title: 邮箱
     url: mailto:work@wangfeng.pro
-    title: work@wangfeng.pro
+    content: work@wangfeng.pro
   - label: github
+    title: Github
     url: https://github.com/wf2311
-    title: https://github.com/wf2311
+    content: https://github.com/wf2311
   - label: git
+    title: 码云
     url: https://gitee.com/wf2311
-    title: https://gitee.com/wf2311
+    content: https://gitee.com/wf2311
   - label: weixin
+    title: 微信
     url:
-    title: wf_2311
+    content: wf_2311
     image: https://file.wf2311.com/wechat.jpeg
   - label: qq
+    title: QQ
     url:
-    title: 836219767
+    content: 836219767
     image: https://file.wf2311.com/qq.jpeg
   - label: weibo
+    title: 微博
     url: https://weibo.com/wangfengpro
-    title: wf2311
+    content: wf2311
 since: 2017
 icp:
   text: 鄂ICP备15002386号

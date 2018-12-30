@@ -1,7 +1,9 @@
 id: 201707281649
 title: Maven命令备忘
 date: 2017-07-28 16:49:07
-categories: 其它
+categories:
+- 其它
+- 命令
 tags: [maven,命令,笔记]
 type: 4
 ---------

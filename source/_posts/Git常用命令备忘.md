@@ -1,7 +1,9 @@
 id: 201707191724
 title: Git常用命令备忘
 date: 2017-07-19 17:24:22
-categories: 其它
+categories:
+- 其它
+- 命令
 tags: [git,命令,笔记]
 type: 4
 ---------

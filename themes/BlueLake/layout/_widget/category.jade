@@ -3,5 +3,5 @@ if site.categories.length > 0
     .widget-title
       i(class='fa fa-align-left')= ' ' + __('categories') + '(' + site.posts.length + ')'
       a(title="点击展开或隐藏分类", href="javascript:void(0)",onclick="showOrHide('category-list-child', 'category-expand', 'none')")
-        span(id='category-expand', style='font-size:12px;color:red')=' 点击隐藏 '
+        span(id='category-expand', style='font-size:12px;color:red')=' 点击收起 '
     != list_categories({show_count: theme.show_category_count})

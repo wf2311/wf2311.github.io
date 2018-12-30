@@ -1,7 +1,7 @@
 id: 201806061302
 title: 将maven项目打包发布到中央仓库
 date: 2018-06-06 13:02:58
-categories: Java
+categories: maven
 tags: [maven]
 type: 2
 music_id: 5246238
