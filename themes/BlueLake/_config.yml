@@ -166,10 +166,10 @@ busuanzi: true ## If you want to use Busuanzi page views please set the value to
 
 info:
   items:
-  - label: podcast
-    title: 网站
-    url: https://wangfeng.pro
-    content: https://wangfeng.pro
+#  - label: podcast
+#    title: 网站
+#    url: https://wangfeng.pro
+#    content: https://wangfeng.pro
   - label: envelope
     title: 邮箱
     url: mailto:work@wangfeng.pro
