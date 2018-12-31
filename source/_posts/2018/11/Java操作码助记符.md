@@ -1,8 +1,8 @@
 id: 201811231839
-title: java操作码助记符
+title: Java操作码助记符
 date: 2018-11-23 18:39:11
 categories: JVM
-tags: [jvm]
+tags: [JVM]
 type: 1
 ---------
 

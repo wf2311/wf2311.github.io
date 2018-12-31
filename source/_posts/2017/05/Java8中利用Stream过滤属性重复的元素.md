@@ -1,8 +1,8 @@
 id: 201705231110
-title: java8中利用Stream过滤属性重复的元素
+title: Java8中利用Stream过滤属性重复的元素
 date: 2017-05-23 11:10:08
 categories: Java
-tags: [java8,stream]
+tags: [Java8,Stream]
 type: 1
 ---------
 # 根据属性过滤重复的元素

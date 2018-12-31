@@ -1,8 +1,8 @@
 id: 201705251055
-title: jquery checkbox选中、改变状态、change和click事件
+title: jQuery checkbox选中、改变状态、change和click事件
 date: 2017-05-25 10:55:13
 categories: 前端
-tags: [jquery,笔记]
+tags: [jQuery,笔记]
 type: 3
 author: zqifa
 source_url: http://www.cnblogs.com/zqifa/p/jquery-checkbox-1.html

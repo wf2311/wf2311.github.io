@@ -2,7 +2,7 @@ id: 201705251703
 title: Runnable实现资源共享
 date: 2017-05-25 17:03:18
 categories: Java
-tags: [thread,java]
+tags: [Thread,Java]
 type: 1
 ---------
 **[参考地址](http://www.cnblogs.com/skywang12345/p/3479063.html)**

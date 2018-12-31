@@ -2,7 +2,7 @@ id: 201708021405
 title: Java的枚举类使用技巧
 date: 2017-08-02 14:05:07
 categories: Java
-tags: [enum,json]
+tags: [Enum,Json]
 type: 2
 ---------
 # 枚举接口

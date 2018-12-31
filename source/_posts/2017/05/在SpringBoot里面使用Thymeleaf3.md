@@ -1,8 +1,8 @@
 id: 201705260953
-title: 在SpringBoot里面使用thymeleaf3
+title: 在SpringBoot里面使用Thymeleaf3
 date: 2017-05-26 09:53:26
 categories: SpringBoot
-tags: [thymeleaf,SpringBoot]
+tags: [Thymeleaf,SpringBoot]
 type: 1
 ---------
 最近在一个`springboot`项目里使用`thymeleaf`模板，访问页面时一直报错。而之前的项目中没发现过这种情况发生。

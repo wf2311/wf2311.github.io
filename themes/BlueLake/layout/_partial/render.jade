@@ -7,4 +7,4 @@ div#render
         input(id="choose-id", type="text", placeholder="cid: | id: + 标签", onkeydown="if(event.keyCode==13) {doRender();}")
     div(class="rSendBtn")
         a(id="rImgBtn", onclick="doRender()")='渲染'
-script(type='text/javascript', src=url_for(theme.js) + '/render.js' + '?v=' + theme.version, async)
+script(type='text/javascript', src=url_for(theme.js) + '/render.js' + '?t='  +moment(), async)

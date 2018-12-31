@@ -1,8 +1,8 @@
 id: 201707150947
-title: 使用thymeleaf变量给onclick属性赋值
+title: 使用Thymeleaf变量给onclick属性赋值
 date: 2017-07-15 09:47:13
 categories: Java Web
-tags: [thymeleaf,笔记]
+tags: [Thymeleaf,笔记]
 type: 4
 ---------
 在使用thymeleaf渲染页面时，遇到如下情况：

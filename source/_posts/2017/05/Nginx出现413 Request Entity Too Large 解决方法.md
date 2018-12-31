@@ -1,8 +1,8 @@
 id: 201705241550
-title: nginx出现413 Request Entity Too Large 解决方法
+title: Nginx出现413 Request Entity Too Large 解决方法
 date: 2017-05-24 15:50:14
 categories: 其它
-tags: [nginx,笔记]
+tags: [Nginx,笔记]
 type: 4
 ---------
 **nginx.conf**中默认没有设置`client_max_body_size`，这个参数默认只是1M，

@@ -2,7 +2,7 @@ id: 201709270924
 title: 有了Closeable为什么还要定义AutoCloseable
 date: 2017-09-27 09:24:31
 categories: Java
-tags: [java基础,io]
+tags: [Java]
 type: 2
 ---------
 # 从`try-with-resources`语法块说起

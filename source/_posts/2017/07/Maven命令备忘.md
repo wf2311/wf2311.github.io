@@ -4,7 +4,7 @@ date: 2017-07-28 16:49:07
 categories:
 - 其它
 - 命令
-tags: [maven,命令,笔记]
+tags: [Maven,命令,笔记]
 type: 4
 ---------
 - 更新父模块到指定版本号

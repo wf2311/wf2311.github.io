@@ -1,8 +1,8 @@
 id: 201707291104
-title: SpringBoot中使用thymeleaf模板在找不到对于模板的解决方法
+title: SpringBoot中使用Thymeleaf模板在找不到对于模板的解决方法
 date: 2017-07-28 11:04:21
 categories: SpringBoot
-tags: [thymeleaf,SpringBoot]
+tags: [Thymeleaf,SpringBoot]
 type: 1
 ---------
 # 问题描述
