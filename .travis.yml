@@ -19,6 +19,7 @@ install:
 - npm install hexo-generator-sitemap --save
 - npm install hexo-generator-baidu-sitemap --save
 - npm install hexo-renderer-jade hexo-renderer-stylus --save
+- npm install hexo-douban --save
 
 before_script: 
 script:
@@ -29,7 +30,7 @@ after_script:
 - git config user.email "wf2311@163.com"
 - sed -i "s/github_token/${GITHUB_TOKEN}/g" ./_config.yml
 - cat ./_config.yml
-- hexo g -d
+- hexo douban && hexo g -d
 - chmod 600 ~/.ssh/id_rsa
 - ssh travis@111.231.224.64 -o StrictHostKeyChecking=no 'cd ~/ && sh update_wf2311_com.sh'
 

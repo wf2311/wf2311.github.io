@@ -19,13 +19,13 @@ favicon: https://file.wf2311.com/favicon.ico
 menu:
   - page: home
     directory: .
-    icon: fa-home
+    icon: icon-home
   - page: archive
     directory: archives/
     icon: fa-archive
-#  - page: about
-#    directory: about/
-#    icon: fa-user
+  - page: 书单
+    directory: books/
+    icon: fa-book
   - page: rss
     directory: atom.xml
     icon: fa-rss
@@ -101,6 +101,13 @@ cdn:
     fancybox: https://cdn.bootcss.com/fancybox/3.5.6/jquery.fancybox.min.js
     velocity: https://cdn.bootcss.com/velocity/1.5.2/velocity.min.js
     velocity-ui: https://cdn.bootcss.com/velocity/1.5.2/velocity.ui.min.js
+
+# mermaid chart see https://github.com/webappdevelp/hexo-filter-mermaid-diagrams
+mermaid: ## mermaid url https://github.com/knsv/mermaid
+  enable: true  # default true
+  version: "7.1.2" # default v7.1.2
+  options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
+  #startOnload: true  // default true
 
 # Date_formats
 date_formats:

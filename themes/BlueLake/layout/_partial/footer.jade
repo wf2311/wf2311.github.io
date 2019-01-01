@@ -1,10 +1,12 @@
 #footer
   .footer-info
-    if theme.busuanzi == true
-      p 本站总访问量：
-        i#busuanzi_container_site_pv
-          i#busuanzi_value_site_pv
-        | 次
+    p
+      span 本站总字数:#{totalcount(site)}
+      if theme.busuanzi == true
+        span 总访问量：
+          i#busuanzi_container_site_pv
+            i#busuanzi_value_site_pv
+          | 次
     p
       - var now = new Date()
       - var nowYear = now.getFullYear()

@@ -7,15 +7,6 @@ block content
   .post
     h1.post-title= page.title
     .post-content
-      .author-page
-        a.photo(href="javascript:;")
-          img(src='#{theme.avatar}')
-        .author
-          p
-            i.fa.fa-user name：
-            | #{config.author}
-          p
-            i.fa.fa-you qq：
       != page.content
 block pageOnly
   script(type='text/javascript', src=url_for(theme.js) + '/totop.js' + '?v=' + theme.version, async)
