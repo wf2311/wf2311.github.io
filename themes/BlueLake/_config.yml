@@ -19,7 +19,7 @@ favicon: https://file.wf2311.com/favicon.ico
 menu:
   - page: home
     directory: .
-    icon: icon-home
+    icon: fa-home
   - page: archive
     directory: archives/
     icon: fa-archive
