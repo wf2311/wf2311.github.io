@@ -23,8 +23,6 @@ install:
 
 before_script: 
 script:
-- hexo clean
-- hexo generate
 after_script:
 - git config user.name "wf2311"
 - git config user.email "wf2311@163.com"
