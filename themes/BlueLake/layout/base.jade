@@ -34,7 +34,7 @@ html(lang='#{config.language}')
     each item in theme.cdn.css
       if item !== undefined
         link(rel='stylesheet', href=item + '?t=' + moment())
-    //link(rel='stylesheet', type='text/css', href=url_for(theme.css) + '/style.css' + '?t=' + moment())
+    link(rel='stylesheet', type='text/css', href=url_for(theme.css) + '/style.css' + '?t=' + moment())
     //link(rel='stylesheet', type='text/css', href=url_for(theme.css) + '/highlight.css' + '?v=' + theme.version)
     link(rel='Shortcut Icon', href=url_for(config.favicon || theme.favicon || '/favicon.ico'))
     link(rel="bookmark", href=url_for(config.favicon || theme.favicon || '/favicon.ico'))
