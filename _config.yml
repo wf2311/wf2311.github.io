@@ -100,3 +100,9 @@ deploy:
 - type: git
   repo: https://github_token@github.com/wf2311/wf2311.github.io.git
   branch: master
+
+# https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap
+sitemap:
+  path: sitemap.xml
+  tag: false
+  category: false
