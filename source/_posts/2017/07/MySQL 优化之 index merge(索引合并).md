@@ -9,7 +9,7 @@ source_url: https://www.cnblogs.com/digdeep/p/4975977.html
 ---------
 > 深入理解 index merge 是使用索引进行优化的重要基础之一。理解了 index merge 技术，我们才知道应该如何在表上建立索引。
 
-#  1. 为什么会有index merge
+# 1.为什么会有index merge
 
 我们的 where 中可能有多个条件(或者join)涉及到多个字段，它们之间进行 AND 或者 OR，那么此时就有可能会使用到 index merge 技术。index merge 技术如果简单的说，其实就是：对多个索引分别进行条件扫描，然后将它们各自的结果进行合并(intersect/union)。
 
@@ -33,7 +33,7 @@ index merge: 同一个表的多个索引的范围扫描可以对结果进行合�
 但是第四个例子，感觉并不会使用 index merge. 因为 t2.key1=t1.some_col 和 t2.key2=t1.some_col2 之间进行的是 OR 运算，而且 t2.key2 是复合索引的第二个字段(非第一个字段)。所以：t2.key2 = t1.some_col2 并不能使用到复合索引。(文档这里应该是错误的)
 
 index merge 算法根据合并算法的不同分成了三种：intersect, union, sort_union. 
-# 2. index merge 之 intersect
+# 2.index merge 之 intersect
 
 简单而言，index intersect merge就是多个索引条件扫描得到的结果进行交集运算。显然在多个索引提交之间是 AND 运算时，才会出现 index intersect merge. 下面两种where条件或者它们的组合时会进行 index intersect merge:
 
@@ -61,7 +61,7 @@ If the used indexes do not cover all columns used in the query, full rows are re
 
 If one of the merged conditions is a condition over a primary key of an InnoDB table, it is not used for row retrieval, but is used to filter out rows retrieved using other conditions.
 
-# 3. index merge 之 union
+# 3.index merge 之 union
 
 简单而言，index uion merge就是多个索引条件扫描，对得到的结果进行并集运算，显然是多个条件之间进行的是 OR 运算。
 
@@ -83,7 +83,7 @@ SELECT * FROM innodb_table WHERE (key1=1 AND key2=2) OR (key3='foo' AND key4='ba
 
 第二个例子，复杂一点。(key1=1 AND key2=2) 是符合 index intersect merge; (key3='foo' AND key4='bar') AND key5=5 也是符合index intersect merge，所以 二者之间进行 OR 运算，自然可能会使用 index union merge算法。
 
-# 4. index merge 之 sort_union
+# 4.index merge 之 sort_union
 
 This access algorithm is employed when the WHERE clause was converted to several range conditions combined by OR, but for which the Index Merge method union algorithm is not applicable.(多个条件扫描进行 OR 运算，但是不符合 index union merge算法的，此时可能会使用 sort_union算法)
 
@@ -95,7 +95,7 @@ SELECT * FROM tbl_name WHERE (key_col1 > 10 OR key_col2 = 20) AND nonkey_col=30;
 
 The difference between the sort-union algorithm and the union algorithm is that the sort-union algorithm must first fetch row IDs for all rows and sort them before returning any rows.(sort-union合并算法和union合并算法的不同点，在于返回结果之前是否排序，为什么需要排序呢？可能是因为两个结果集，进行并集运算，需要去重，所以才进行排序？？？)
 
-# 5. index merge的局限
+# 5.index merge的局限
 
 1）If your query has a complex WHERE clause with deep AND/OR nesting and MySQL does not choose the optimal plan, try distributing terms using the following identity laws:
 
@@ -118,7 +118,7 @@ However, the optimizer considers only the second plan.
 
 这一点对以低版本的MySQL是一个很大的缺陷。就是如果where条件中有 >, <, >=, <=等条件，那么优化器不会使用 index merge，而且还会忽略其他的索引，不会使用它们，哪怕他们的选择性更优。
 
-# 6. 对 index merge 的进一步优化
+# 6.对 index merge 的进一步优化
 
 index merge使得我们可以使用到多个索引同时进行扫描，然后将结果进行合并。听起来好像是很好的功能，但是如果出现了 index intersect merge，那么一般同时也意味着我们的索引建立得不太合理，因为 index intersect merge 是可以通过建立 复合索引进行更一步优化的。
 
@@ -129,7 +129,7 @@ SELECT * FROM t1 WHERE key1=1 AND key2=2 AND key3=3;
 
 percona官网有一篇 比较复合索引和index merge 的好文章：Multi Column indexes vs Index Merge
 
-# 7. 复合索引的最左前缀原则
+# 7.复合索引的最左前缀原则
 
 上面我们说到，对复合索引的非最左前缀字段进行 OR 运算，是无法使用到复合索引的。比如：
 
