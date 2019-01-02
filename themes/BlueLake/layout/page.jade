@@ -6,8 +6,10 @@ block title
 block content
   .post
     h1.post-title= page.title
-    .post-content
+    div.post-content(id="post-content")
       != page.content
+    div(id="comments")
+      include _partial/comments
 block pageOnly
   script(type='text/javascript', src=url_for(theme.js) + '/totop.js' + '?v=' + theme.version, async)
   if theme.comment

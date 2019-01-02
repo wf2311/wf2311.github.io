@@ -28,7 +28,7 @@ block content
           span(class="fa fa-user") #{theme.author}
         span()  共#{wordcount(page.content)}字，阅读约需#{min2read(page.content)}分钟
 
-    .post-content
+    div.post-content(id="post-content")
       if page.type == 3
         include _partial/reprint
       != page.content
