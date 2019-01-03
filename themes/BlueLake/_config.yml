@@ -31,19 +31,19 @@ menu:
     icon: fa-rss
 
 ## sub menu
-#submenu:
-#  - page: 技术
-#    directory: categories/技术
-#    icon: fa-right
-#  - page: 工作
-#    directory: categories/工作
-#    icon: fa-right
-#  - page: 生活
-#    directory: categories/生活
-#    icon: fa-right
-#  - page: 杂记
-#    directory: categories/杂记
-#    icon: fa-right
+submenu:
+  - page: 技术
+    directory: categories/技术
+    icon: fa-right
+  - page: 工作
+    directory: categories/工作
+    icon: fa-right
+  - page: 生活
+    directory: categories/生活
+    icon: fa-right
+  - page: 杂记
+    directory: categories/杂记
+    icon: fa-right
 
 # Sidebar
 widgets:
@@ -53,7 +53,7 @@ widgets:
   - tag
   - archive
 #  - weibo
-#  - links
+  - links
 #  - reward
 
 #打赏
@@ -212,7 +212,5 @@ icp:
 links:
   - title: 灰灰博客
     url: https://liuyueyi.github.io/hexblog/
-  - title: site-name2
-    url: http://www.example2.com/
-  - title: site-name3
-    url: http://www.example3.com/
+  - title: SkyLi
+    url: https://www.skyli-blog.cn/
