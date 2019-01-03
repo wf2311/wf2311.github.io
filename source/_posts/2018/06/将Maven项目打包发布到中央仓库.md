@@ -4,7 +4,7 @@ date: 2018-06-06 13:02:58
 categories: Maven
 tags: [Maven]
 type: 2
-music_id: 5246238
+music_id: 26619431
 ---------
 # 项目配置
 ## groupId 要求
@@ -169,7 +169,7 @@ music_id: 5246238
 gpg --version
 ```
 出现类似信息表上安装成功：
-```
+```bash
 gpg (GnuPG) 2.1.21
 libgcrypt 1.7.8
 Copyright (C) 2017 Free Software Foundation, Inc.
@@ -193,7 +193,7 @@ Home: /Users/wf2311/.gnupg
 gpg --gen-key
 ```
 会让你输入**真实姓名**:
-```
+```bash
 gpg (GnuPG) 2.1.21; Copyright (C) 2017 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -208,11 +208,11 @@ from the Real Name, Comment and Email Address in this form:
 ```
 输入 你的姓名(**至少为5个字符**) ，回车
 再输入你的电子邮箱 ，回车，出现：
-```
+```bash
 Change (N)ame, (E)mail, or (O)kay/(Q)uit?
 ```
 选择 `O` 回车，出现如下提示:
-```
+```bash
 我们需要生成大量的随机字节。这个时候您可以多做些琐事(像是敲打键盘、移动
 鼠标、读写硬盘之类的)，这会让随机数字发生器有更好的机会获得足够的熵数。
 ```
@@ -232,7 +232,7 @@ gpg --keyserver hkp://pool.sks-keyservers.net --send-keys CD4809496C405C2F72F62B
 gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys CD4809496C405C2F72F62B31052A2DC27A064C14
 ```
 出现类似以下信息即表示发布成功：
-```
+```bash
 gpg: 密钥 052A2DC27A064C14：“wf2311 <wf2311@163.com>”未改变
 gpg: 合计被处理的数量：1
 gpg:           未改变：1
@@ -240,7 +240,7 @@ gpg:           未改变：1
 更多 gpg 命令请参考阮一峰的[GPG入门教程][13]
 # 修改 maven 配置文件
 在maven的配置文件 settings.xml 中添加以下内容:
-```
+```xml
     <servers>
         <server>
             <id>id须与pom.xml中distributionManagement下设置的id保持一致</id>

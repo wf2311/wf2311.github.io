@@ -9,9 +9,10 @@ type: 2
 > Spring 的事件(Spring Application Event)为 Bean 与 Bean 之间传递消息。一个 Bean 处理完了希望其余一个接着处理。这时我们就需要其余的一个 Bean 监听当前 Bean 所发送的事件。
 
 Spring 事件使用步骤如下:
-1. 先自定义事件: 需要继承`ApplicationEvent` ;
-2. 定义事件监听者: 使用注解`@EventListener`或者实现`ApplicationListener`;
-3. 使用容器对事件进行发布;
+  1. 先自定义事件: 需要继承`ApplicationEvent`;
+  2. 定义事件监听者: 使用注解`@EventListener`或者实现`ApplicationListener`;
+  3. 使用容器对事件进行发布;
+
 # 基于注解监听模式的基本用法
 以下用一个每天的定时同步任务为例进行讲解:
 ## 定义同步事件
@@ -222,7 +223,7 @@ public class MqHandler {
 ```
 以上的代码为我们指定了3个监听者的依次执行顺序为: MailHandler、CacheHandler、MqHandler
 再次运行`syncDayData()`测试方法得到如下结果:
-```java
+```bash
 2018-01-15 17:09:34.830 DEBUG 138192 --- [           main] c.w.s.e.s.SyncService                    : 开始同步2018-01-15的数据
 2018-01-15 17:09:35.831 DEBUG 138192 --- [           main] c.w.s.e.s.SyncService                    : 2018-01-15的数据同步完成,耗时1001 ms
 2018-01-15 17:09:35.832 DEBUG 138192 --- [           main] c.w.s.e.h.MailHandler                    : MailHandler接收到同步结果:SyncEvent(type=mail)

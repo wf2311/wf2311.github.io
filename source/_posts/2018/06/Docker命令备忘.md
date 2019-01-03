@@ -6,8 +6,6 @@ categories:
 - 命令
 tags: [Docker,命令,笔记]
 type: 4
-music_id: 2200001353
-music_type: 0
 ---------
 # 镜像相关
 ## 列出所有镜像
