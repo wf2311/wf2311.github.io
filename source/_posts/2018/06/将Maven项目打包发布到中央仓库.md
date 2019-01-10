@@ -220,7 +220,7 @@ Change (N)ame, (E)mail, or (O)kay/(Q)uit?
 稍等片刻就会出现如下生成信息：
 ![gpg 生成步骤][12]
 图中的`CD4809496C405C2F72F62B31052A2DC27A064C14`即为生成的公钥
-## 发布公钥到 PGP 密钥服务器
+## 发布公钥到 GPG 密钥服务器
 运行命令：
 ```bash
 gpg --keyserver hkp://pool.sks-keyservers.net --send-keys CD4809496C405C2F72F62B31052A2DC27A064C14
