@@ -29,6 +29,9 @@ menu:
   - page: rss
     directory: atom.xml
     icon: fa-rss
+  - page: wakatime
+    directory: https://wakatime.wangfeng.pro
+    icon: fa-bar-chart
 
 ## sub menu
 #submenu:
