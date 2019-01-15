@@ -7,7 +7,9 @@ type: 2
 ---------
 > 从16年知道 WakaTime 后就开始使用它来记录自己的编码时间，但作为免费版只能查看最近两周的数据，于是很久之前就写了一个程序同步自己的历史数据，不过一直没找到合适的图表插件像官网那样展示数据信息。前些日子咨询了一下同事，得知了用 antv 可以绘制对应的图表数据，刚好现在也处于失业阶段，就花了几天时间又重新做了一个项目用于同步和展示 WakaTime 数据。
 
-## WakaTime 简介 
+## WakaTime
+
+### WakaTime 简介 
 [WakaTime](https://wakatime.com/) 是一款可以记录你的编码时间的工具，目前支持绝大部分主流的 IDE 以及 Chrome 浏览器。
 
 ### 使用步骤
@@ -19,7 +21,7 @@ type: 2
 4. 过一段时间后，你就可以在 WakaTime 网站上看到你的编码情况，如下图所示： 
 ![](https://file.wf2311.com/images/20190111125255.png)
 
-## wakatime-sync 项目
+## wakatime-sync项目
 ### 项目简介
   WakaTime 提供了丰富多样的图表可以多维度地查看自己的编码时间情况。不过作为免费用户，最多只能查看自己最近14天的数据；如果要查看全部的数据，需要 $9/月的订阅费用。
 
@@ -61,9 +63,8 @@ type: 2
 
 ### 可能会遇到的问题
 
-由于本项目采用的是SpringBoot 2，对应的 `mysql-connector-java`  驱动使用的是MySQL服务端的时区，如果你使用的MySQL的时区和你程序中的时区以及你在 [WakaTime 个人设置](https://wakatime.com/settings/preferences)中的时区不一致，就会导致保存的相关数据中时间不准，解决办法就是首先调整好 [WakaTime 个人设置](https://wakatime.com/settings/preferences)里的时区，再调整 MySQL 数据库的时区，或者是使用 `5.X`版本的`mysql-connector-java`驱动。
-
-> tips: 如果你一直在使用 WakaTime ，如果想使用本项目同步你所有的历史数据，可以在官网上试用团队版的方式获得1个月(还是半个月？)的付费版功能或者是订阅一个月的付费版，然后通过本项目来同步所有的历史数据：`POST /api/v1/sync` 或参见项目中的测试方法。
+1. 由于本项目采用的是SpringBoot 2，对应的 `mysql-connector-java`  驱动使用的是MySQL服务端的时区，如果你使用的MySQL的时区和你程序中的时区以及你在 [WakaTime 个人设置](https://wakatime.com/settings/preferences)中的时区不一致，就会导致保存的相关数据中时间不准，解决办法就是首先调整好 [WakaTime 个人设置](https://wakatime.com/settings/preferences)里的时区，再调整 MySQL 数据库的时区，或者是使用 `5.X`版本的`mysql-connector-java`驱动。
+2. 如果你一直在使用 WakaTime ，如果想使用本项目同步你所有的历史数据，可以在官网上试用团队版的方式获得1个月(还是半个月？)的付费版功能或者是订阅一个月的付费版，然后通过本项目来同步所有的历史数据：`POST /api/v1/sync` 或参见项目中的测试方法。使用测试方法进行时不能同时使用太多的线程去同时调用 API 接口，会被限流。
 
 ## TODO
 - [ ] 数据同步成功消息通知；
