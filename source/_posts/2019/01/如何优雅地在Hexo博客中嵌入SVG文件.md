@@ -3,7 +3,7 @@ title: 如何优雅地在Hexo博客中嵌入SVG文件
 date: 2019-01-16 20:43:39
 categories: 前端
 tags: [Hexo,SVG,笔记]
-type: 1
+type: 2
 ---------
 > 今天遇到一个问题：想在自己的Hexo博客中展示SVG格式的思维导图，本文简单的记录一下如何解决这个问题。
 <!-- more -->
