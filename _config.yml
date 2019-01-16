@@ -89,10 +89,10 @@ douban:
   book:
     title: '我的书单'
     quote: '我的豆瓣书单'
-  movie:
-    title: '我的电影'
+#  movie:
+#    title: '我的电影'
 #    quote: 'This is my movie quote'
-  timeout: 10000
+  timeout: 20000
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
