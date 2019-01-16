@@ -26,12 +26,13 @@ menu:
   - page: 书单
     directory: books/
     icon: fa-book
+  - page: WakaTime
+    directory: https://wakatime.wangfeng.pro
+    icon: fa-bar-chart
   - page: rss
     directory: atom.xml
     icon: fa-rss
-  - page: wakatime
-    directory: https://wakatime.wangfeng.pro
-    icon: fa-bar-chart
+
 
 ## sub menu
 #submenu:
