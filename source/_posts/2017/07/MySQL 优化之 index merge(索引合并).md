@@ -8,6 +8,7 @@ author: digdeep
 source_url: https://www.cnblogs.com/digdeep/p/4975977.html
 ---------
 > 深入理解 index merge 是使用索引进行优化的重要基础之一。理解了 index merge 技术，我们才知道应该如何在表上建立索引。
+<!-- more -->
 
 # 1.为什么会有index merge
 

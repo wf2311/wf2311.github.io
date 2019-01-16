@@ -7,6 +7,7 @@ type: 2
 ---------
 # 简介
 > Spring 的事件(Spring Application Event)为 Bean 与 Bean 之间传递消息。一个 Bean 处理完了希望其余一个接着处理。这时我们就需要其余的一个 Bean 监听当前 Bean 所发送的事件。
+<!-- more -->
 
 Spring 事件使用步骤如下:
   1. 先自定义事件: 需要继承`ApplicationEvent`;

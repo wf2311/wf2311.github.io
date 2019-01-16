@@ -7,6 +7,8 @@ type: 1
 ---------
 # 问题描述
 SpringBoot中使用thymeleaf模板，在IDEA中以main方法运行可以正常显示页面，但在打包之后就会提示找不到模板页面的错误信息:
+<!-- more -->
+
 ```bash
 [THYMELEAF][http-nio-4000-exec-1] Exception processing template "/blog/index": Error resolving template "/blog/index", template might not exist or might not be accessible by any of the configured Template Resolvers
 org.thymeleaf.exceptions.TemplateInputException: Error resolving template "/blog/index", template might not exist or might not be accessible by any of the configured Template Resolvers
