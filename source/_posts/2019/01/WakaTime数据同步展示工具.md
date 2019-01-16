@@ -9,7 +9,7 @@ type: 2
 
 ## WakaTime
 
-### WakaTime 简介 
+### WakaTime简介 
 [WakaTime](https://wakatime.com/) 是一款可以记录你的编码时间的工具，目前支持绝大部分主流的 IDE 以及 Chrome 浏览器。
 
 ### 使用步骤
@@ -27,7 +27,7 @@ type: 2
 
   还好 WakaTime 提供了 [API](https://wakatime.com/developers) 接口，通过接口可以获取到编码时间统计情况的原始数据(作为免费用户还是有只能查看最近14天数据的限制)。
 
-  本项目通过 WakaTime 提供的 API 接口，可以把自己的 WakaTime 数据保存在自己的数据库库，然后利用图表插件展示出来，目前已完成三种类型的图表展示：
+  本项目通过 WakaTime 提供的 API 接口，可以把自己的 WakaTime 数据保存在的数据库中，然后利用图表插件展示出来，目前已完成三种类型的图表展示：
 - 每日项目持续时间图：
   ![每日项目持续时间图](https://file.wf2311.com/images/20190115180738.png)
 - 时间范围内活动情况：
