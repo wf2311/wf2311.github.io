@@ -5,7 +5,7 @@ categories: Java
 tags: [Enum,Json]
 type: 2
 ---------
-# 枚举接口
+## 枚举接口
 在web开发中我们常常会定义一些enum来表示常量，比如:
 ```java
     enum BlogType {
@@ -75,7 +75,7 @@ type: 2
         //...
     }
 ```
-#  公用静态方法
+##  公用静态方法
 
 我们可以在在`Common`接口中定义一个如下的静态方法：
 ```java
@@ -90,7 +90,7 @@ type: 2
     Assert.assertEquals(BlogType.QUESTION, Common.getByCode(BlogType.class, BlogType.QUESTION.getCode()));
     Assert.assertEquals(BlogStatus.PUBLISH, Common.getByCode(BlogType.class, BlogStatus.PUBLISH.getCode()));
 ```
-#  自定义序列化
+## 自定义序列化
 
 当我们定义如下的方法
 ```java
@@ -186,7 +186,7 @@ type: 2
 ```java
    Assert.assertEquals("{2:\"转载文章\"}", JSON.toJSONString(BlogType.REPRINT));
 ```
-# 完整代码
+## 完整代码
 ```java
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONAware;

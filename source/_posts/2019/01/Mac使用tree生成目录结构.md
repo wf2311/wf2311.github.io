@@ -7,7 +7,7 @@ type: 3
 author: 陈惠超
 source_url: https://chenhuichao.com/2016/12/17/mac/mac-tree-usage/
 ---------
-# 前言
+## 前言
 程序员经常会有需求，需要列出项目的结构树。Mac或者Linux下可以使用tree列出项目结构，如下图这种：
 ```bash
 ├── build
@@ -29,7 +29,7 @@ source_url: https://chenhuichao.com/2016/12/17/mac/mac-tree-usage/
 使用起来也非常简单。
 Mac下可以使用`brew install tree`进行安装。安装后，在terminal中输入`tree -a`便可以查看某个文件夹下的所有文件。
 
-# 常用的命令
+## 常用的命令
 当然了，我们的需求肯定不止列出所有文件这么简单。下面介绍几个常用的命令：
 
 * `tree -d` 只显示文件夹；

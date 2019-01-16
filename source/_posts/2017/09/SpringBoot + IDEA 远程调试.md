@@ -5,7 +5,7 @@ categories: SpringBoot
 tags: [SpringBoot,远程调试]
 type: 1
 ---------
-# 配置
+## 配置
 若想调试远端web容器内部的应用，需要接入web容器的jvm，以Tomcat为例，需修改web容器的配置
 ```bash
 // bin\startup.bat（.sh）文件，在里面添加
@@ -27,7 +27,7 @@ java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8888（自
 
 ```
 
-# IDEA连接远端调试
+## IDEA连接远端调试
 ![](https://file.wf2311.com/2017/09/19/15/WechatIMG2478.jpeg)
 ![](https://file.wf2311.com/2017/09/19/15/WX20170321-035338@2x.png)
 ![](https://file.wf2311.com/2017/09/19/15/WX20170321-035510@2x.png)

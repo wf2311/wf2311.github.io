@@ -5,11 +5,11 @@ categories: SpringBoot
 tags: [SpringBoot,远程调试]
 type: 1
 ---------
-# IDEA 远程调试spring boot项目
+## IDEA 远程调试spring boot项目
 
-## 1. Dokcer容器中  
+### 1. Dokcer容器中  
 
-### 在Dockefile中配置(方法1)
+#### 在Dockefile中配置(方法1)
 
 在Dockerfile文件中加入参数`-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n`,
 例如：
@@ -26,18 +26,18 @@ docker run -p 8000:8000 -p 4000:4000 -t imageName
 - `-p 8000:8000` 表示把在Dockerfile中定义的远程调试端口8000映射到服务器端口8000中；
 - `-p 4000:4000` 表示把在应用程序的启动端口4000映射到服务器端口4000中；
 
-### 启动命令中配置(方法2)
+#### 启动命令中配置(方法2)
 
 在启动命令中加上参数`-e "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=y"`，例如：
 ```bash
 docker run -e "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=y" -p 8000:8000 -p 4000:4000 -t imageName
 ```
-## 2. 以嵌入式web容器运行时
+### 2. 以嵌入式web容器运行时
 在启动命令中加上参数`-e "-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000`，例如：
 ```bash
 java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000 -jar application.jar
 ```
-## 3. 以`mvn spring-boot:run`运行时
+### 3. 以`mvn spring-boot:run`运行时
 在pom.xml中加入如下插件:
 ```xml
     <plugin>

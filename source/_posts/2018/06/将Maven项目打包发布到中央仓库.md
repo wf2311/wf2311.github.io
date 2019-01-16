@@ -6,11 +6,11 @@ tags: [Maven]
 type: 2
 music_id: 26619431
 ---------
-# 项目配置
-## groupId 要求
+## 项目配置
+### groupId 要求
 项目的`groupId`一般为域名倒置，比如我的网址为wangfeng.pro，`groupId`则可以命名为`pro.wangfeng`。如果你没有属于自己的域名，则最好使用**github**相关的`groupId`，比如你的项目地址的github路径为`https://www.github.com/username/projectName`,那`groupId`最好为`com.github.username`。
 `groupId`的命名规范关系到在接下来的Sonatype OSSRH审核能否通过。
-## 修改 pom.xml
+### 修改 pom.xml
 ```xml
     <!--开源协议-->
     <licenses>
@@ -127,9 +127,9 @@ music_id: 26619431
 ```
 修改完以上配置后，将代码同步到github上面。
 
-# 注册 Sonatype OSSRH
+## 注册 Sonatype OSSRH
 注册地址：[https://issues.sonatype.org/secure/Signup!default.jspa][1]
-# 提交一个 ISSUE
+## 提交一个 ISSUE
 登录成功后，进入[首页][2]，点击页面上方的 **Create** 按钮，弹出如下窗口：
 ![打开创建ISSUE窗口][3]
 
@@ -160,8 +160,8 @@ music_id: 26619431
 
 **注意：如果你还有其它的项目也需要发布到中央仓库，并且 groupId 和上面的一样，就不需要再次创建 ISSUE 了；只有在使用新的 groupId 时才需要提交 ISSUE。**
 
-# gpg安装配置
-## 安装 gpg
+## gpg安装配置
+### 安装 gpg
 由于各个系统版本的 gpg 安装方式不尽相同，这里就不写详细安装方式了。具体步骤可以 google 、百度或者按[官网][11]上给的步骤下载安装。
 
 安装完成后在终端或命令行运行以下命令，确认是否安装成功：
@@ -186,7 +186,7 @@ Home: /Users/wf2311/.gnupg
 压缩：不压缩, ZIP, ZLIB, BZIP2
 ```
 
-## 生成密钥对
+### 生成密钥对
 **以 Mac 下操作为例，不同系统的过程可能有所差异**
 运行命令:
 ```bash
@@ -220,13 +220,13 @@ Change (N)ame, (E)mail, or (O)kay/(Q)uit?
 稍等片刻就会出现如下生成信息：
 ![gpg 生成步骤][12]
 图中的`CD4809496C405C2F72F62B31052A2DC27A064C14`即为生成的公钥
-## 发布公钥到 GPG 密钥服务器
+### 发布公钥到 GPG 密钥服务器
 运行命令：
 ```bash
 gpg --keyserver hkp://pool.sks-keyservers.net --send-keys CD4809496C405C2F72F62B31052A2DC27A064C14
 ```
 此操作因为网络原因可能需要等待一定的时间
-## 查询公钥是否发布成功
+### 查询公钥是否发布成功
 运行命令
 ```bash
 gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys CD4809496C405C2F72F62B31052A2DC27A064C14
@@ -238,7 +238,7 @@ gpg: 合计被处理的数量：1
 gpg:           未改变：1
 ```
 更多 gpg 命令请参考阮一峰的[GPG入门教程][13]
-# 修改 maven 配置文件
+## 修改 maven 配置文件
 在maven的配置文件 settings.xml 中添加以下内容:
 ```xml
     <servers>
@@ -259,7 +259,7 @@ gpg:           未改变：1
         </properties>
     </profile>
 ```
-# 打包上传
+## 打包上传
 
 切换到当前项目路径，运行命令:
 ```bash
@@ -271,11 +271,11 @@ mvn -DskipTests clean deploy
  - 对应正式版本，即版本号不是以 `-SNAPSHOT` 结尾的，虽然也会上传到 [https://oss.sonatype.org/service/local/staging/deploy/maven2/][15] 中，但还需要我们手动发布一下，才会发布到中央仓库中。
 
 **提示： 如果在 Mac 环境下打包是出现 gpg 相关的错误，可以参考 [gpg: 签名时失败处理][16]这篇文章来处理**
-# 在 OSS 中发布构件
-## 登录
+## 在 OSS 中发布构件
+### 登录
 登录 [https://oss.sonatype.org][17]，用户名密码与上面 Sonatype 的相同
 
-## 发布构建
+### 发布构建
 登录成功后会进入如下页面：
 ![neuxs 管理页面][18]
 
@@ -299,7 +299,7 @@ mvn -DskipTests clean deploy
 再等待大概一到两小时的同步时间后，便可以在中央仓库中[搜索][24]到你发布的项目了：
 ![搜索][25]
 
-# 修改 README.md 文件
+## 修改 README.md 文件
 在项目的 README.md 头部 加上 如下格式的内容：
 ```
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/<groupId>/<projectName>/badge.svg)](https://maven-badges.herokuapp.com/maven-central/<groupId>/<projectName>)
@@ -324,7 +324,7 @@ mvn -DskipTests clean deploy
  mvn -N versions:update-child-modules
  ```
 
-# 参考
+## 参考
 1. [将jar发布到maven中央仓库小记][27]
 2. [向maven中央仓库提交jar][28]
 

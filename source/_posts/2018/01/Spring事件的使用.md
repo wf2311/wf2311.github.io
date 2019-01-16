@@ -5,7 +5,7 @@ categories: Spring
 tags: [Spring,SpringBoot,ApplicationEvent]
 type: 2
 ---------
-# 简介
+## 简介
 > Spring 的事件(Spring Application Event)为 Bean 与 Bean 之间传递消息。一个 Bean 处理完了希望其余一个接着处理。这时我们就需要其余的一个 Bean 监听当前 Bean 所发送的事件。
 <!-- more -->
 
@@ -14,9 +14,9 @@ Spring 事件使用步骤如下:
   2. 定义事件监听者: 使用注解`@EventListener`或者实现`ApplicationListener`;
   3. 使用容器对事件进行发布;
 
-# 基于注解监听模式的基本用法
+## 基于注解监听模式的基本用法
 以下用一个每天的定时同步任务为例进行讲解:
-## 定义同步事件
+### 定义同步事件
 `SyncEvent`:
 ```java
 /**
@@ -29,7 +29,7 @@ public class SyncEvent extends ApplicationEvent{
     }
 }
 ```
-## 事件监听者
+### 事件监听者
 定义一个 MailHandler.java 在监听到事件后发送邮件:
 ```java
 /**
@@ -81,7 +81,7 @@ public @interface EventListener {
 }
 ```
 
-## 发布事件
+### 发布事件
 `SyncService`:
 ```java
 /**
@@ -112,7 +112,7 @@ public class SyncService {
     }
 }
 ```
-## 测试
+### 测试
 ```java
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -138,7 +138,7 @@ public class SpringEventApplicationTests {
 ```
 由测试结果可知：在方法`syncDayData()`运行到`applicationEventPublisher.publishEvent(new SyncEvent(syncData))`后就会立即自动调用`void sendSycResult(SyncEvent event)`方法。
 
-# 多个事件监听者
+## 多个事件监听者
 如果在同步任务完成后，不仅需要发送邮件，还需要对数据进行缓存和消息推送，只需要仿照`MailHandler`,再建立相应的类。
 `CacheHandler`:
 ```java
@@ -190,7 +190,7 @@ public class MqHandler {
 由测试结果可以看出，在方法`syncDayData()`运行到`applicationEventPublisher.publishEvent(new SyncEvent(syncData))`后就会立即依次调用我们定义的多个监听者。
 但是如果我们对邮件发送、消息推送、缓存更新的执行顺序由特定的需求怎么办？(经简单测试，在有多个监听者时，默认情况下监听者的执行顺序是安装监听者所在的类名(不是beanName)来执行的)
 
-## 使用`@Order`来指定监听者执行顺序
+### 使用`@Order`来指定监听者执行顺序
 查看`EventListener`的API文档，其中有这样一段描述：
 > It is also possible to define the order in which listeners for a certain event are to be invoked. To do so, add Spring's common @Order annotation alongside this event listener annotation.
 
@@ -237,7 +237,7 @@ public class MqHandler {
 ```
 测试顺序与设置的顺序一致。
 
-# 基于多个监听者的链式调用
+## 基于多个监听者的链式调用
 同样是在`EventListener`的API文档中，有这样一段描述：
 > Annotated methods may have a non-void return type. When they do, the result of the method invocation is sent as a new event. If the return type is either an array or a collection, each element is sent as a new individual event.
 
@@ -361,6 +361,6 @@ public class OrderService {
 执行完`cacheOrderInfo()`后,`event.nextListenerType`变为'mail',只有`sendOrderInfo()`方法符合条件；
 执行完`sendOrderInfo()`后,`event.nextListenerType`变为null,无符合条件的事件监听者，结束事件监听；
 
-# 基于实现`ApplicationListener`的事件监听者
+## 基于实现`ApplicationListener`的事件监听者
 参考[Spring Application Event Example](实现ApplicationListener)
 

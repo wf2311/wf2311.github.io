@@ -5,7 +5,7 @@ categories: Java
 tags: [Java8,Stream]
 type: 1
 ---------
-# 根据属性过滤重复的元素
+## 根据属性过滤重复的元素
 [参考地址](http://stackoverflow.com/questions/27870136/java-lambda-stream-distinct-on-arbitrary-key)
 ```java
     /**
@@ -17,7 +17,7 @@ type: 1
     }
 ```
 
-# 测试
+## 测试
 ```java
     static String[] data = new String[]{
             "1,2,a,4,5,6",

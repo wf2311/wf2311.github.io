@@ -6,7 +6,9 @@ tags: [Nginx,笔记]
 type: 4
 ---------
 **nginx.conf**中默认没有设置`client_max_body_size`，这个参数默认只是1M，
+
 解决办法：
+
 增加如下两行到**nginx.conf**的`http{}`段， 增大nginx上传文件大小限制
 ```bash
 #设置允许发布内容为8M
