@@ -29,9 +29,9 @@ menu:
   - page: WakaTime
     directory: https://wakatime.wangfeng.pro
     icon: fa-bar-chart
-  - page: rss
-    directory: atom.xml
-    icon: fa-rss
+#  - page: rss
+#    directory: atom.xml
+#    icon: fa-rss
 
 
 ## sub menu

@@ -1,5 +1,7 @@
 mixin a_with_current(href, content, id)
   - var url = url_for(href)
+  - var target=href.startsWith('http')?'_blank':'_self';
+
   if (href == '.' && (is_home() || is_post())) || is_current(href)
     a.current(href=url)
       i(class='fa' + ' ' + id)= ' ' + content
@@ -10,7 +12,7 @@ mixin a_with_current(href, content, id)
     a.current(href=url)
       i(class='fa' + ' ' + id)= ' ' + content
   else
-    a(href=url)
+    a(href=url target=target)
       i(class='fa' + ' ' + id)= ' ' + content
 
 mixin title(page)

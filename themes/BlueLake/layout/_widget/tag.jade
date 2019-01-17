@@ -1,6 +1,6 @@
 .widget
   .widget-title
-    i(class='fa fa-tag')= ' ' + __('tags') + '(' + site.posts.length + ')'
+    i(class='fa fa-tag')= ' ' + __('tags') + '(' + site.tags.length + ')'
     a(title="点击展开或隐藏分类", href="javascript:void(0)",onclick="showOrHide('tagcloud', 'tag-expand', 'none')")
         span(id='tag-expand', style='font-size:12px;color:red')=' 点击收起 '
   .tagcloud
