@@ -1,7 +1,9 @@
 id: 201709210933
 title: IDEA 远程调试spring boot项目
 date: 2017-09-21 09:33:52
-categories: SpringBoot
+categories: 
+- Spring
+- SpringBoot
 tags: [SpringBoot,远程调试]
 type: 1
 ---------

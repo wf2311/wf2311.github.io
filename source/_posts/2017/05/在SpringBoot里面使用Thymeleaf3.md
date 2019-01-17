@@ -1,7 +1,9 @@
 id: 201705260953
 title: 在SpringBoot里面使用Thymeleaf3
 date: 2017-05-26 09:53:26
-categories: SpringBoot
+categories: 
+- Spring
+- SpringBoot
 tags: [Thymeleaf,SpringBoot]
 type: 1
 ---------
