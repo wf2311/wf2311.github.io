@@ -46,6 +46,8 @@ type: 2
 
 前端：Moment.js、ElementUI、AntV-G2 、Echarts;
 
+通知服务：[Server酱](http://sc.ftqq.com/3.version)、[钉钉机器人](https://open-doc.dingtalk.com/docs/doc.htm?spm=a219a.7629140.0.0.61074a9747Wldt&treeId=257&articleId=105735&docType=1)
+
 项目逻辑比较简单，就是每天会定时通过 WakaTime 的 API 抓取并保存前一天的数据，再通过图标插件展示出来。之后还会完善接口缓存、同步通知等功能；
 
 同时使用了 AntV-G2 和 Echarts 的原因是因为持续时间图可以用 AntV-G2 实现，但日历图用 AntV-G2 实现过于复杂，就采用了用 Echarts 实现日历图；
@@ -61,13 +63,20 @@ type: 2
 
 示例地址：[https://wakatime.wangfeng.pro/](https://wakatime.wangfeng.pro/)。
 
+### 消息通知
+系统中有一个定时任务，会在每天早上09:00会根据配置信息想钉钉或微信发送上一天的编码时间信息；
+需要在`application.yml`配置对应的参数:
+- Server酱微信通知：按照[Server酱网站说明](http://sc.ftqq.com/3.version)获得一个**SCKEY**，设置成`wakatime.ftqq-key`的值；
+- 钉钉机器人通知：在要获得提醒的钉钉群里面生成一个**自定义机器人**，将机器人的 Hook 地址中的 access_token 的值设置成`wakatime.dingding-key`的值；
+
+**如果不想使用对应的消息通知，请将`application.yml`中对应的参数注释掉或将值置为空**
+
 ### 可能会遇到的问题
 
 1. 由于本项目采用的是SpringBoot 2，对应的 `mysql-connector-java`  驱动使用的是MySQL服务端的时区，如果你使用的MySQL的时区和你程序中的时区以及你在 [WakaTime 个人设置](https://wakatime.com/settings/preferences)中的时区不一致，就会导致保存的相关数据中时间不准，解决办法就是首先调整好 [WakaTime 个人设置](https://wakatime.com/settings/preferences)里的时区，再调整 MySQL 数据库的时区，或者是使用 `5.X`版本的`mysql-connector-java`驱动。
 2. 如果你一直在使用 WakaTime ，如果想使用本项目同步你所有的历史数据，可以在官网上试用团队版的方式获得1个月(还是半个月？)的付费版功能或者是订阅一个月的付费版，然后通过本项目来同步所有的历史数据：`POST /api/v1/sync` 或参见项目中的测试方法。使用测试方法进行时不能同时使用太多的线程去同时调用 API 接口，会被限流。
 
 ## TODO
-- [ ] 数据同步成功消息通知；
 - [ ] 查询接口缓存；
 - [ ] 可以对项目名称设置别名展示；
 
