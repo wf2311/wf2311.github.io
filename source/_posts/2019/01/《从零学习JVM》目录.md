@@ -5,7 +5,7 @@ categories:
 - Java
 - JVM
 - 从零学习JVM
-tags: [JVM、Java]
+tags: [JVM,Java]
 type: 5
 ---------
 ## 前言

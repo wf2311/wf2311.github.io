@@ -5,7 +5,7 @@ categories:
 - Java 
 - JVM 
 - 从零学习JVM
-tags: [JVM、Java]
+tags: [JVM,Java]
 type: 2
 ---------
 > 本文的内容实际上是对《Java虚拟机规范(Java SE 8版)》第2.2章节的一个笔记概述。
