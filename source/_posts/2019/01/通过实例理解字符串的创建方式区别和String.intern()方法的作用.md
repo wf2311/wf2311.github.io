@@ -11,10 +11,10 @@ type: 2
 ## 创建字符串时需要注意的规则
 这里列的规则是我结合JDK里的文档和《[Java-String.intern的深入研究][1]》、《[几张图轻松理解String.intern()][2]》这两篇文章，对于理解下面的实例中我认为比较关键的几点，可能有些理解不正确。
 
-1、通过new String(String original)会有涉及到两个对象。
-例如 `String str = new String("a")`语句,会先将构造函数里的参数original="a"指向在字符串常量池(简称SCP),如果常量池中不存在，则会在常量池中生成字符串"a"，再在堆(HEAP)中生成变量str;
+1、通过`new String(String original)`会有涉及到两个对象。
+例如 `String str = new String("a")`语句,会先将构造函数里的参数`original`指向在字符串常量池(简称SCP),如果常量池中不存在，则会在常量池中生成字符串**a**，再在堆(HEAP)中生成变量`str`;
 
-2、如果一个字符串str是由多个常量字符串通过"+"拼接的，则字符串str会直接生成或指向在字符串常量池中。
+2、如果一个字符串`str`是由多个常量字符串通过**+**拼接的，则字符串`str`会直接生成或指向在字符串常量池中。
 
 情况一：
 ```java
@@ -218,10 +218,10 @@ public void test9() {
     String l = "a" + b; //HEAP_2
     String j = l.intern();  //SCP -> HEAP_2
     String c = "ab";     //SCP -> HEAP_2
-    System.out.println(i.equals(j)); //true
-    System.out.println(i == j); //false
-    System.out.println(l == j); //true
-    System.out.println(l == c); //true
+    System.out.println(i.equals(j));
+    System.out.println(i == j);
+    System.out.println(l == j);
+    System.out.println(l == c);
 }
 ```
 结合前面的例子可知，`i`和`j`是位于堆中两个独立的对象。由于有`l.intern()`操作，`j`、`c`和`l`最终都指向了同一个地址。因此输入结果为：
