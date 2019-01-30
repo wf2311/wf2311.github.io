@@ -1,5 +1,5 @@
 id: 201901301755
-title: 通过实例理解字符串的创建方式区别和String.intern()方法的作用
+title: 彻底搞懂字符串比较问题和String.intern()方法的作用
 date: 2019-01-30 17:55:56
 categories: Java
 tags: [Java,String]
