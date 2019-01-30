@@ -169,8 +169,8 @@ true
 ```java
 private void test8(final String b) {
     String i = "a" + b; //HEAP
-    String j = i.intern();  //HEAP -> SCP
-    String c = "ab";    //HEAP -> SCP
+    String j = i.intern();  //SCP -> HEAP
+    String c = "ab";    //SCP -> HEAP
     System.out.println(i == j);
     System.out.println(c == j);
 }
