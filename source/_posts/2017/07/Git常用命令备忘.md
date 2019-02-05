@@ -69,5 +69,11 @@ git log --pretty='%aN' | sort -u | wc -l
 git log --oneline | wc -l
 ```
 
+### 统计项目某个某个时间段的行数
+```bash
+git log --author="$(git config --get user.name)"  --before='2018-12-31 23:59:59' --after='2018-01-01 00:00:00' --pretty=tformat: --numstat | awk '{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }'
+```
+
 ## 参考
 1. [git统计项目中各成员代码量](https://rzrobert.github.io/2017/02/04/git%E7%BB%9F%E8%AE%A1%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%90%84%E6%88%90%E5%91%98%E4%BB%A3%E7%A0%81%E9%87%8F/)
+2. [https://liuyueyi.github.io/hexblog/2019/01/27/190127-Git%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1/](https://liuyueyi.github.io/hexblog/2019/01/27/190127-Git%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0%E7%BB%9F%E8%AE%A1/)
