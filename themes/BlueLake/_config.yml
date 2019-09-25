@@ -149,8 +149,11 @@ comment:
   uyan: ## 友言(uid)
   cloudTie: ## 网易云跟帖(productKey)
   changyan: ## 畅言需在下方配置两个参数，此处不填。
-    appid: cyteanoMa
-    appkey: prod_27ac74f72c70e7240b5f924ef92bae6a
+    appid:
+    appkey:
+  valine: ## 畅言需在下方配置两个参数，此处不填。
+    appid: 6D0Mh4nGht9zbdbpUEWcUGYh-gzGzoHsz
+    appkey: zOr71Ml1wJrcFQQhzViNxIAx
 
 #Share
 self_share: true
