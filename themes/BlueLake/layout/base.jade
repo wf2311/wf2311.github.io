@@ -68,20 +68,20 @@ html(lang='#{config.language}')
       script(src=url_for(item) + '?t=' + moment())
   body
     //canvas.fireworks
-    .body_container
-      #header
-        .site-name
-          h1.hidden= current_title
-          a#logo(href=url_for('.'))= config.title
-          p(style="font-size:18px").description= config.subtitle
+    .nav
         #nav-menu
-          - for (var i in theme.menu)
-            +a_with_current(theme.menu[i].directory, __(theme.menu[i].page), theme.menu[i].icon)
-          hr
+          .nav-left
+              - for (var i in theme.menu)
+                +a_with_current(theme.menu[i].directory, __(theme.menu[i].page), theme.menu[i].icon)
+          .nav-right
+              - for (var i in theme.rightMenu)
+                +a_with_current(theme.rightMenu[i].directory, __(theme.rightMenu[i].page), theme.rightMenu[i].icon)
           br
           #nav-sub-menu
             - for (var i in theme.submenu)
               +a_with_current(theme.submenu[i].directory, __(theme.submenu[i].page), theme.submenu[i].icon)
+    .body_container
+      #header
         include _partial/search
 
       #layout.layout-g

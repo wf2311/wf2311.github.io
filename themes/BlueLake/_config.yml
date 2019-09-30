@@ -26,6 +26,8 @@ menu:
   - page: 书单
     directory: books/
     icon: fa-book
+
+rightMenu:
   - page: WakaTime
     directory: https://wakatime.wangfeng.pro
     icon: fa-bar-chart
