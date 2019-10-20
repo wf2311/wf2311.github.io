@@ -1,5 +1,5 @@
 id: 201910201340
-title: ssh快捷登录并执行命令
+title: wakatime手动同步本地离线数据至服务器
 date: 2019-10-20 13:40:33
 categories: 其它
 tags: [WakaTime]
@@ -10,7 +10,6 @@ type: 1
 ```bash
 sudo pip install --upgrade wakatime
 ```
-
 2. 同步本地的9999条heartbeat数据至服务器
 ```bash
 wakatime --sync-offline-activity 9999
