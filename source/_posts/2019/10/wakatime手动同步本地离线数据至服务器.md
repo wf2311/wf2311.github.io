@@ -10,6 +10,7 @@ type: 1
 ```bash
 sudo pip install --upgrade wakatime
 ```
+<!-- more -->
 2. 同步本地的9999条heartbeat数据至服务器
 ```bash
 wakatime --sync-offline-activity 9999
