@@ -17,31 +17,26 @@ menu:
   转载:
     url: /tags/转载
     icon: fas fa-star
-  About:
-    url: /about
-    icon: fas fa-user-circle
-  Contact:
-    url: /contact
-    icon: fas fa-comments
   Friends:
     url: /friends
     icon: fas fa-address-book
+  Wakatime:
+    url: https://wakatime.wangfeng.pro
+    icon: fas fa-bar-chart-o
   # 二级菜单写法如下
-#  Medias:
-#    icon: fas fa-list
-#    children:
-#      - name: Musics
-#        url: /musics
-#        icon: fas fa-music
-#      - name: Movies
-#        url: /movies
-#        icon: fas fa-film
-#      - name: Books
-#        url: /books
-#        icon: fas fa-book
-#      - name: Galleries
-#        url: /galleries
-#        icon: fas fa-image
+  更多 :
+    icon: fas fa-list
+    children:
+      - name: 书单
+        url: /books
+        icon: fas fa-book
+      - name: 关于
+        url: /about
+        icon: fas fa-user-circle
+      - name: 留言板
+        url: /contact
+        icon: fas fa-comments
+
 
 # Website start time.
 # 站点运行开始时间.
@@ -208,13 +203,14 @@ clicklove:
 profile:
   avatar: https://file.wf2311.com/wf2311.png
   career: Java开发工程师
-  introduction: 目标不是都能达到的，但它可以作为瞄准点
+  city: 浙江-杭州
+#  introduction: 目标不是都能达到的，但它可以作为瞄准点
 
 # config my projects informations in about page.
 # If you don't want to display this `My Projects` content, you can deactivate or delete this configuration.
 # 在“关于”页面配置"我的项目"信息，如果你不需要这些信息则可以将其设置为不激活或者将其删除.
 myProjects:
-  enable: true
+  enable: false
   data:
     hexo-theme-matery:
       icon: fas fa-file-alt
@@ -240,28 +236,28 @@ mySkills:
   data:
     Java:
       background: 'linear-gradient(to right, #FF0066 0%, #FF00CC 100%)'
-      percent: 85%
-    JavaScript:
+      percent: 75%
+    Spring:
       background: 'linear-gradient(to right, #9900FF 0%, #CC66FF 100%)'
-      percent: 80%
-    HTML5:
-      background: 'linear-gradient(to right, #2196F3 0%, #42A5F5 100%)'
-      percent: 80%
-    CSS:
-      background: 'linear-gradient(to right, #00BCD4 0%, #80DEEA 100%)'
       percent: 70%
+    Mac:
+      background: 'linear-gradient(to right, #2196F3 0%, #42A5F5 100%)'
+      percent: 75%
+    Linux:
+      background: 'linear-gradient(to right, #00BCD4 0%, #80DEEA 100%)'
+      percent: 50%
     SQL:
       background: 'linear-gradient(to right, #4CAF50 0%, #81C784 100%)'
-      percent: 90%
-    程序设计:
+      percent: 70%
+    Docker:
       background: 'linear-gradient(to right, #FFEB3B 0%, #FFF176 100%)'
-      percent: 75%
+      percent: 55%
 
 # config gallery of my photos in about page.
 # If you don't want to display this `Gallery` content, you can deactivate or delete this configuration.
 # 在“关于”页面配置"我的相册"图片，如果你不需要这些信息则可以将其设置为不激活或者将其删除.
 myGallery:
-  enable: true
+  enable: false
   data:
     - /medias/featureimages/0.jpg
     - /medias/featureimages/1.jpg

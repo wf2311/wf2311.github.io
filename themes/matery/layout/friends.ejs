@@ -226,11 +226,14 @@
                 </article>
             </div>
         </div>
+        <% if (page.content) { %>
         <div class="card">
             <div class="card-content">
                 <%- page.content %>
             </div>
         </div>
+        <% } %>
+        <% if (theme.friends && theme.friends.enable) { %>
         <div class="card">
 
             <% if (theme.gitalk && theme.gitalk.enable) { %>
@@ -254,6 +257,7 @@
             <% } %>
 
         </div>
+        <% } %>
     </div>
 </main>
 
