@@ -2,7 +2,7 @@ id: 201901021214
 title: Mac使用tree生成目录结构
 date: 2019-01-02 12:14:02
 categories: 其它
-tags: [命令,MAC]
+tags: [命令,MAC,转载]
 type: 3
 author: 陈惠超
 source_url: https://chenhuichao.com/2016/12/17/mac/mac-tree-usage/

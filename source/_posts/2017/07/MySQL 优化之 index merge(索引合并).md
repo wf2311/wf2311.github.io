@@ -2,7 +2,7 @@ id: 201707141609
 title: MySQL 优化之 index merge(索引合并)
 date: 2017-07-14 16:09:10
 categories: 数据库
-tags: [MySQL,索引]
+tags: [MySQL,索引,转载]
 type: 3
 author: digdeep
 source_url: https://www.cnblogs.com/digdeep/p/4975977.html
