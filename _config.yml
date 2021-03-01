@@ -106,6 +106,9 @@ douban:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   - type: git
+    repo: git@git.wf2311.com:wf2311/wangfeng.pro.git
+    branch: master
+  - type: git
     repo: https://github_token@github.com/wf2311/wf2311.github.io.git
     branch: master
 
