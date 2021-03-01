@@ -533,7 +533,7 @@ banner:
 #ICP备案信息尾部显示
 icp:
   enable: true
-  url: https://www.miitbeian.gov.cn/ # 备案链接
+  url: https://beian.miit.gov.cn/ # 备案链接
   text: 鄂ICP备15002386号 # 备案信息
 
 # CDN访问加速 
