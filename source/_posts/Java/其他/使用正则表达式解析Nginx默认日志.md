@@ -1,7 +1,7 @@
 id: 201901261313
 title: 使用正则表达式解析Nginx默认日志
 date: 2019-01-26 13:13:03
-categories: Java
+categories: [Java,其他]
 tags: [Java,Nginx,笔记,正则表达式]
 type: 4
 ---------
