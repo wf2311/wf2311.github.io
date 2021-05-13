@@ -61,14 +61,14 @@ html(lang='#{config.language}')
         gio('send');
   each item in theme.cdn.js
     if item !== undefined
-      script(src=url_for(item))
+      script(src=item)
   //if theme.scripts !== undefined && theme.scripts.length > 0
   each item in theme.scripts
     if item !== undefined
       script(src=url_for(item) + '?t=' + moment())
   body
     //canvas.fireworks
-    .nav
+    .nav: #nav
         #nav-menu
           .nav-left
               - for (var i in theme.menu)
@@ -80,12 +80,13 @@ html(lang='#{config.language}')
           #nav-sub-menu
             - for (var i in theme.submenu)
               +a_with_current(theme.submenu[i].directory, __(theme.submenu[i].page), theme.submenu[i].icon)
-    .body_container
+    div: #tree-sidebar
+      include _widget/sidebar
+    .body_container(id="content")
       #header
         include _partial/search
-
       #layout.layout-g
-        .layout-l: .content_container
+        .layout-c: .content_container
           block content
         if theme.widgets_on_small_screens
           .layout-r: #sidebar

@@ -1,0 +1,68 @@
+mixin showTree(input)
+    - sortTree(input)
+    - input.forEach(function(node) {
+    -   if ( node.children == 0 ) {
+        - var clz=is_post() && node.post._id == page._id ? ' active' : ''
+            ul
+                li(class='file ' + clz)
+                    a(href=url_for(node.post.path))=node.title
+                div(class="article-toc",style="display: none;")
+    - } else {
+            ul
+                li.directory
+                    a.directory(href='#')
+                        i(class="fa fa-plus-square-o")=node.title
+                    +showTree(node.children)
+    - }})
+
+-
+    function pathToTree(input) {
+        var output = [];
+        input.forEach(function (post) {
+            <!-- 用来分割去掉时间的路径 -->
+            var chain = post.slug.split("/");
+            var currentNode = output;
+            for (var j = 0; j < chain.length; j++) {
+                if (chain[j] === '') {
+                    break;
+                }
+                var wantedNode = chain[j];
+                var lastNode = currentNode;
+
+                for (var k = 0; k < currentNode.length; k++) {
+                    if (currentNode[k].title == wantedNode) {
+                        currentNode = currentNode[k].children;
+                        break;
+                    }
+                }
+
+                if (lastNode == currentNode) {
+                    var newNode = currentNode[k] = {post: post, title: wantedNode, children: []};
+                    currentNode = newNode.children;
+                } else {
+                    delete currentNode.children
+                }
+            }
+        });
+        return output;
+    }
+
+    function sortTree(input) {
+        input.sort(function (a, b) {
+            var len = a.title.length <= b.title.length ? a.title.length : b.title.length;
+            for (var i = 0; i < len; i++) {
+                res = a.title[i].charCodeAt() - b.title[i].charCodeAt();
+                if (res) {
+                    return res
+                }
+            }
+            if (a.title.length <= b.title.length) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+    }
+
+
+

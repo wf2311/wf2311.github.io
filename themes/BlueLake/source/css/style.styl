@@ -135,15 +135,15 @@ body
   -ms-flex-flow: row wrap
   -ms-align-content: flex-start
   -webkit-align-content: flex-start
-.layout-l,.layout-r
+.layout-l,.layout-c,.layout-r
   display: inline-block
   *display: inline
   zoom: 1
   letter-spacing: normal
   word-spacing: normal
   vertical-align: top
-  text-rendering: auto  
-.layout-l   
+  text-rendering: auto
+.layout-c
   width: 75%
   *width: 74.969%
 .layout-r
@@ -207,6 +207,16 @@ body
   background: #fff
   box-shadow: 1px 2px 3px #adc2d7
   border-bottom: 1px solid #adc2d7
+.tree-sidebar-on
+  padding-left: 250px !important;
+.nav-on
+  padding-left: 250px !important;
+  padding-right: 120px !important;
+.content-on
+  padding-left: 150px;
+  max-width: 1330px;
+.on,.nav-on,.tree-sidebar-on, .content-on, .off
+  transition: all 0.5s;
 #nav-menu
   padding: 10px 0
   max-width: 1200px
@@ -1086,9 +1096,9 @@ table
   .content_container
     padding-left: 0px
     padding-right: 20px
-  #sidebar .widget 
+  #sidebar .widget
     margin-bottom: 15px
-  .post 
+  .post
     padding: 20px
 /* middle*/
 @media print,screen and (max-width: 48em)
@@ -1138,7 +1148,7 @@ table
     padding-right: 0
   .body_container
     padding: 0 20px
-  .post 
+  .post
     padding: 15px;
    .post-title
      font-size 20px
@@ -1280,3 +1290,184 @@ blockquote.article-reprint-info
   object
       justify-content: center;
       height:100%;
+
+
+#tree-sidebar
+  position: fixed;
+  flex-grow:1;
+  flex-shrink:1;
+  flex-basis: 0;
+  width: 250px;
+  left: -250px;
+  height: 100%;
+  top: 0px;
+  background: #41555d;
+  z-index: 99;
+#tree-sidebar.on
+  left: 0;
+
+#tree-sidebar.off
+  left: -250px;
+
+#search-input
+  position: absolute;
+  width: 230px;
+  height: 35px;
+  margin: 5px 10px 5px 10px;
+  border-radius:5px;
+  background: #fcf7ee;
+  text-indent: 20px;
+  color: hsl(216deg 49% 35%);
+
+#sidebar-toggle
+  top: 60px;
+  left: 260px;
+  position: absolute;
+
+.sidebar-toc
+  position: absolute;
+  top: 0;
+  color: #999;
+  width: 50%;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 13px;
+  z-index: 100;
+.sidebar-toc:hover
+  cursor: pointer;
+  color: #9cc7b8;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+.toc-active
+  color: #9cc7b8;
+  border-bottom: 1px solid #9cc7b8;
+#site-toc
+  height: calc( 100% - 5px );
+  padding-top: 5px;
+  background-color: hsl(216deg 49% 35%);
+#tree
+  height: calc( 100% - 50px );
+  overflow: auto;
+  margin-top: 50px;
+  background-color: hsl(216deg 49% 35%);
+
+#tree ul ul
+  display: none;
+#tree ul
+  padding: 0px 5px 5px 20px;
+#tree ul li
+  list-style: none;
+  white-space: nowrap;
+#tree ul li a
+  color: #fcf7ee;
+  font-size: 14px;
+
+#tree ul li a:hover
+  color: #ccc;
+  border-bottom: 1px solid #ccc;
+#tree .active a
+  color: #9cc7b8;
+  border-bottom: 1px solid #9cc7b8;
+.article-toc ul li i
+  color: #999;
+  font-size: 8px;
+  vertical-align: middle;
+.article-toc .level_1
+  margin-left: 0px;
+.article-toc .level_2
+  margin-left: 20px;
+.article-toc .level_3
+  margin-left: 40px;
+.article-toc .level_4
+  margin-left: 60px;
+
+.toggle
+  border: none;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.5);
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.5;
+
+code {
+  padding: 1px 5px;
+  top: 13px !important;
+  font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
+  font-size: 0.91rem;
+  color: #e96900;
+  background-color: #f8f8f8;
+  border-radius: 2px;
+}
+
+.code_copy {
+  position: absolute;
+  top: 0.7rem;
+  right: 25px;
+  z-index: 1;
+  filter: invert(50%);
+  cursor: pointer;
+}
+
+.codecopy_notice {
+  position: absolute;
+  top: 0.7rem;
+  right: 6px;
+  z-index: 1;
+  filter: invert(50%);
+  opacity: 0;
+}
+
+.code_lang {
+  position: absolute;
+  top: 1.2rem;
+  left: 26px;
+  line-height: 0;
+  font-weight: bold;
+  font-family: normal;
+  z-index: 1;
+  filter: invert(50%);
+  cursor: pointer;
+}
+
+.code-expand {
+  position: absolute;
+  top: 4px;
+  right: 0px;
+  filter: invert(50%);
+  padding: 7px;
+  z-index: 999 !important;
+  cursor: pointer;
+  transition: all .3s;
+  transform: rotate(0deg);
+}
+
+.code-closed .code-expand {
+  transform: rotate(-180deg) !important;
+  transition: all .3s;
+}
+
+.code-closed pre::before {
+  height: 0px;
+}
+
+pre code {
+  padding: 0;
+  color: #e8eaf6;
+  background-color: #272822;
+}
+
+pre[class*="language-"] {
+  padding: 1.2em;
+  margin: .5em 0;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #e8eaf6;
+  white-space: pre-wrap !important;
+}
