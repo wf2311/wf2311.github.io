@@ -8,6 +8,7 @@ cache:
 branches:
   only:
   - hexo-build
+  - hexo-tree
 before_install:
 - export TZ='Asia/Shanghai'
 - openssl aes-256-cbc -K $encrypted_b273e0dd6399_key -iv $encrypted_b273e0dd6399_iv
@@ -30,7 +31,7 @@ after_script:
 - cat ./_config.yml
 - hexo douban && hexo g -d
 - chmod 600 ~/.ssh/id_rsa
-- ssh travis@111.231.224.64 -o StrictHostKeyChecking=no 'cd ~/ && sh update_wf2311_com.sh'
+#- ssh travis@111.231.224.64 -o StrictHostKeyChecking=no 'cd ~/ && sh update_wf2311_com.sh'
 
 after_success:
 env:
