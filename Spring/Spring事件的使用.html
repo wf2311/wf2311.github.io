@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		Spring事件的使用 | 
+	 
+	王峰的博客
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="../favicon.ico">
+	
+  
+
+	<!-- search -->
+	<script>
+		var searchEngine = "";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="../css/main.css">
+
+	
+<link rel="stylesheet" href="../css/jquery.fancybox.min.css">
+
+	
+<link rel="stylesheet" href="../https:/cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="../https:/cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="../css/clipboard-use.css">
+
+
+	
+<script src="../https:/cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="../https:/cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+	
+<script src="../https:/cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="../js/main.js"></script>
+
+	
+<script src="../js/jquery.fancybox.min.js"></script>
+
+	
+		
+<script src="../https:/cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="../https:/cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+	
+<script src="../js/clipboard.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="../index.html" class="logo">王峰的博客</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">关于我</a>
+		</li>
+
+		<li class="menu-item">
+			<a href="/note" class="menu-item-link">读书笔记</a>
+		</li>
+
+		<li class="menu-item">
+			<a href="/个人公众号.jpg" class="menu-item-link">我的公众号</a>
+		</li>
+
+		<li class="menu-item">
+			<a href="/summary" class="menu-item-link">公众号文章汇总</a>
+		</li>
+		
+		<li class="menu-item">
+			<a href="https://tech.meituan.com/" class="menu-item-link" target="_blank">
+				美团技术团队
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://tech.youzan.com/" class="menu-item-link" target="_blank">
+				有赞技术团队
+			</a>
+		</li>
+		<!--<li class="menu-item">
+			<select class="menu-item-link menu-item-select">
+				<option class="menu-item-link"  value="volvo">Volvo</option>
+				<option class="menu-item-link"  value="saab">Saab</option>
+				<option class="menu-item-link"  value="fiat">Fiat</option>
+				<option class="menu-item-link"  value="audi">Audi</option>
+			</select>
+		</li>-->
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="text" placeholder="按目录搜索一下">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Docker
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Docker/Docker%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98.html">
+										Docker命令备忘
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Git
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Git/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98.html">
+										Git常用命令备忘
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Java
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										JVM
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Java/JVM/Java%E6%93%8D%E4%BD%9C%E7%A0%81%E5%8A%A9%E8%AE%B0%E7%AC%A6.html">
+										Java操作码助记符
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										从零学习JVM
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Java/JVM/%E4%BB%8E%E9%9B%B6%E5%AD%A6%E4%B9%A0JVM/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BB%93%E6%9E%84(%E4%B8%80):%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
+										Java虚拟机结构(一):数据类型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Java/JVM/%E4%BB%8E%E9%9B%B6%E5%AD%A6%E4%B9%A0JVM/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BB%93%E6%9E%84(%E4%BA%8C):%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0.html">
+										Java虚拟机结构(二):内存结构概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Java基础
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Java/Java%E5%9F%BA%E7%A1%80/Java8%E4%B8%AD%E5%88%A9%E7%94%A8Stream%E8%BF%87%E6%BB%A4%E5%B1%9E%E6%80%A7%E9%87%8D%E5%A4%8D%E7%9A%84%E5%85%83%E7%B4%A0.html">
+										Java8中利用Stream过滤属性重复的元素
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Java/Java%E5%9F%BA%E7%A1%80/Java%E7%9A%84%E6%9E%9A%E4%B8%BE%E7%B1%BB%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.html">
+										Java的枚举类使用技巧
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Java/Java%E5%9F%BA%E7%A1%80/%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83%E9%97%AE%E9%A2%98%E5%92%8CString.intern()%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%9C%E7%94%A8.html">
+										彻底搞懂字符串比较问题和String.intern()方法的作用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Java/Java%E5%9F%BA%E7%A1%80/%E6%9C%89%E4%BA%86Closeable%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E8%A6%81%E5%AE%9A%E4%B9%89AutoCloseable.html">
+										有了Closeable为什么还要定义AutoCloseable
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										其他
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Java/%E5%85%B6%E4%BB%96/%E4%BD%BF%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90Nginx%E9%BB%98%E8%AE%A4%E6%97%A5%E5%BF%97.html">
+										使用正则表达式解析Nginx默认日志
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										多线程与并发
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/Runnable%E5%AE%9E%E7%8E%B0%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB.html">
+										Runnable实现资源共享
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Linux
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Linux/ssh%E5%BF%AB%E6%8D%B7%E7%99%BB%E5%BD%95%E5%B9%B6%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4.html">
+										ssh快捷登录并执行命令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Maven
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Maven/Maven%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98.html">
+										Maven命令备忘
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Maven/%E5%B0%86Maven%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83%E5%88%B0%E4%B8%AD%E5%A4%AE%E4%BB%93%E5%BA%93.html">
+										将Maven项目打包发布到中央仓库
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../MySQL/MySQL%20%E4%BC%98%E5%8C%96%E4%B9%8B%20index%20merge(%E7%B4%A2%E5%BC%95%E5%90%88%E5%B9%B6).html">
+										MySQL 优化之 index merge(索引合并)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Nginx
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Nginx/Nginx%E5%87%BA%E7%8E%B0413%20Request%20Entity%20Too%20Large%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.html">
+										Nginx出现413 Request Entity Too Large 解决方法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Spring
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="HttpServletRequest%E5%B8%B8%E7%94%A8%E8%8E%B7%E5%8F%96URL%E7%9A%84%E6%96%B9%E6%B3%95.html">
+										HttpServletRequest常用获取URL的方法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										SpringBoot
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="SpringBoot/SpringBoot%E4%B8%AD%E4%BD%BF%E7%94%A8Thymeleaf%E6%A8%A1%E6%9D%BF%E5%9C%A8%E6%89%BE%E4%B8%8D%E5%88%B0%E5%AF%B9%E4%BA%8E%E6%A8%A1%E6%9D%BF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.html">
+										SpringBoot中使用Thymeleaf模板在找不到对于模板的解决方法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="SpringBoot/%E5%9C%A8SpringBoot%E9%87%8C%E9%9D%A2%E4%BD%BF%E7%94%A8Thymeleaf3.html">
+										在SpringBoot里面使用Thymeleaf3
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="">
+										Spring事件的使用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="%E4%BD%BF%E7%94%A8Thymeleaf%E5%8F%98%E9%87%8F%E7%BB%99onclick%E5%B1%9E%E6%80%A7%E8%B5%8B%E5%80%BC.html">
+										使用Thymeleaf变量给onclick属性赋值
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="%E8%AE%A9%E5%A4%84%E4%BA%8E%E4%BA%8B%E5%8A%A1%E4%B8%AD%E7%9A%84%E7%89%B9%E5%AE%9A%E4%BB%A3%E7%A0%81%E5%9C%A8%E4%BA%8B%E5%8A%A1%E6%8F%90%E4%BA%A4%E6%88%90%E5%8A%9F%E5%90%8E%E5%86%8D%E6%89%A7%E8%A1%8C.html">
+										让处于事务中的特定代码在事务提交成功后再执行
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										其它
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Mac
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../%E5%85%B6%E5%AE%83/Mac/Mac%E4%B8%AD%E5%9C%A8%E5%8D%87%E7%BA%A7ruby%E7%89%88%E6%9C%AC%E5%90%8Ecolorls%E5%91%BD%E4%BB%A4%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html">
+										Mac中在升级ruby版本后colorls命令报错的解决办法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../%E5%85%B6%E5%AE%83/Mac/Mac%E4%BD%BF%E7%94%A8tree%E7%94%9F%E6%88%90%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.html">
+										Mac使用tree生成目录结构
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Wakatime
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../%E5%85%B6%E5%AE%83/Wakatime/WakaTime%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B1%95%E7%A4%BA%E5%B7%A5%E5%85%B7.html">
+										WakaTime数据同步展示工具
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../%E5%85%B6%E5%AE%83/Wakatime/wakatime%E6%89%8B%E5%8A%A8%E5%90%8C%E6%AD%A5%E6%9C%AC%E5%9C%B0%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E8%87%B3%E6%9C%8D%E5%8A%A1%E5%99%A8.html">
+										wakatime手动同步本地离线数据至服务器
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										远程调试
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../%E5%85%B6%E5%AE%83/%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/IDEA%20%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95spring%20boot%E9%A1%B9%E7%9B%AE.html">
+										IDEA 远程调试spring boot项目
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../%E5%85%B6%E5%AE%83/%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/SpringBoot%20+%20IDEA%20%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95.html">
+										SpringBoot + IDEA 远程调试
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										前端
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../%E5%89%8D%E7%AB%AF/jQuery%20checkbox%E9%80%89%E4%B8%AD%E3%80%81%E6%94%B9%E5%8F%98%E7%8A%B6%E6%80%81%E3%80%81change%E5%92%8Cclick%E4%BA%8B%E4%BB%B6.html">
+										jQuery checkbox选中、改变状态、change和click事件
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../%E5%89%8D%E7%AB%AF/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%B5%8C%E5%85%A5SVG%E6%96%87%E4%BB%B6.html">
+										如何优雅地在Hexo博客中嵌入SVG文件
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										数据结构与算法
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%B0%B4%E4%BB%99%E8%8A%B1%E7%AE%97%E6%B3%95.html">
+										水仙花算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	Spring事件的使用
+</h1>
+<div class="article-meta">
+	
+	<span>王峰</span>
+	<span>2018-01-15 21:57:13</span>
+    
+		<div id="article-categories">
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true"></i>
+                        <a href="/categories/Spring/">Spring</a>
+						
+                    </span>
+                
+            
+		</div>
+    
+</div>
+
+<div id="article-content">
+	<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p>Spring 的事件(Spring Application Event)为 Bean 与 Bean 之间传递消息。一个 Bean 处理完了希望其余一个接着处理。这时我们就需要其余的一个 Bean 监听当前 Bean 所发送的事件。<br><span id="more"></span></p>
+</blockquote>
+<p>Spring 事件使用步骤如下:</p>
+<ol>
+<li>先自定义事件: 需要继承<code>ApplicationEvent</code>;</li>
+<li>定义事件监听者: 使用注解<code>@EventListener</code>或者实现<code>ApplicationListener</code>;</li>
+<li>使用容器对事件进行发布;</li>
+</ol>
+<h2 id="基于注解监听模式的基本用法"><a href="#基于注解监听模式的基本用法" class="headerlink" title="基于注解监听模式的基本用法"></a>基于注解监听模式的基本用法</h2><p>以下用一个每天的定时同步任务为例进行讲解:</p>
+<h3 id="定义同步事件"><a href="#定义同步事件" class="headerlink" title="定义同步事件"></a>定义同步事件</h3><p><code>SyncEvent</code>:</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 同步任务事件
+ * @author wf2311
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SyncEvent</span> <span class="token keyword">extends</span> <span class="token class-name">ApplicationEvent</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token function">SyncEvent</span><span class="token punctuation">(</span>Object source<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="事件监听者"><a href="#事件监听者" class="headerlink" title="事件监听者"></a>事件监听者</h3><p>定义一个 MailHandler.java 在监听到事件后发送邮件:</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 邮件发送处理器
+ *
+ * @author wf2311
+ */</span>
+<span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MailHandler</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Logger log <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>MailService<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@EventListener</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sendSycResult</span><span class="token punctuation">(</span>SyncEvent event<span class="token punctuation">)</span>  <span class="token keyword">throws</span> InterruptedException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"MailHandler接收到同步结果:&amp;#123;&amp;#125;"</span><span class="token punctuation">,</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"mock send sync data ..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在<code>void sendSycResult(SyncEvent event)</code>方法上使用注解<code>@EventListener</code>, 表明<code>sendSycResult</code>方法将会监听<code>SyncEvent</code>事件;</p>
+<p><code>EventListener</code>的源码如下:</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>ElementType<span class="token punctuation">.</span>METHOD<span class="token punctuation">,</span> ElementType<span class="token punctuation">.</span>ANNOTATION_TYPE<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">EventListener</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * classes的别名
+     */</span>
+    <span class="token annotation punctuation">@AliasFor</span><span class="token punctuation">(</span><span class="token string">"classes"</span><span class="token punctuation">)</span>
+    Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 要监听的事件类。
+     * 如果该属性只绑定了一个监听类，那使用该注解的方法最多只能有一个参数，并且参数类型需要该属性绑定的监听类相匹配(即参数类型需是监听类或者其父类);
+     * 如果该属性绑定了多个监听类，那使用该注解的方法不能带有任何参数。
+     */</span>
+    <span class="token annotation punctuation">@AliasFor</span><span class="token punctuation">(</span><span class="token string">"value"</span><span class="token punctuation">)</span>
+    Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">classes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 匹配条件，SpEL表达式；
+     * 默认为空，表示总是匹配
+     */</span>
+    String <span class="token function">condition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">""</span><span class="token punctuation">;</span>
+
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="发布事件"><a href="#发布事件" class="headerlink" title="发布事件"></a>发布事件</h3><p><code>SyncService</code>:</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 数据同步服务
+ *
+ * @author wf2311
+ */</span>
+<span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SyncService</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Logger log <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>SyncService<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> ApplicationEventPublisher applicationEventPublisher<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">syncDayData</span><span class="token punctuation">(</span>LocalDate day<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"开始同步&amp;#123;&amp;#125;的数据"</span><span class="token punctuation">,</span> day<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">long</span> start <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">long</span> end <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">long</span> speed <span class="token operator">=</span> end <span class="token operator">-</span> start<span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"&amp;#123;&amp;#125;的数据同步完成,耗时&amp;#123;&amp;#125; ms"</span><span class="token punctuation">,</span> day<span class="token punctuation">,</span> speed<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        SyncData syncData <span class="token operator">=</span> SyncData<span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">day</span><span class="token punctuation">(</span>day<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">speed</span><span class="token punctuation">(</span>speed<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        applicationEventPublisher<span class="token punctuation">.</span><span class="token function">publishEvent</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">SyncEvent</span><span class="token punctuation">(</span>syncData<span class="token punctuation">,</span> <span class="token string">"mail"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">long</span> end2 <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"sleep &amp;#123;&amp;#125; ns"</span><span class="token punctuation">,</span> end2 <span class="token operator">-</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span>SpringRunner<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@SpringBootTest</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SpringEventApplicationTests</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> SyncService syncService<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testSyncData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        syncService<span class="token punctuation">.</span><span class="token function">syncDayData</span><span class="token punctuation">(</span>LocalDate<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行测试方法<code>testSyncData()</code>,得到如下结果:</p>
+<pre class="line-numbers language-bash"><code class="language-bash">2018-01-15 16:37:11.387 DEBUG 132812 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.s.SyncService                    <span class="token keyword">:</span> 开始同步2018-01-15的数据
+2018-01-15 16:37:12.389 DEBUG 132812 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.s.SyncService                    <span class="token keyword">:</span> 2018-01-15的数据同步完成,耗时1001 ms
+2018-01-15 16:37:12.390 DEBUG 132812 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.MailHandler                    <span class="token keyword">:</span> MailHandler接收到同步结果:SyncEvent<span class="token punctuation">(</span>type<span class="token operator">=</span>mail<span class="token punctuation">)</span>
+2018-01-15 16:37:13.391 DEBUG 132812 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.MailHandler                    <span class="token keyword">:</span> mock send <span class="token function">sync</span> data <span class="token punctuation">..</span>.
+2018-01-15 16:37:16.391 DEBUG 132812 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.s.SyncService                    <span class="token keyword">:</span> <span class="token function">sleep</span> 4002 ns
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>由测试结果可知：在方法<code>syncDayData()</code>运行到<code>applicationEventPublisher.publishEvent(new SyncEvent(syncData))</code>后就会立即自动调用<code>void sendSycResult(SyncEvent event)</code>方法。</p>
+<h2 id="多个事件监听者"><a href="#多个事件监听者" class="headerlink" title="多个事件监听者"></a>多个事件监听者</h2><p>如果在同步任务完成后，不仅需要发送邮件，还需要对数据进行缓存和消息推送，只需要仿照<code>MailHandler</code>,再建立相应的类。<br><code>CacheHandler</code>:</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 缓存处理器
+ * @author wf2311
+ */</span>
+<span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CacheHandler</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Logger log <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>CacheHandler<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@EventListener</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">cacheSycResult</span><span class="token punctuation">(</span>SyncEvent event<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"CacheHandler接收到同步结果:&amp;#123;&amp;#125;"</span><span class="token punctuation">,</span> event<span class="token punctuation">.</span><span class="token function">getSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"mock cache sync data ..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>MqHandler</code>:</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MqHandler</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Logger log <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>MqHandler<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@EventListener</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">pushSycResult</span><span class="token punctuation">(</span>SyncEvent event<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"MqHandler接收到同步结果:&amp;#123;&amp;#125;"</span><span class="token punctuation">,</span> event<span class="token punctuation">.</span><span class="token function">getSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"mock push sync data ..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行<code>syncDayData()</code>测试方法得到如下结果:</p>
+<pre class="line-numbers language-bash"><code class="language-bash">2018-01-15 16:44:57.280 DEBUG 135208 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.s.SyncService                    <span class="token keyword">:</span> 开始同步2018-01-15的数据
+2018-01-15 16:44:58.281 DEBUG 135208 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.s.SyncService                    <span class="token keyword">:</span> 2018-01-15的数据同步完成,耗时1001 ms
+2018-01-15 16:44:58.282 DEBUG 135208 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.CacheHandler                   <span class="token keyword">:</span> CacheHandler接收到同步结果:SyncData<span class="token punctuation">(</span>day<span class="token operator">=</span>2018-01-15, speed<span class="token operator">=</span>1001, data<span class="token operator">=</span>java.lang.Object@3f9270ed<span class="token punctuation">)</span>
+2018-01-15 16:45:00.282 DEBUG 135208 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.CacheHandler                   <span class="token keyword">:</span> mock cache <span class="token function">sync</span> data <span class="token punctuation">..</span>.
+2018-01-15 16:45:00.282 DEBUG 135208 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.MailHandler                    <span class="token keyword">:</span> MailHandler接收到同步结果:SyncEvent<span class="token punctuation">(</span>type<span class="token operator">=</span>mail<span class="token punctuation">)</span>
+2018-01-15 16:45:01.283 DEBUG 135208 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.MailHandler                    <span class="token keyword">:</span> mock send <span class="token function">sync</span> data <span class="token punctuation">..</span>.
+2018-01-15 16:45:01.283 DEBUG 135208 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.MqHandler                      <span class="token keyword">:</span> MqHandler接收到同步结果:SyncData<span class="token punctuation">(</span>day<span class="token operator">=</span>2018-01-15, speed<span class="token operator">=</span>1001, data<span class="token operator">=</span>java.lang.Object@3f9270ed<span class="token punctuation">)</span>
+2018-01-15 16:45:04.283 DEBUG 135208 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.MqHandler                      <span class="token keyword">:</span> mock push <span class="token function">sync</span> data <span class="token punctuation">..</span>.
+2018-01-15 16:45:07.283 DEBUG 135208 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.s.SyncService                    <span class="token keyword">:</span> <span class="token function">sleep</span> 9002 ns
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>由测试结果可以看出，在方法<code>syncDayData()</code>运行到<code>applicationEventPublisher.publishEvent(new SyncEvent(syncData))</code>后就会立即依次调用我们定义的多个监听者。<br>但是如果我们对邮件发送、消息推送、缓存更新的执行顺序由特定的需求怎么办？(经简单测试，在有多个监听者时，默认情况下监听者的执行顺序是安装监听者所在的类名(不是beanName)来执行的)</p>
+<h3 id="使用-Order来指定监听者执行顺序"><a href="#使用-Order来指定监听者执行顺序" class="headerlink" title="使用@Order来指定监听者执行顺序"></a>使用<code>@Order</code>来指定监听者执行顺序</h3><p>查看<code>EventListener</code>的API文档，其中有这样一段描述：</p>
+<blockquote>
+<p>It is also possible to define the order in which listeners for a certain event are to be invoked. To do so, add Spring’s common @Order annotation alongside this event listener annotation.</p>
+</blockquote>
+<p>所以我们可以用<code>@Order</code>来配合<code>@EventListener</code>来指定多个监听者的执行顺序。<br>分别修改<br><code>MailHandler</code>:</p>
+<pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@EventListener</span>
+    <span class="token annotation punctuation">@Order</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sendSycResult</span><span class="token punctuation">(</span>SyncEvent event<span class="token punctuation">)</span>  <span class="token keyword">throws</span> InterruptedException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+       <span class="token comment" spellcheck="true">//...</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>CacheHandler</code>:</p>
+<pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@EventListener</span>
+    <span class="token annotation punctuation">@Order</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">cacheSycResult</span><span class="token punctuation">(</span>SyncEvent event<span class="token punctuation">)</span>  <span class="token keyword">throws</span> InterruptedException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+       <span class="token comment" spellcheck="true">//...</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>MqHandler</code>:</p>
+<pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@EventListener</span>
+    <span class="token annotation punctuation">@Order</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">pushSycResult</span><span class="token punctuation">(</span>SyncEvent event<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+       <span class="token comment" spellcheck="true">//...</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>以上的代码为我们指定了3个监听者的依次执行顺序为: MailHandler、CacheHandler、MqHandler<br>再次运行<code>syncDayData()</code>测试方法得到如下结果:</p>
+<pre class="line-numbers language-bash"><code class="language-bash">2018-01-15 17:09:34.830 DEBUG 138192 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.s.SyncService                    <span class="token keyword">:</span> 开始同步2018-01-15的数据
+2018-01-15 17:09:35.831 DEBUG 138192 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.s.SyncService                    <span class="token keyword">:</span> 2018-01-15的数据同步完成,耗时1001 ms
+2018-01-15 17:09:35.832 DEBUG 138192 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.MailHandler                    <span class="token keyword">:</span> MailHandler接收到同步结果:SyncEvent<span class="token punctuation">(</span>type<span class="token operator">=</span>mail<span class="token punctuation">)</span>
+2018-01-15 17:09:36.832 DEBUG 138192 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.MailHandler                    <span class="token keyword">:</span> mock send <span class="token function">sync</span> data <span class="token punctuation">..</span>.
+2018-01-15 17:09:36.832 DEBUG 138192 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.CacheHandler                   <span class="token keyword">:</span> CacheHandler接收到同步结果:SyncData<span class="token punctuation">(</span>day<span class="token operator">=</span>2018-01-15, speed<span class="token operator">=</span>1001, data<span class="token operator">=</span>java.lang.Object@129bd55d<span class="token punctuation">)</span>
+2018-01-15 17:09:38.833 DEBUG 138192 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.CacheHandler                   <span class="token keyword">:</span> mock cache <span class="token function">sync</span> data <span class="token punctuation">..</span>.
+2018-01-15 17:09:38.833 DEBUG 138192 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.MqHandler                      <span class="token keyword">:</span> MqHandler接收到同步结果:SyncData<span class="token punctuation">(</span>day<span class="token operator">=</span>2018-01-15, speed<span class="token operator">=</span>1001, data<span class="token operator">=</span>java.lang.Object@129bd55d<span class="token punctuation">)</span>
+2018-01-15 17:09:41.833 DEBUG 138192 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.MqHandler                      <span class="token keyword">:</span> mock push <span class="token function">sync</span> data <span class="token punctuation">..</span>.
+2018-01-15 17:09:44.834 DEBUG 138192 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.s.SyncService                    <span class="token keyword">:</span> <span class="token function">sleep</span> 9003 ns
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>测试顺序与设置的顺序一致。</p>
+<h2 id="基于多个监听者的链式调用"><a href="#基于多个监听者的链式调用" class="headerlink" title="基于多个监听者的链式调用"></a>基于多个监听者的链式调用</h2><p>同样是在<code>EventListener</code>的API文档中，有这样一段描述：</p>
+<blockquote>
+<p>Annotated methods may have a non-void return type. When they do, the result of the method invocation is sent as a new event. If the return type is either an array or a collection, each element is sent as a new individual event.</p>
+</blockquote>
+<p>大概意思是说: <code>EventListener</code>注解的方法，可以返回一个非空的类型。并且该方法的返回结果可以作为一个新的事件被发送。如果返回类型是数组或集合，则将每个元素作为新的单独事件发送。<br>我们可以基于此特性，实现多个监听者的链式调用。</p>
+<ol>
+<li>定义 <code>OrderInfo</code>:<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+* @author wf2311
+*/</span>
+<span class="token annotation punctuation">@Data</span>
+<span class="token annotation punctuation">@Builder</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OrderInfo</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+ <span class="token keyword">private</span> String customer<span class="token punctuation">;</span>
+ <span class="token keyword">private</span> LocalDateTime orderTime<span class="token punctuation">;</span>
+ <span class="token keyword">private</span> Integer emailResultId<span class="token punctuation">;</span>
+ <span class="token keyword">private</span> Integer cacheResultId<span class="token punctuation">;</span>
+ <span class="token keyword">private</span> Integer mqResultId<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>订单事件类 <code>OrderEvent</code></p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+* 订单事件
+* @author wf2311
+*/</span>
+<span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OrderEvent</span>  <span class="token keyword">extends</span> <span class="token class-name">ApplicationEvent</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+ <span class="token keyword">private</span> String nextListenerType<span class="token punctuation">;</span>
+
+ <span class="token keyword">public</span> <span class="token function">OrderEvent</span><span class="token punctuation">(</span>Object source<span class="token punctuation">,</span> String nextListenerType<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+     <span class="token keyword">super</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token keyword">this</span><span class="token punctuation">.</span>nextListenerType <span class="token operator">=</span> nextListenerType<span class="token punctuation">;</span>
+ <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>设置订单事件监听者<br><code>MqHandler</code>中,添加:<pre class="line-numbers language-java"><code class="language-java"> <span class="token annotation punctuation">@EventListener</span><span class="token punctuation">(</span>condition <span class="token operator">=</span> <span class="token string">"#event.nextListenerType == 'mq'"</span><span class="token punctuation">)</span>
+ <span class="token keyword">public</span> OrderEvent <span class="token function">pushOrderInfo</span><span class="token punctuation">(</span>OrderEvent event<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+     log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"MqHandler接收到订单信息:&amp;#123;&amp;#125;"</span><span class="token punctuation">,</span> event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">(</span><span class="token punctuation">(</span>OrderInfo<span class="token punctuation">)</span> event<span class="token punctuation">.</span><span class="token function">getSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setMqResultId</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"mock push order event ..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     event<span class="token punctuation">.</span><span class="token function">setNextListenerType</span><span class="token punctuation">(</span><span class="token string">"cache"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token keyword">return</span> event<span class="token punctuation">;</span>
+ <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<p><code>CacheHandler</code>中,添加:</p>
+<pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@EventListener</span><span class="token punctuation">(</span>condition <span class="token operator">=</span> <span class="token string">"event.nextListenerType == 'cache'"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> OrderEvent <span class="token function">cacheOrderInfo</span><span class="token punctuation">(</span>OrderEvent event<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"CacheHandler接收到订单信息:&amp;#123;&amp;#125;"</span><span class="token punctuation">,</span> event<span class="token punctuation">.</span><span class="token function">getSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">(</span><span class="token punctuation">(</span>OrderInfo<span class="token punctuation">)</span> event<span class="token punctuation">.</span><span class="token function">getSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setCacheResultId</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"mock cache order info ..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        event<span class="token punctuation">.</span><span class="token function">setNextListenerType</span><span class="token punctuation">(</span><span class="token string">"mail"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> event<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在<code>MailHandler</code>中,添加:</p>
+<pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@EventListener</span><span class="token punctuation">(</span>condition <span class="token operator">=</span> <span class="token string">"#event.nextListenerType == 'mail'"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> OrderEvent <span class="token function">sendOrderInfo</span><span class="token punctuation">(</span>OrderEvent event<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"MailHandler接收到订单信息:&amp;#123;&amp;#125;"</span><span class="token punctuation">,</span> event<span class="token punctuation">.</span><span class="token function">getSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">(</span><span class="token punctuation">(</span>OrderInfo<span class="token punctuation">)</span> event<span class="token punctuation">.</span><span class="token function">getSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setMqResultId</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"mock send order event ..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        event<span class="token punctuation">.</span><span class="token function">setNextListenerType</span><span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> event<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>以上各个<code>EventListener</code>中的<code>condition</code>表示，只有当对应的事件中对应的自定义属性<code>nextListenerType</code>等于对应值时，才会执行该方法。</p>
+<ol start="4">
+<li><p>设置事件发布者:<br><code>OrderService</code>:</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+* 订单服务
+* @author wf2311
+*/</span>
+<span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OrderService</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+
+ <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Logger log <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>OrderService<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token annotation punctuation">@Autowired</span>
+ <span class="token keyword">private</span> ApplicationEventPublisher applicationEventPublisher<span class="token punctuation">;</span>
+
+ <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">saveOrder</span><span class="token punctuation">(</span>String customer<span class="token punctuation">,</span> LocalDateTime time<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+     OrderInfo order <span class="token operator">=</span> OrderInfo<span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orderTime</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">customer</span><span class="token punctuation">(</span>customer<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     log<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"保存订单信息:&amp;#123;&amp;#125;"</span><span class="token punctuation">,</span> order<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     applicationEventPublisher<span class="token punctuation">.</span><span class="token function">publishEvent</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">OrderEvent</span><span class="token punctuation">(</span>order<span class="token punctuation">,</span> <span class="token string">"mq"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>测试方法：<pre class="line-numbers language-java"><code class="language-java"> <span class="token annotation punctuation">@Autowired</span>
+ <span class="token keyword">private</span> OrderService orderService<span class="token punctuation">;</span>
+ <span class="token annotation punctuation">@Test</span>
+ <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testOrderInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+     orderService<span class="token punctuation">.</span><span class="token function">saveOrder</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">,</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+运行后得到如下结果：<pre class="line-numbers language-bash"><code class="language-bash">2018-01-15 18:51:46.677 DEBUG 135904 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.s.OrderService                   <span class="token keyword">:</span> 保存订单信息:OrderInfo<span class="token punctuation">(</span>customer<span class="token operator">=</span>test, orderTime<span class="token operator">=</span>2018-01-15T18:51:46.674, emailResultId<span class="token operator">=</span>null, cacheResultId<span class="token operator">=</span>null, mqResultId<span class="token operator">=</span>null<span class="token punctuation">)</span>
+2018-01-15 18:51:49.702 DEBUG 135904 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.MqHandler                      <span class="token keyword">:</span> MqHandler接收到订单信息:OrderEvent<span class="token punctuation">(</span>nextListenerType<span class="token operator">=</span>mq<span class="token punctuation">)</span>
+2018-01-15 18:51:49.702 DEBUG 135904 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.MqHandler                      <span class="token keyword">:</span> mock push order event <span class="token punctuation">..</span>.
+2018-01-15 18:51:49.703 DEBUG 135904 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.CacheHandler                   <span class="token keyword">:</span> CacheHandler接收到订单信息:OrderInfo<span class="token punctuation">(</span>customer<span class="token operator">=</span>test, orderTime<span class="token operator">=</span>2018-01-15T18:51:46.674, emailResultId<span class="token operator">=</span>null, cacheResultId<span class="token operator">=</span>null, mqResultId<span class="token operator">=</span>1<span class="token punctuation">)</span>
+2018-01-15 18:51:49.703 DEBUG 135904 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.CacheHandler                   <span class="token keyword">:</span> mock cache order info <span class="token punctuation">..</span>.
+2018-01-15 18:51:49.703 DEBUG 135904 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.MailHandler                    <span class="token keyword">:</span> MailHandler接收到订单信息:OrderInfo<span class="token punctuation">(</span>customer<span class="token operator">=</span>test, orderTime<span class="token operator">=</span>2018-01-15T18:51:46.674, emailResultId<span class="token operator">=</span>null, cacheResultId<span class="token operator">=</span>2, mqResultId<span class="token operator">=</span>1<span class="token punctuation">)</span>
+2018-01-15 18:51:49.703 DEBUG 135904 --- <span class="token punctuation">[</span>           main<span class="token punctuation">]</span> c.w.s.e.h.MailHandler                    <span class="token keyword">:</span> mock send order event <span class="token punctuation">..</span>.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>结果分析：<br><code>saveOrder()</code>发布的事件中<code>event.nextListenerType</code> = ‘mq’,只有<code>pushOrderInfo()</code>方法符合条件；<br>执行完<code>pushOrderInfo()</code>后，<code>event.nextListenerType</code>变为’cache’,只有<code>cacheOrderInfo()</code>方法符合条件；<br>执行完<code>cacheOrderInfo()</code>后,<code>event.nextListenerType</code>变为’mail’,只有<code>sendOrderInfo()</code>方法符合条件；<br>执行完<code>sendOrderInfo()</code>后,<code>event.nextListenerType</code>变为null,无符合条件的事件监听者，结束事件监听；</li>
+</ol>
+<h2 id="基于实现ApplicationListener的事件监听者"><a href="#基于实现ApplicationListener的事件监听者" class="headerlink" title="基于实现ApplicationListener的事件监听者"></a>基于实现<code>ApplicationListener</code>的事件监听者</h2><p>参考<a href="实现ApplicationListener">Spring Application Event Example</a></p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="../Docker/Docker%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98.html">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  Docker命令备忘
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="../Java/Java%E5%9F%BA%E7%A1%80/%E6%9C%89%E4%BA%86Closeable%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E8%A6%81%E5%AE%9A%E4%B9%89AutoCloseable.html">
+                Java基础
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2017-<span id="footerYear"></span> 
+	<a href="/">王峰</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			PV
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			UV
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

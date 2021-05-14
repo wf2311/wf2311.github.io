@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		使用正则表达式解析Nginx默认日志 | 
+	 
+	王峰的博客
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="../../favicon.ico">
+	
+  
+
+	<!-- search -->
+	<script>
+		var searchEngine = "";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="../../css/main.css">
+
+	
+<link rel="stylesheet" href="../../css/jquery.fancybox.min.css">
+
+	
+<link rel="stylesheet" href="../../https:/cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="../../https:/cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="../../css/clipboard-use.css">
+
+
+	
+<script src="../../https:/cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="../../https:/cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+	
+<script src="../../https:/cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="../../js/main.js"></script>
+
+	
+<script src="../../js/jquery.fancybox.min.js"></script>
+
+	
+		
+<script src="../../https:/cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="../../https:/cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+	
+<script src="../../js/clipboard.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="../../index.html" class="logo">王峰的博客</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">关于我</a>
+		</li>
+
+		<li class="menu-item">
+			<a href="/note" class="menu-item-link">读书笔记</a>
+		</li>
+
+		<li class="menu-item">
+			<a href="/个人公众号.jpg" class="menu-item-link">我的公众号</a>
+		</li>
+
+		<li class="menu-item">
+			<a href="/summary" class="menu-item-link">公众号文章汇总</a>
+		</li>
+		
+		<li class="menu-item">
+			<a href="https://tech.meituan.com/" class="menu-item-link" target="_blank">
+				美团技术团队
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://tech.youzan.com/" class="menu-item-link" target="_blank">
+				有赞技术团队
+			</a>
+		</li>
+		<!--<li class="menu-item">
+			<select class="menu-item-link menu-item-select">
+				<option class="menu-item-link"  value="volvo">Volvo</option>
+				<option class="menu-item-link"  value="saab">Saab</option>
+				<option class="menu-item-link"  value="fiat">Fiat</option>
+				<option class="menu-item-link"  value="audi">Audi</option>
+			</select>
+		</li>-->
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="text" placeholder="按目录搜索一下">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Docker
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../../Docker/Docker%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98.html">
+										Docker命令备忘
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Git
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../../Git/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98.html">
+										Git常用命令备忘
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Java
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										JVM
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../JVM/Java%E6%93%8D%E4%BD%9C%E7%A0%81%E5%8A%A9%E8%AE%B0%E7%AC%A6.html">
+										Java操作码助记符
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										从零学习JVM
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../JVM/%E4%BB%8E%E9%9B%B6%E5%AD%A6%E4%B9%A0JVM/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BB%93%E6%9E%84(%E4%B8%80):%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
+										Java虚拟机结构(一):数据类型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../JVM/%E4%BB%8E%E9%9B%B6%E5%AD%A6%E4%B9%A0JVM/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BB%93%E6%9E%84(%E4%BA%8C):%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0.html">
+										Java虚拟机结构(二):内存结构概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Java基础
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Java%E5%9F%BA%E7%A1%80/Java8%E4%B8%AD%E5%88%A9%E7%94%A8Stream%E8%BF%87%E6%BB%A4%E5%B1%9E%E6%80%A7%E9%87%8D%E5%A4%8D%E7%9A%84%E5%85%83%E7%B4%A0.html">
+										Java8中利用Stream过滤属性重复的元素
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Java%E5%9F%BA%E7%A1%80/Java%E7%9A%84%E6%9E%9A%E4%B8%BE%E7%B1%BB%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.html">
+										Java的枚举类使用技巧
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Java%E5%9F%BA%E7%A1%80/%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83%E9%97%AE%E9%A2%98%E5%92%8CString.intern()%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%9C%E7%94%A8.html">
+										彻底搞懂字符串比较问题和String.intern()方法的作用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Java%E5%9F%BA%E7%A1%80/%E6%9C%89%E4%BA%86Closeable%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E8%A6%81%E5%AE%9A%E4%B9%89AutoCloseable.html">
+										有了Closeable为什么还要定义AutoCloseable
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										其他
+									</a>
+									
+							<ul>
+								<li class="file active">
+									<a href="">
+										使用正则表达式解析Nginx默认日志
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										多线程与并发
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/Runnable%E5%AE%9E%E7%8E%B0%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB.html">
+										Runnable实现资源共享
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Linux
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../../Linux/ssh%E5%BF%AB%E6%8D%B7%E7%99%BB%E5%BD%95%E5%B9%B6%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4.html">
+										ssh快捷登录并执行命令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Maven
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../../Maven/Maven%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98.html">
+										Maven命令备忘
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../../Maven/%E5%B0%86Maven%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83%E5%88%B0%E4%B8%AD%E5%A4%AE%E4%BB%93%E5%BA%93.html">
+										将Maven项目打包发布到中央仓库
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../../MySQL/MySQL%20%E4%BC%98%E5%8C%96%E4%B9%8B%20index%20merge(%E7%B4%A2%E5%BC%95%E5%90%88%E5%B9%B6).html">
+										MySQL 优化之 index merge(索引合并)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Nginx
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../../Nginx/Nginx%E5%87%BA%E7%8E%B0413%20Request%20Entity%20Too%20Large%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.html">
+										Nginx出现413 Request Entity Too Large 解决方法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Spring
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../../Spring/HttpServletRequest%E5%B8%B8%E7%94%A8%E8%8E%B7%E5%8F%96URL%E7%9A%84%E6%96%B9%E6%B3%95.html">
+										HttpServletRequest常用获取URL的方法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										SpringBoot
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../../Spring/SpringBoot/SpringBoot%E4%B8%AD%E4%BD%BF%E7%94%A8Thymeleaf%E6%A8%A1%E6%9D%BF%E5%9C%A8%E6%89%BE%E4%B8%8D%E5%88%B0%E5%AF%B9%E4%BA%8E%E6%A8%A1%E6%9D%BF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.html">
+										SpringBoot中使用Thymeleaf模板在找不到对于模板的解决方法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../../Spring/SpringBoot/%E5%9C%A8SpringBoot%E9%87%8C%E9%9D%A2%E4%BD%BF%E7%94%A8Thymeleaf3.html">
+										在SpringBoot里面使用Thymeleaf3
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../../Spring/Spring%E4%BA%8B%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.html">
+										Spring事件的使用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../../Spring/%E4%BD%BF%E7%94%A8Thymeleaf%E5%8F%98%E9%87%8F%E7%BB%99onclick%E5%B1%9E%E6%80%A7%E8%B5%8B%E5%80%BC.html">
+										使用Thymeleaf变量给onclick属性赋值
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../../Spring/%E8%AE%A9%E5%A4%84%E4%BA%8E%E4%BA%8B%E5%8A%A1%E4%B8%AD%E7%9A%84%E7%89%B9%E5%AE%9A%E4%BB%A3%E7%A0%81%E5%9C%A8%E4%BA%8B%E5%8A%A1%E6%8F%90%E4%BA%A4%E6%88%90%E5%8A%9F%E5%90%8E%E5%86%8D%E6%89%A7%E8%A1%8C.html">
+										让处于事务中的特定代码在事务提交成功后再执行
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										其它
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Mac
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../../%E5%85%B6%E5%AE%83/Mac/Mac%E4%B8%AD%E5%9C%A8%E5%8D%87%E7%BA%A7ruby%E7%89%88%E6%9C%AC%E5%90%8Ecolorls%E5%91%BD%E4%BB%A4%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html">
+										Mac中在升级ruby版本后colorls命令报错的解决办法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../../%E5%85%B6%E5%AE%83/Mac/Mac%E4%BD%BF%E7%94%A8tree%E7%94%9F%E6%88%90%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.html">
+										Mac使用tree生成目录结构
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Wakatime
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../../%E5%85%B6%E5%AE%83/Wakatime/WakaTime%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B1%95%E7%A4%BA%E5%B7%A5%E5%85%B7.html">
+										WakaTime数据同步展示工具
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../../%E5%85%B6%E5%AE%83/Wakatime/wakatime%E6%89%8B%E5%8A%A8%E5%90%8C%E6%AD%A5%E6%9C%AC%E5%9C%B0%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E8%87%B3%E6%9C%8D%E5%8A%A1%E5%99%A8.html">
+										wakatime手动同步本地离线数据至服务器
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										远程调试
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../../%E5%85%B6%E5%AE%83/%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/IDEA%20%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95spring%20boot%E9%A1%B9%E7%9B%AE.html">
+										IDEA 远程调试spring boot项目
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../../%E5%85%B6%E5%AE%83/%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/SpringBoot%20+%20IDEA%20%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95.html">
+										SpringBoot + IDEA 远程调试
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										前端
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../../%E5%89%8D%E7%AB%AF/jQuery%20checkbox%E9%80%89%E4%B8%AD%E3%80%81%E6%94%B9%E5%8F%98%E7%8A%B6%E6%80%81%E3%80%81change%E5%92%8Cclick%E4%BA%8B%E4%BB%B6.html">
+										jQuery checkbox选中、改变状态、change和click事件
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../../%E5%89%8D%E7%AB%AF/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%B5%8C%E5%85%A5SVG%E6%96%87%E4%BB%B6.html">
+										如何优雅地在Hexo博客中嵌入SVG文件
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										数据结构与算法
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%B0%B4%E4%BB%99%E8%8A%B1%E7%AE%97%E6%B3%95.html">
+										水仙花算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	使用正则表达式解析Nginx默认日志
+</h1>
+<div class="article-meta">
+	
+	<span>王峰</span>
+	<span>2019-01-26 13:13:03</span>
+    
+		<div id="article-categories">
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true"></i>
+                        <a href="/categories/Java/">Java</a>
+						
+                    </span>
+                
+            
+		</div>
+    
+</div>
+
+<div id="article-content">
+	<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>想通过 Nginx 的 access.log 分析网站的访问情况，但是直接通过日志文件看不太直观，于是想通过代码把日志文件解析并保存数据库中，这样分析起来更方便。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/thlzjfefe/article/details/83349548">nginx日志解析：java正则解析</a> 这篇文章，通过使用正则表达式把日志文件中的各个参数解析出来即可。</p>
+<p>比如，我的服务器上 Nginx 记录的日志格式如下：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">203.208.60.89 - - <span class="token punctuation">[</span>04/Jan/2019:16:06:38 +0800<span class="token punctuation">]</span> <span class="token string">"GET /atom.xml HTTP/1.1"</span> 200 273932 <span class="token string">"-"</span> <span class="token string">"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>对应的 Java 正则表达式就是：</p>
+<pre><code>(?&lt;ip&gt;\d+\.\d+\.\d+\.\d+)( - - \[)(?&lt;datetime&gt;[\s\S]+)(?&lt;t1&gt;\][\s&quot;]+)(?&lt;request&gt;[A-Z]+) (?&lt;url&gt;[\S]*) (?&lt;protocol&gt;[\S]+)[&quot;] (?&lt;code&gt;\d+) (?&lt;sendbytes&gt;\d+) [&quot;](?&lt;refferer&gt;[\S]*)[&quot;] [&quot;](?&lt;useragent&gt;[\S\s]+)[&quot;]
+</code></pre><p>完整代码如下：</p>
+<h3 id="LogEntity类用于保存解析后的日志信息"><a href="#LogEntity类用于保存解析后的日志信息" class="headerlink" title="LogEntity类用于保存解析后的日志信息"></a><code>LogEntity</code>类用于保存解析后的日志信息</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">import</span> lombok<span class="token punctuation">.</span>Data<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>time<span class="token punctuation">.</span>LocalDateTime<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/**
+ * @author &lt;a href="mailto:wf2311@163.com">wf2311&lt;/a>
+ * @since 2019-01-25 19:37.
+ */</span>
+<span class="token annotation punctuation">@Data</span>
+<span class="token annotation punctuation">@Table</span>
+<span class="token annotation punctuation">@Entity</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"log"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LogEntity</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 主键ID
+     */</span>
+    <span class="token annotation punctuation">@Id</span>
+    <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> GenerationType<span class="token punctuation">.</span>IDENTITY<span class="token punctuation">)</span>
+    <span class="token keyword">private</span> Integer id<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * 客户端IP
+     */</span>
+    <span class="token keyword">private</span> String ip<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * 访问时间
+     */</span>
+    <span class="token keyword">private</span> LocalDateTime time<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * 请求方式 GET/POST/PUT 等
+     */</span>
+    <span class="token keyword">private</span> String request<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * 访问的url地址
+     */</span>
+    <span class="token keyword">private</span> String url<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * http协议
+     */</span>
+    <span class="token keyword">private</span> String protocol<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * 请求结果响应码
+     */</span>
+    <span class="token keyword">private</span> Integer code<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * 请求访问的字节数量
+     */</span>
+    <span class="token keyword">private</span> Integer sendByteSize<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * 访问者访问渠道来源
+     */</span>
+    <span class="token keyword">private</span> String refferer<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * 访问者的用户代理
+     */</span>
+    <span class="token keyword">private</span> String useAgent<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * 访问者是不是爬虫或机器人
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> isBot<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * 访问的是不是静态资源文件，例如：css、js、图片等文件
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> isResource<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * 当前项目名称
+     */</span>
+    <span class="token keyword">private</span> String project<span class="token punctuation">;</span>
+
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="NginxLogConverter类实现解析的具体逻辑"><a href="#NginxLogConverter类实现解析的具体逻辑" class="headerlink" title="NginxLogConverter类实现解析的具体逻辑"></a><code>NginxLogConverter</code>类实现解析的具体逻辑</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">import</span> lombok<span class="token punctuation">.</span>extern<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Slf4j<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>nio<span class="token punctuation">.</span>file<span class="token punctuation">.</span>Files<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>nio<span class="token punctuation">.</span>file<span class="token punctuation">.</span>Path<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>nio<span class="token punctuation">.</span>file<span class="token punctuation">.</span>Paths<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>time<span class="token punctuation">.</span>LocalDateTime<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>time<span class="token punctuation">.</span>format<span class="token punctuation">.</span>DateTimeFormatter<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>List<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Locale<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>regex<span class="token punctuation">.</span>Matcher<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>regex<span class="token punctuation">.</span>Pattern<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>stream<span class="token punctuation">.</span>Collectors<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/**
+ * @author &lt;a href="mailto:wf2311@163.com">wf2311&lt;/a>
+ * @since 2019-01-25 19:35.
+ */</span>
+<span class="token annotation punctuation">@Slf4j</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NginxLogConverter</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> String PATTERN <span class="token operator">=</span> <span class="token string">"(?&lt;ip>\\d+\\.\\d+\\.\\d+\\.\\d+)( - - \\[)(?&lt;datetime>[\\s\\S]+)(?&lt;t1>\\][\\s\"]+)(?&lt;request>[A-Z]+) (?&lt;url>[\\S]*) (?&lt;protocol>[\\S]+)[\"] (?&lt;code>\\d+) (?&lt;sendbytes>\\d+) [\"](?&lt;refferer>[\\S]*)[\"] [\"](?&lt;useragent>[\\S\\s]+)[\"]"</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 解析转换逻辑
+     *
+     * @param text    单条的日志记录
+     * @param project 项目名称
+     * @return 解析成功则返回具体的对象，解析失败返回&lt;code>null&lt;/code>
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> LogEntity <span class="token function">parse</span><span class="token punctuation">(</span>String text<span class="token punctuation">,</span> String project<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        Pattern r <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>PATTERN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Matcher m <span class="token operator">=</span> r<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            LogEntity log <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LogEntity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            log<span class="token punctuation">.</span><span class="token function">setIp</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token string">"ip"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            log<span class="token punctuation">.</span><span class="token function">setProject</span><span class="token punctuation">(</span>project<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            String datetime <span class="token operator">=</span> m<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token string">"datetime"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            log<span class="token punctuation">.</span><span class="token function">setTime</span><span class="token punctuation">(</span><span class="token function">convertTime</span><span class="token punctuation">(</span>datetime<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            log<span class="token punctuation">.</span><span class="token function">setRequest</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token string">"request"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            log<span class="token punctuation">.</span><span class="token function">setUrl</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token string">"url"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            log<span class="token punctuation">.</span><span class="token function">setProtocol</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token string">"protocol"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            log<span class="token punctuation">.</span><span class="token function">setCode</span><span class="token punctuation">(</span>Integer<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token string">"code"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            log<span class="token punctuation">.</span><span class="token function">setSendByteSize</span><span class="token punctuation">(</span>Integer<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token string">"sendbytes"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            log<span class="token punctuation">.</span><span class="token function">setRefferer</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token string">"refferer"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            log<span class="token punctuation">.</span><span class="token function">setUseAgent</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token string">"useragent"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            log<span class="token punctuation">.</span><span class="token function">setBot</span><span class="token punctuation">(</span><span class="token function">isBot</span><span class="token punctuation">(</span>log<span class="token punctuation">.</span><span class="token function">getUseAgent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            log<span class="token punctuation">.</span><span class="token function">setResource</span><span class="token punctuation">(</span><span class="token function">isResource</span><span class="token punctuation">(</span>log<span class="token punctuation">.</span><span class="token function">getUrl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> log<span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"%s 格式化错误"</span><span class="token punctuation">,</span> text<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 提取转换时间
+     *
+     * @param s 格式化的时间文本：26/Jan/2019:06:51:27 +0800]
+     * @return LocalDateTime 时间
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> LocalDateTime <span class="token function">convertTime</span><span class="token punctuation">(</span>String s<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        String t <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> s<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> DateTimeFormatter<span class="token punctuation">.</span><span class="token function">ofPattern</span><span class="token punctuation">(</span><span class="token string">"dd/MMM/yyyy:HH:mm:ss"</span><span class="token punctuation">,</span> Locale<span class="token punctuation">.</span>ENGLISH<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 通过 userAgent 字段判断是不是爬虫或机器人的访问记录
+     *
+     * @param userAgent 访问者的用户代理
+     * @return 是否是爬虫或机器人的访问记录
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isBot</span><span class="token punctuation">(</span>String userAgent<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        String t <span class="token operator">=</span> userAgent<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> t<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"bot"</span><span class="token punctuation">)</span> <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"spider"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 通过 url 字段判断访问的是不是静态资源文件
+     *
+     * @param url 访问的url路径
+     * @return 访问的是否是静态资源文件
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isResource</span><span class="token punctuation">(</span>String url<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        String t <span class="token operator">=</span> url<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> t<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">".js"</span><span class="token punctuation">)</span>
+                <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">".css"</span><span class="token punctuation">)</span>
+                <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">".png"</span><span class="token punctuation">)</span>
+                <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">".ico"</span><span class="token punctuation">)</span>
+                <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">".gif"</span><span class="token punctuation">)</span>
+                <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">".txt"</span><span class="token punctuation">)</span>
+                <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">".woff"</span><span class="token punctuation">)</span>
+                <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">".eot"</span><span class="token punctuation">)</span>
+                <span class="token operator">||</span> t<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">".jpg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><pre class="line-numbers language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        Path path <span class="token operator">=</span> Paths<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/xx/xxx/access.log"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            List<span class="token operator">&lt;</span>String<span class="token operator">></span> logs <span class="token operator">=</span> Files<span class="token punctuation">.</span><span class="token function">readAllLines</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            List<span class="token operator">&lt;</span>LogEntity<span class="token operator">></span> list <span class="token operator">=</span> logs<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>s <span class="token operator">-</span><span class="token operator">></span> <span class="token function">parse</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> <span class="token string">"$&amp;#123;projectName&amp;#125;"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>Collectors<span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>list<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/thlzjfefe/article/details/83349548">nginx日志解析：java正则解析</a></li>
+</ol>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="../Java%E5%9F%BA%E7%A1%80/%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83%E9%97%AE%E9%A2%98%E5%92%8CString.intern()%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%9C%E7%94%A8.html">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  彻底搞懂字符串比较问题和String.intern()方法的作用
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="../JVM/%E4%BB%8E%E9%9B%B6%E5%AD%A6%E4%B9%A0JVM/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BB%93%E6%9E%84(%E4%BA%8C):%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0.html">
+                从零学习JVM
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2017-<span id="footerYear"></span> 
+	<a href="/">王峰</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			PV
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			UV
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

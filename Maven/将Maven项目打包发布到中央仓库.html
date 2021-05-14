@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		将Maven项目打包发布到中央仓库 | 
+	 
+	王峰的博客
+	</title>
+	
+	<!-- keywords,description -->
+	 
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="../favicon.ico">
+	
+  
+
+	<!-- search -->
+	<script>
+		var searchEngine = "";
+		if(typeof searchEngine == "undefined" || searchEngine == null || searchEngine == ""){
+			searchEngine = "https://www.google.com/search?q=";
+		}
+		var homeHost = "";
+		if(typeof homeHost == "undefined" || homeHost == null || homeHost == ""){
+			homeHost = window.location.host;
+		}
+	</script>
+
+
+	
+<link rel="stylesheet" href="../css/main.css">
+
+	
+<link rel="stylesheet" href="../css/jquery.fancybox.min.css">
+
+	
+<link rel="stylesheet" href="../https:/cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="../https:/cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+	
+<link rel="stylesheet" href="../css/clipboard-use.css">
+
+
+	
+<script src="../https:/cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="../https:/cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+	
+<script src="../https:/cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="../js/main.js"></script>
+
+	
+<script src="../js/jquery.fancybox.min.js"></script>
+
+	
+		
+<script src="../https:/cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="../https:/cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+	
+<script src="../js/clipboard.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="../index.html" class="logo">王峰的博客</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">关于我</a>
+		</li>
+
+		<li class="menu-item">
+			<a href="/note" class="menu-item-link">读书笔记</a>
+		</li>
+
+		<li class="menu-item">
+			<a href="/个人公众号.jpg" class="menu-item-link">我的公众号</a>
+		</li>
+
+		<li class="menu-item">
+			<a href="/summary" class="menu-item-link">公众号文章汇总</a>
+		</li>
+		
+		<li class="menu-item">
+			<a href="https://tech.meituan.com/" class="menu-item-link" target="_blank">
+				美团技术团队
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://tech.youzan.com/" class="menu-item-link" target="_blank">
+				有赞技术团队
+			</a>
+		</li>
+		<!--<li class="menu-item">
+			<select class="menu-item-link menu-item-select">
+				<option class="menu-item-link"  value="volvo">Volvo</option>
+				<option class="menu-item-link"  value="saab">Saab</option>
+				<option class="menu-item-link"  value="fiat">Fiat</option>
+				<option class="menu-item-link"  value="audi">Audi</option>
+			</select>
+		</li>-->
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="text" placeholder="按目录搜索一下">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Docker
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Docker/Docker%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98.html">
+										Docker命令备忘
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Git
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Git/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98.html">
+										Git常用命令备忘
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Java
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										JVM
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Java/JVM/Java%E6%93%8D%E4%BD%9C%E7%A0%81%E5%8A%A9%E8%AE%B0%E7%AC%A6.html">
+										Java操作码助记符
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										从零学习JVM
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Java/JVM/%E4%BB%8E%E9%9B%B6%E5%AD%A6%E4%B9%A0JVM/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BB%93%E6%9E%84(%E4%B8%80):%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
+										Java虚拟机结构(一):数据类型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Java/JVM/%E4%BB%8E%E9%9B%B6%E5%AD%A6%E4%B9%A0JVM/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BB%93%E6%9E%84(%E4%BA%8C):%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0.html">
+										Java虚拟机结构(二):内存结构概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Java基础
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Java/Java%E5%9F%BA%E7%A1%80/Java8%E4%B8%AD%E5%88%A9%E7%94%A8Stream%E8%BF%87%E6%BB%A4%E5%B1%9E%E6%80%A7%E9%87%8D%E5%A4%8D%E7%9A%84%E5%85%83%E7%B4%A0.html">
+										Java8中利用Stream过滤属性重复的元素
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Java/Java%E5%9F%BA%E7%A1%80/Java%E7%9A%84%E6%9E%9A%E4%B8%BE%E7%B1%BB%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.html">
+										Java的枚举类使用技巧
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Java/Java%E5%9F%BA%E7%A1%80/%E5%BD%BB%E5%BA%95%E6%90%9E%E6%87%82%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83%E9%97%AE%E9%A2%98%E5%92%8CString.intern()%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%9C%E7%94%A8.html">
+										彻底搞懂字符串比较问题和String.intern()方法的作用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Java/Java%E5%9F%BA%E7%A1%80/%E6%9C%89%E4%BA%86Closeable%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E8%A6%81%E5%AE%9A%E4%B9%89AutoCloseable.html">
+										有了Closeable为什么还要定义AutoCloseable
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										其他
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Java/%E5%85%B6%E4%BB%96/%E4%BD%BF%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%A7%A3%E6%9E%90Nginx%E9%BB%98%E8%AE%A4%E6%97%A5%E5%BF%97.html">
+										使用正则表达式解析Nginx默认日志
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										多线程与并发
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/Runnable%E5%AE%9E%E7%8E%B0%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB.html">
+										Runnable实现资源共享
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Linux
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Linux/ssh%E5%BF%AB%E6%8D%B7%E7%99%BB%E5%BD%95%E5%B9%B6%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4.html">
+										ssh快捷登录并执行命令
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Maven
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="Maven%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98.html">
+										Maven命令备忘
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="">
+										将Maven项目打包发布到中央仓库
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../MySQL/MySQL%20%E4%BC%98%E5%8C%96%E4%B9%8B%20index%20merge(%E7%B4%A2%E5%BC%95%E5%90%88%E5%B9%B6).html">
+										MySQL 优化之 index merge(索引合并)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Nginx
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Nginx/Nginx%E5%87%BA%E7%8E%B0413%20Request%20Entity%20Too%20Large%20%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.html">
+										Nginx出现413 Request Entity Too Large 解决方法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Spring
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Spring/HttpServletRequest%E5%B8%B8%E7%94%A8%E8%8E%B7%E5%8F%96URL%E7%9A%84%E6%96%B9%E6%B3%95.html">
+										HttpServletRequest常用获取URL的方法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										SpringBoot
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../Spring/SpringBoot/SpringBoot%E4%B8%AD%E4%BD%BF%E7%94%A8Thymeleaf%E6%A8%A1%E6%9D%BF%E5%9C%A8%E6%89%BE%E4%B8%8D%E5%88%B0%E5%AF%B9%E4%BA%8E%E6%A8%A1%E6%9D%BF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.html">
+										SpringBoot中使用Thymeleaf模板在找不到对于模板的解决方法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Spring/SpringBoot/%E5%9C%A8SpringBoot%E9%87%8C%E9%9D%A2%E4%BD%BF%E7%94%A8Thymeleaf3.html">
+										在SpringBoot里面使用Thymeleaf3
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Spring/Spring%E4%BA%8B%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8.html">
+										Spring事件的使用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Spring/%E4%BD%BF%E7%94%A8Thymeleaf%E5%8F%98%E9%87%8F%E7%BB%99onclick%E5%B1%9E%E6%80%A7%E8%B5%8B%E5%80%BC.html">
+										使用Thymeleaf变量给onclick属性赋值
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../Spring/%E8%AE%A9%E5%A4%84%E4%BA%8E%E4%BA%8B%E5%8A%A1%E4%B8%AD%E7%9A%84%E7%89%B9%E5%AE%9A%E4%BB%A3%E7%A0%81%E5%9C%A8%E4%BA%8B%E5%8A%A1%E6%8F%90%E4%BA%A4%E6%88%90%E5%8A%9F%E5%90%8E%E5%86%8D%E6%89%A7%E8%A1%8C.html">
+										让处于事务中的特定代码在事务提交成功后再执行
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										其它
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Mac
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../%E5%85%B6%E5%AE%83/Mac/Mac%E4%B8%AD%E5%9C%A8%E5%8D%87%E7%BA%A7ruby%E7%89%88%E6%9C%AC%E5%90%8Ecolorls%E5%91%BD%E4%BB%A4%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html">
+										Mac中在升级ruby版本后colorls命令报错的解决办法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../%E5%85%B6%E5%AE%83/Mac/Mac%E4%BD%BF%E7%94%A8tree%E7%94%9F%E6%88%90%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.html">
+										Mac使用tree生成目录结构
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										Wakatime
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../%E5%85%B6%E5%AE%83/Wakatime/WakaTime%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E5%B1%95%E7%A4%BA%E5%B7%A5%E5%85%B7.html">
+										WakaTime数据同步展示工具
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../%E5%85%B6%E5%AE%83/Wakatime/wakatime%E6%89%8B%E5%8A%A8%E5%90%8C%E6%AD%A5%E6%9C%AC%E5%9C%B0%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E8%87%B3%E6%9C%8D%E5%8A%A1%E5%99%A8.html">
+										wakatime手动同步本地离线数据至服务器
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										远程调试
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../%E5%85%B6%E5%AE%83/%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/IDEA%20%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95spring%20boot%E9%A1%B9%E7%9B%AE.html">
+										IDEA 远程调试spring boot项目
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../%E5%85%B6%E5%AE%83/%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/SpringBoot%20+%20IDEA%20%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95.html">
+										SpringBoot + IDEA 远程调试
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										前端
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../%E5%89%8D%E7%AB%AF/jQuery%20checkbox%E9%80%89%E4%B8%AD%E3%80%81%E6%94%B9%E5%8F%98%E7%8A%B6%E6%80%81%E3%80%81change%E5%92%8Cclick%E4%BA%8B%E4%BB%B6.html">
+										jQuery checkbox选中、改变状态、change和click事件
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="../%E5%89%8D%E7%AB%AF/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%B5%8C%E5%85%A5SVG%E6%96%87%E4%BB%B6.html">
+										如何优雅地在Hexo博客中嵌入SVG文件
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										数据结构与算法
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%B0%B4%E4%BB%99%E8%8A%B1%E7%AE%97%E6%B3%95.html">
+										水仙花算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	将Maven项目打包发布到中央仓库
+</h1>
+<div class="article-meta">
+	
+	<span>王峰</span>
+	<span>2018-06-06 13:02:58</span>
+    
+		<div id="article-categories">
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true"></i>
+                        <a href="/categories/Maven/">Maven</a>
+						
+                    </span>
+                
+            
+		</div>
+    
+</div>
+
+<div id="article-content">
+	<h2 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h2><h3 id="groupId-要求"><a href="#groupId-要求" class="headerlink" title="groupId 要求"></a>groupId 要求</h3><p>项目的<code>groupId</code>一般为域名倒置，比如我的网址为wangfeng.pro，<code>groupId</code>则可以命名为<code>pro.wangfeng</code>。如果你没有属于自己的域名，则最好使用<strong>github</strong>相关的<code>groupId</code>，比如你的项目地址的github路径为<code>https://www.github.com/username/projectName</code>,那<code>groupId</code>最好为<code>com.github.username</code>。<br><code>groupId</code>的命名规范关系到在接下来的Sonatype OSSRH审核能否通过。</p>
+<h3 id="修改-pom-xml"><a href="#修改-pom-xml" class="headerlink" title="修改 pom.xml"></a>修改 pom.xml</h3><pre class="line-numbers language-xml"><code class="language-xml">    <span class="token comment" spellcheck="true">&lt;!--开源协议--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>licenses</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>license</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>The Apache License, Version 2.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">></span></span>http://www.apache.org/licenses/LICENSE-2.0.txt<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>license</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>licenses</span><span class="token punctuation">></span></span>
+
+    <span class="token comment" spellcheck="true">&lt;!--开发者信息--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>developers</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>developer</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>wf2311<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>email</span><span class="token punctuation">></span></span>wf2311@163.com<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>email</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>roles</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>role</span><span class="token punctuation">></span></span>developer<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>role</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>roles</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>timezone</span><span class="token punctuation">></span></span>+8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>timezone</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>organization</span><span class="token punctuation">></span></span>wf2311<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>organization</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>organizationUrl</span><span class="token punctuation">></span></span>https://www.wangfeng.pro<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>organizationUrl</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>developer</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>developers</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scm</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>connection</span><span class="token punctuation">></span></span>scm:git:https://github.com/wf2311/common-lang.git<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>connection</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>developerConnection</span><span class="token punctuation">></span></span>scm:git:https://github.com/wf2311/common-lang.git<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>developerConnection</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">></span></span>https://github.com/wf2311/common-lang<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tag</span><span class="token punctuation">></span></span>v$<span class="token entity" title="&#123;">&amp;#123;</span>project.version<span class="token entity" title="&#125;">&amp;#125;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tag</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scm</span><span class="token punctuation">></span></span>
+
+    <span class="token comment" spellcheck="true">&lt;!--仓库--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>distributionManagement</span><span class="token punctuation">></span></span>
+        <span class="token comment" spellcheck="true">&lt;!--快照库--></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>snapshotRepository</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>ossrh<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">></span></span>https://oss.sonatype.org/content/repositories/snapshots<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>snapshotRepository</span><span class="token punctuation">></span></span>
+        <span class="token comment" spellcheck="true">&lt;!--正式库--></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>repository</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>ossrh<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>Maven Central Staging Repository<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">></span></span>https://oss.sonatype.org/service/local/staging/deploy/maven2/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repository</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>distributionManagement</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>注意将其中与项目相关的路径修改为当前项目的</strong><br>加入相关插件:</p>
+<pre class="line-numbers language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">></span></span>
+            <span class="token comment" spellcheck="true">&lt;!--编译插件--></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.maven.plugins<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>maven-compiler-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span><span class="token punctuation">></span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>source</span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>target</span><span class="token punctuation">></span></span>1.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>target</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.maven.plugins<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>maven-surefire-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">></span></span>
+
+            <span class="token comment" spellcheck="true">&lt;!--源码插件--></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>maven-source-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>executions</span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>execution</span><span class="token punctuation">></span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>attach-sources<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goals</span><span class="token punctuation">></span></span>
+                            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goal</span><span class="token punctuation">></span></span>jar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goal</span><span class="token punctuation">></span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goals</span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>execution</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>executions</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">></span></span>
+
+            <span class="token comment" spellcheck="true">&lt;!--javadoc插件--></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>maven-javadoc-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.9.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>executions</span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>execution</span><span class="token punctuation">></span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>attach-javadocs<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goals</span><span class="token punctuation">></span></span>
+                            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goal</span><span class="token punctuation">></span></span>jar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goal</span><span class="token punctuation">></span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goals</span><span class="token punctuation">></span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
+                            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>encoding</span><span class="token punctuation">></span></span>UTF-8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>encoding</span><span class="token punctuation">></span></span>
+                            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>additionalparam</span><span class="token punctuation">></span></span>-Xdoclint:none<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>additionalparam</span><span class="token punctuation">></span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>execution</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>executions</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>encoding</span><span class="token punctuation">></span></span>UTF-8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>encoding</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">></span></span>
+
+            <span class="token comment" spellcheck="true">&lt;!--gpg签名插件--></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.maven.plugins<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>maven-gpg-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>executions</span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>execution</span><span class="token punctuation">></span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>sign-artifacts<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>phase</span><span class="token punctuation">></span></span>verify<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>phase</span><span class="token punctuation">></span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goals</span><span class="token punctuation">></span></span>
+                            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goal</span><span class="token punctuation">></span></span>sign<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goal</span><span class="token punctuation">></span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goals</span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>execution</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>executions</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>修改完以上配置后，将代码同步到github上面。</p>
+<h2 id="注册-Sonatype-OSSRH"><a href="#注册-Sonatype-OSSRH" class="headerlink" title="注册 Sonatype OSSRH"></a>注册 Sonatype OSSRH</h2><p>注册地址：<a target="_blank" rel="noopener" href="https://issues.sonatype.org/secure/Signup!default.jspa">https://issues.sonatype.org/secure/Signup!default.jspa</a></p>
+<h2 id="提交一个-ISSUE"><a href="#提交一个-ISSUE" class="headerlink" title="提交一个 ISSUE"></a>提交一个 ISSUE</h2><p>登录成功后，进入<a target="_blank" rel="noopener" href="https://issues.sonatype.org/secure/Dashboard.jspa">首页</a>，点击页面上方的 <strong>Create</strong> 按钮，弹出如下窗口：<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/05/issue-before.png" alt="打开创建ISSUE窗口"></p>
+<p><strong>Project</strong> 选择 <strong>Open Source Project Repository Hosting</strong>；<br><strong>Issue Type</strong> 选择 <strong>New Project</strong>；<br><strong>Summary</strong> 可以填<strong>你的项目名称</strong>；<br>其它的必填项请参考示例填写，填写完成后点击下方的 <strong>Create</strong> 按钮提交 ISSUE 。<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/05/issue-form.png" alt="填写表单"></p>
+<p>提交成功后，点击页面上方的 <strong>Issue</strong> 按钮，可以看到刚刚你提交的 ISSUE :<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/05/open-issue.png" alt="前往ISSUE详情页"></p>
+<p>稍等片刻，你就会审核者的相关评论，询问你填写的<code>groupId</code>对应的域名是不是属于你的：<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/05/issue-ask.png" alt="审核者确认信息"></p>
+<p>然后你需要点击下方的 <strong>Comment</strong> 按钮回答审核者，向他确认该域名是属于你的:<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/05/to-answer.png" alt="点击Comment按钮"></p>
+<p>这个确认过程可能需要你和审核者交流几个来回才能搞定，具体过程可参考笔者的<a target="_blank" rel="noopener" href="https://issues.sonatype.org/browse/OSSRH-40306">一个ISSUE案例</a>。</p>
+<p>当最终审核通过后，你将收到审核者的如下回复：<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/05/success-comment.png" alt="审核通过"></p>
+<p>并且该 ISSUE 的状态将变为<code>RESOLVED</code>：<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/05/success-status.png" alt="审核通过状态"></p>
+<p>至此，你就有权限将该项目发布到maven中央仓库中了。</p>
+<p><strong>注意：如果你还有其它的项目也需要发布到中央仓库，并且 groupId 和上面的一样，就不需要再次创建 ISSUE 了；只有在使用新的 groupId 时才需要提交 ISSUE。</strong></p>
+<h2 id="gpg安装配置"><a href="#gpg安装配置" class="headerlink" title="gpg安装配置"></a>gpg安装配置</h2><h3 id="安装-gpg"><a href="#安装-gpg" class="headerlink" title="安装 gpg"></a>安装 gpg</h3><p>由于各个系统版本的 gpg 安装方式不尽相同，这里就不写详细安装方式了。具体步骤可以 google 、百度或者按<a target="_blank" rel="noopener" href="https://www.gnupg.org/download/index.html">官网</a>上给的步骤下载安装。</p>
+<p>安装完成后在终端或命令行运行以下命令，确认是否安装成功：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">gpg --version
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>出现类似信息表上安装成功：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">gpg <span class="token punctuation">(</span>GnuPG<span class="token punctuation">)</span> 2.1.21
+libgcrypt 1.7.8
+Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> 2017 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <span class="token operator">&lt;</span>https://gnu.org/licenses/gpl.html<span class="token operator">></span>
+This is <span class="token function">free</span> software: you are <span class="token function">free</span> to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Home: /Users/wf2311/.gnupg
+支持的算法：
+公钥：RSA, ELG, DSA, ECDH, ECDSA, EDDSA
+对称加密：IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256,
+     TWOFISH, CAMELLIA128, CAMELLIA192, CAMELLIA256
+散列：SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
+压缩：不压缩, ZIP, ZLIB, BZIP2
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="生成密钥对"><a href="#生成密钥对" class="headerlink" title="生成密钥对"></a>生成密钥对</h3><p><strong>以 Mac 下操作为例，不同系统的过程可能有所差异</strong><br>运行命令:</p>
+<pre class="line-numbers language-bash"><code class="language-bash">gpg --gen-key
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>会让你输入<strong>真实姓名</strong>:</p>
+<pre class="line-numbers language-bash"><code class="language-bash">gpg <span class="token punctuation">(</span>GnuPG<span class="token punctuation">)</span> 2.1.21<span class="token punctuation">;</span> Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> 2017 Free Software Foundation, Inc.
+This is <span class="token function">free</span> software: you are <span class="token function">free</span> to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Note: Use <span class="token string">"gpg2 --full-generate-key"</span> <span class="token keyword">for</span> a full featured key generation dialog.
+
+You need a user ID to identify your key<span class="token punctuation">;</span> the software constructs the user ID
+from the Real Name, Comment and Email Address <span class="token keyword">in</span> this form:
+    <span class="token string">"Heinrich Heine (Der Dichter) &lt;heinrichh@duesseldorf.de>"</span>
+
+真实姓名：
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输入 你的姓名(<strong>至少为5个字符</strong>) ，回车<br>再输入你的电子邮箱 ，回车，出现：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">Change <span class="token punctuation">(</span>N<span class="token punctuation">)</span>ame, <span class="token punctuation">(</span>E<span class="token punctuation">)</span>mail, or <span class="token punctuation">(</span>O<span class="token punctuation">)</span>kay/<span class="token punctuation">(</span>Q<span class="token punctuation">)</span>uit?
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>选择 <code>O</code> 回车，出现如下提示:</p>
+<pre class="line-numbers language-bash"><code class="language-bash">我们需要生成大量的随机字节。这个时候您可以多做些琐事<span class="token punctuation">(</span>像是敲打键盘、移动
+鼠标、读写硬盘之类的<span class="token punctuation">)</span>，这会让随机数字发生器有更好的机会获得足够的熵数。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>并且提示让你输入密码，输入密码后回车，<br>稍等片刻就会出现如下生成信息：<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/05/gpg.png" alt="gpg 生成步骤"><br>图中的<code>CD4809496C405C2F72F62B31052A2DC27A064C14</code>即为生成的公钥</p>
+<h3 id="发布公钥到-GPG-密钥服务器"><a href="#发布公钥到-GPG-密钥服务器" class="headerlink" title="发布公钥到 GPG 密钥服务器"></a>发布公钥到 GPG 密钥服务器</h3><p>运行命令：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">gpg --keyserver hkp://pool.sks-keyservers.net --send-keys CD4809496C405C2F72F62B31052A2DC27A064C14
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>此操作因为网络原因可能需要等待一定的时间</p>
+<h3 id="查询公钥是否发布成功"><a href="#查询公钥是否发布成功" class="headerlink" title="查询公钥是否发布成功"></a>查询公钥是否发布成功</h3><p>运行命令</p>
+<pre class="line-numbers language-bash"><code class="language-bash">gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys CD4809496C405C2F72F62B31052A2DC27A064C14
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>出现类似以下信息即表示发布成功：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">gpg: 密钥 052A2DC27A064C14：“wf2311 <span class="token operator">&lt;</span>wf2311@163.com<span class="token operator">></span>”未改变
+gpg: 合计被处理的数量：1
+gpg:           未改变：1
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>更多 gpg 命令请参考阮一峰的<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/07/gpg.html">GPG入门教程</a></p>
+<h2 id="修改-maven-配置文件"><a href="#修改-maven-配置文件" class="headerlink" title="修改 maven 配置文件"></a>修改 maven 配置文件</h2><p>在maven的配置文件 settings.xml 中添加以下内容:</p>
+<pre class="line-numbers language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servers</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>server</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>id须与pom.xml中distributionManagement下设置的id保持一致<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>username</span><span class="token punctuation">></span></span>注册Sonatype账号是填写的用户名<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>username</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>password</span><span class="token punctuation">></span></span>注册Sonatype账号是填写的密码<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>password</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>server</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servers</span><span class="token punctuation">></span></span>
+
+    ...
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profile</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>gpg<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gpg.executable</span><span class="token punctuation">></span></span>与gpg版本有关mac下一般填写gpg2,window下填gpg<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gpg.executable</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gpg.passphrase</span><span class="token punctuation">></span></span>生成gpg秘钥过程中填写的密码<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gpg.passphrase</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profile</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="打包上传"><a href="#打包上传" class="headerlink" title="打包上传"></a>打包上传</h2><p>切换到当前项目路径，运行命令:</p>
+<pre class="line-numbers language-bash"><code class="language-bash">mvn -DskipTests clean deploy
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>正常情况下，如果运行成功未出错，项目会打包并上传的<strong>对应</strong>的仓库中：</p>
+<ul>
+<li>对应快照版本，即版本号以 <code>-SNAPSHOT</code> 结尾的，会立即上传到 <a target="_blank" rel="noopener" href="https://oss.sonatype.org/content/repositories/snapshots">https://oss.sonatype.org/content/repositories/snapshots</a> 中，并且可以直接通过 maven 快照仓库引用，但是在 maven 中央仓库中搜索不到。</li>
+<li>对应正式版本，即版本号不是以 <code>-SNAPSHOT</code> 结尾的，虽然也会上传到 <a target="_blank" rel="noopener" href="https://oss.sonatype.org/service/local/staging/deploy/maven2/">https://oss.sonatype.org/service/local/staging/deploy/maven2/</a> 中，但还需要我们手动发布一下，才会发布到中央仓库中。</li>
+</ul>
+<p><strong>提示： 如果在 Mac 环境下打包是出现 gpg 相关的错误，可以参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/wenbo20182/article/details/72850810">gpg: 签名时失败处理</a>这篇文章来处理</strong></p>
+<h2 id="在-OSS-中发布构件"><a href="#在-OSS-中发布构件" class="headerlink" title="在 OSS 中发布构件"></a>在 OSS 中发布构件</h2><h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>登录 <a target="_blank" rel="noopener" href="https://oss.sonatype.org">https://oss.sonatype.org</a>，用户名密码与上面 Sonatype 的相同</p>
+<h3 id="发布构建"><a href="#发布构建" class="headerlink" title="发布构建"></a>发布构建</h3><p>登录成功后会进入如下页面：<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/06/oss-menu.png" alt="neuxs 管理页面"></p>
+<p>点击左侧的 <strong>Build Promotion</strong> 下的 <strong>Staging Repositories</strong>，出现：<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/06/oss-search.png" alt="根据groupId搜索"></p>
+<p>在搜索输入框输入项目的 <strong>groupId</strong>，找到并选择你刚刚打包上传的项目。点击上方的 <strong>Close</strong> 按钮：<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/06/oss-close.png" alt="close"></p>
+<p>再在弹窗中点击 <strong>Confirm</strong> 按钮，过几秒后再点击上面的 <strong>Refresh</strong> 按钮进行刷新，就可以看到如下界面：<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/06/oss-close-result.png" alt="close-result"></p>
+<p>展开下方 <strong>Activity</strong> 面板的结果信息，如果出现如上图的信息，即表示构建通过。<br>再过几秒后再次点击点击上面的 <strong>Refresh</strong> 按钮进行刷新，就会看到旁边的 <strong>Release</strong> 按钮变为可操作状态：<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/06/oss-to-release.png" alt="发布按钮"></p>
+<p>最后点击 <strong>Release</strong> 按钮，出现弹窗：<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/06/oss-confirm-release.png" alt="确认发布"></p>
+<p>点击 <strong>Confirm</strong> 按钮，确认发布构建，至此发布构建的的步骤全部结束。<br>再等待大概一到两小时的同步时间后，便可以在中央仓库中<a target="_blank" rel="noopener" href="http://search.maven.org/">搜索</a>到你发布的项目了：<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/06/search-project.png" alt="搜索"></p>
+<h2 id="修改-README-md-文件"><a href="#修改-README-md-文件" class="headerlink" title="修改 README.md 文件"></a>修改 README.md 文件</h2><p>在项目的 README.md 头部 加上 如下格式的内容：</p>
+<pre><code>[![Maven Central](https://maven-badges.herokuapp.com/maven-central/&lt;groupId&gt;/&lt;projectName&gt;/badge.svg)](https://maven-badges.herokuapp.com/maven-central/&lt;groupId&gt;/&lt;projectName&gt;)
+</code></pre><p>比如我的这个项目的 <strong>gorupId</strong> 为 <strong>pro.wangfeng</strong>，<strong>projectName</strong> 为 <strong>common-lang</strong>，则加上：</p>
+<pre><code>[![Maven Central](https://maven-badges.herokuapp.com/maven-central/pro.wangfeng/common-lang/badge.svg)](https://maven-badges.herokuapp.com/maven-central/pro.wangfeng/common-lang)
+</code></pre><p>之后就会出现如下显示：<br><img src="https://wf2311.oss-cn-shanghai.aliyuncs.com/2018/06/06/svg.png" alt="svg"></p>
+<p>最后再给出两个在打包时十分有用的 maven 命令：</p>
+<ul>
+<li><p>更新父模块到指定版本号：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">mvn versions:set -DnewVersion<span class="token operator">=</span>1.0.1-SNAPSHOT
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>更新子模块版本到与模块相同：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">mvn -N versions:update-child-modules
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.ktanx.com/blog/p/4352">将jar发布到maven中央仓库小记</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/gaoxing/p/4359795.html">向maven中央仓库提交jar</a></li>
+</ol>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="../Java/JVM/Java%E6%93%8D%E4%BD%9C%E7%A0%81%E5%8A%A9%E8%AE%B0%E7%AC%A6.html">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  JVM
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="../Docker/Docker%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98.html">
+                Docker命令备忘
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2017-<span id="footerYear"></span> 
+	<a href="/">王峰</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			PV
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			UV
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>
