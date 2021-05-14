@@ -195,7 +195,7 @@ function pjaxLoad(){
                 showArticleIndex();
             }
             // 图片放大
-            wrapImageWithFancyBox();
+            // wrapImageWithFancyBox();
         }
     });
 }
