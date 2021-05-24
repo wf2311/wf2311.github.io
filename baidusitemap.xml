@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.wangfeng.pro/2020/06/navigablemap.html</loc>
-    <lastmod>2021-05-24</lastmod>
-  </url>
-  <url>
-    <loc>https://www.wangfeng.pro/2020/06/sortedmap.html</loc>
-    <lastmod>2021-05-24</lastmod>
-  </url>
-  <url>
     <loc>https://www.wangfeng.pro/2020/06/queue.html</loc>
     <lastmod>2021-05-24</lastmod>
   </url>
   <url>
-    <loc>https://www.wangfeng.pro/2020/06/treemap.html</loc>
+    <loc>https://www.wangfeng.pro/2020/06/set.html</loc>
     <lastmod>2021-05-24</lastmod>
   </url>
   <url>
@@ -25,7 +17,15 @@
     <lastmod>2021-05-24</lastmod>
   </url>
   <url>
-    <loc>https://www.wangfeng.pro/2020/06/set.html</loc>
+    <loc>https://www.wangfeng.pro/2020/06/sortedmap.html</loc>
+    <lastmod>2021-05-24</lastmod>
+  </url>
+  <url>
+    <loc>https://www.wangfeng.pro/2020/06/treemap.html</loc>
+    <lastmod>2021-05-24</lastmod>
+  </url>
+  <url>
+    <loc>https://www.wangfeng.pro/2020/06/navigablemap.html</loc>
     <lastmod>2021-05-24</lastmod>
   </url>
   <url>
