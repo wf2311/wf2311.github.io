@@ -1,3 +1,8 @@
+{% spoiler 点击显/隐代码 %}
+{% endspoiler %}
+
+<!-- more -->
+
 # 文章类型
 |id|name| 
 |:-|:-|

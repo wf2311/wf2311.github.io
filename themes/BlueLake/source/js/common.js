@@ -16,7 +16,7 @@ function showOrHide(cname, expandId, defaultStyle) {
         document.getElementById(expandId).innerText = ' 点击收起 ';
     }
     for (var i in nodes) {
-        if (typeof (nodes[i]) == 'object') {
+        if (typeof(nodes[i]) == 'object') {
             nodes[i].style.display = s;
         }
     }
@@ -25,7 +25,7 @@ function showOrHide(cname, expandId, defaultStyle) {
 function addImgClickEvent() {
     var objs = document.getElementsByTagName("img");
     for (var i = 0; i < objs.length; i++) {
-        objs[i].onclick = function () {
+        objs[i].onclick = function() {
             window.open(this.src);
         }
         objs[i].style.cursor = "pointer";
@@ -35,24 +35,64 @@ function addImgClickEvent() {
 addImgClickEvent();
 
 function showInfoImage() {
-    $('.info-icon a').hover(function (e) {
+    $('.info-icon a').hover(function(e) {
             this.image = $(this).data('image');
             if (!this.image) {
                 return;
             }
             $("#infoImage").html("<img src='" + this.image + "' style='width: 100%'/>");
         },
-        function () {
+        function() {
             $("#infoImage").html('');
         });
 }
 
-$(function () {
+// 图片放大
+/**
+ * Wrap images with fancybox support.
+ */
+function wrapImageWithFancyBox() {
+    $('img').not('.sidebar-image img').not('.qrcode img').not('#QR img').not('#author-avatar img').not(".mdl-menuimg").not(".something-else-logo img").not('.avatar').not('.share-body img').each(function() {
+        var $image = $(this);
+        var imageCaption = $image.attr('alt');
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.length < 1) {
+            var src = this.getAttribute('src');
+            var idx = src.lastIndexOf('?');
+            if (idx != -1) {
+                src = src.substring(0, idx);
+            }
+            $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+        }
+
+        $imageWrapLink.attr('data-fancybox', 'images');
+        if (imageCaption) {
+            $imageWrapLink.attr('data-caption', imageCaption);
+        }
+
+    });
+
+    $('[data-fancybox="images"]').fancybox({
+        buttons: [
+            'slideShow',
+            'thumbs',
+            'zoom',
+            'fullScreen',
+            'close'
+        ],
+        thumbs: {
+            autoStart: false
+        }
+    });
+}
+
+$(function() {
     showInfoImage();
     clickTreeDirectory();
     searchTree();
     pjaxLoad();
-    // wrapImageWithFancyBox();
+    wrapImageWithFancyBox();
     showArticleIndex();
     switchTreeOrIndex();
     // scrollToTop();
@@ -61,19 +101,19 @@ $(function () {
 });
 
 // 侧面目录
-function switchTreeOrIndex(){
-    $('#sidebar-toggle').on('click', function () {
-        if ($('#tree-sidebar').hasClass('on')){
+function switchTreeOrIndex() {
+    $('#sidebar-toggle').on('click', function() {
+        if ($('#tree-sidebar').hasClass('on')) {
             scrollOff();
-        }else{
+        } else {
             scrollOn();
         }
     });
     $('body').click(function(e) {
         if (window.matchMedia("(max-width: 1100px)").matches) {
             var target = $(e.target);
-            if(!target.is('#tree-sidebar *')) {
-                if ($('#tree-sidebar').hasClass('on')){
+            if (!target.is('#tree-sidebar *')) {
+                if ($('#tree-sidebar').hasClass('on')) {
                     scrollOff();
                 }
             }
@@ -81,7 +121,7 @@ function switchTreeOrIndex(){
     });
     if (window.matchMedia("(min-width: 1100px)").matches) {
         scrollOn();
-    }else{
+    } else {
         scrollOff();
     };
 }
@@ -96,66 +136,64 @@ function showArticleIndex() {
     var labelList = $("#post-content").children();
     var content = "<ul>";
     var max_level = 4;
-    for ( var i = 0; i < labelList.length; i++ ) {
+    for (var i = 0; i < labelList.length; i++) {
         var level = 5;
-        if ( $(labelList[i]).is("h1") ) {
+        if ($(labelList[i]).is("h1")) {
             level = 1;
-        }else if ( $(labelList[i]).is("h2") ) {
+        } else if ($(labelList[i]).is("h2")) {
             level = 2;
-        }else if ( $(labelList[i]).is("h3") ) {
+        } else if ($(labelList[i]).is("h3")) {
             level = 3;
-        }else if ( $(labelList[i]).is("h4") ) {
+        } else if ($(labelList[i]).is("h4")) {
             level = 4;
         }
-        if(level < max_level){
+        if (level < max_level) {
             max_level = level;
         }
     }
-    for ( var i = 0; i < labelList.length; i++ ) {
+    for (var i = 0; i < labelList.length; i++) {
         var level = 0;
-        if ( $(labelList[i]).is("h1") ) {
+        if ($(labelList[i]).is("h1")) {
             level = 1 - max_level + 1;
-        }else if ( $(labelList[i]).is("h2") ) {
+        } else if ($(labelList[i]).is("h2")) {
             level = 2 - max_level + 1;
-        }else if ( $(labelList[i]).is("h3") ) {
+        } else if ($(labelList[i]).is("h3")) {
             level = 3 - max_level + 1;
-        }else if ( $(labelList[i]).is("h4") ) {
+        } else if ($(labelList[i]).is("h4")) {
             level = 4 - max_level + 1;
         }
-        if(level != 0){
-            $(labelList[i]).before('<span class="anchor" id="_label'+ i +'"></span>');
-            content += '<li class="level_'+level+'"><i class="fa fa-circle" aria-hidden="true"></i><a href="#_label'+ i +'"> '+ $(labelList[i]).text() +'</a></li>';
+        if (level != 0) {
+            $(labelList[i]).before('<span class="anchor" id="_label' + i + '"></span>');
+            content += '<li class="level_' + level + '"><i class="fa fa-circle" aria-hidden="true"></i><a href="#_label' + i + '"> ' + $(labelList[i]).text() + '</a></li>';
         }
     }
     content += "</ul>"
 
     $(".article-toc.active-toc").append(content);
 
-    if(null != $(".article-toc a") && 0 != $(".article-toc a").length){
+    if (null != $(".article-toc a") && 0 != $(".article-toc a").length) {
 
         // 点击目录索引链接，动画跳转过去，不是默认闪现过去
-        $(".article-toc a").on("click", function(e){
+        $(".article-toc a").on("click", function(e) {
             e.preventDefault();
             // 获取当前点击的 a 标签，并前触发滚动动画往对应的位置
             var target = $(this.hash);
-            $("body, html").animate(
-                {'scrollTop': target.offset().top},
+            $("body, html").animate({ 'scrollTop': target.offset().top },
                 500
             );
         });
 
 
         // 监听浏览器滚动条，当浏览过的标签，给他上色。
-        $(window).on("scroll", function(e){
+        $(window).on("scroll", function(e) {
             var anchorList = $(".anchor");
-            anchorList.each(function(){
-                var tocLink = $('.article-toc a[href="#'+$(this).attr("id")+'"]');
+            anchorList.each(function() {
+                var tocLink = $('.article-toc a[href="#' + $(this).attr("id") + '"]');
                 var anchorTop = $(this).offset().top;
                 var windowTop = $(window).scrollTop();
-                if ( anchorTop <= windowTop+100 ) {
+                if (anchorTop <= windowTop + 100) {
                     tocLink.addClass("read");
-                }
-                else {
+                } else {
                     tocLink.removeClass("read");
                 }
             });
@@ -165,24 +203,24 @@ function showArticleIndex() {
     $(".article-toc.active-toc").children().show();
 }
 
-function pjaxLoad(){
-    $(document).pjax('#menu a', '#content', {fragment:'#content', timeout:8000});
-    $(document).pjax('#tree a', '#content', {fragment:'#content', timeout:8000});
-    $(document).pjax('#index a', '#content', {fragment:'#content', timeout:8000});
+function pjaxLoad() {
+    $(document).pjax('#menu a', '#content', { fragment: '#content', timeout: 8000 });
+    $(document).pjax('#tree a', '#content', { fragment: '#content', timeout: 8000 });
+    $(document).pjax('#index a', '#content', { fragment: '#content', timeout: 8000 });
     $(document).on({
         "pjax:complete": function(e) {
-            $("pre code").each(function (i, block){
+            $("pre code").each(function(i, block) {
                 hljs.highlightBlock(block);
             });
             // 添加 active
             $("#tree .active").removeClass("active");
             var title = $("#article-title").text().trim();
-            if ( title.length ) {
+            if (title.length) {
                 var searchResult = $("#tree li.file").find("a:contains('" + title + "')");
-                if ( searchResult.length ) {
+                if (searchResult.length) {
                     $(".fa-minus-square-o").removeClass("fa-minus-square-o").addClass("fa-plus-square-o");
                     $("#tree ul").css("display", "none");
-                    if ( searchResult.length > 1 ) {
+                    if (searchResult.length > 1) {
                         var categorie = $("#article-categories span:last a").html();
                         if (typeof categorie != "undefined") {
                             categorie = categorie.trim();
@@ -203,24 +241,23 @@ function pjaxLoad(){
 // 搜索框输入事件
 function searchTree() {
     // 解决搜索大小写问题
-    jQuery.expr[':'].contains = function (a, i, m) {
+    jQuery.expr[':'].contains = function(a, i, m) {
         return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
     };
 
-    $("#search-input").on("input", function(e){
+    $("#search-input").on("input", function(e) {
         e.preventDefault();
 
         // 获取 inpiut 输入框的内容
         var inputContent = e.currentTarget.value;
 
         // 没值就收起父目录，但是得把 active 的父目录都展开
-        if ( inputContent.length === 0 ) {
+        if (inputContent.length === 0) {
             $(".fa-minus-square-o").removeClass("fa-minus-square-o").addClass("fa-plus-square-o");
             $("#tree ul").css("display", "none");
-            if ( $("#tree .active").length ) {
+            if ($("#tree .active").length) {
                 showActiveTree($("#tree .active"), true);
-            }
-            else {
+            } else {
                 $("#tree").children().css("display", "block");
             }
         }
@@ -229,7 +266,7 @@ function searchTree() {
             $(".fa-plus-square-o").removeClass("fa-plus-square-o").addClass("fa-minus-square-o");
             $("#tree ul").css("display", "none");
             var searchResult = $("#tree li").find("a:contains('" + inputContent + "')");
-            if ( searchResult.length ) {
+            if (searchResult.length) {
                 showActiveTree(searchResult.parent(), false)
             }
         }
@@ -240,12 +277,12 @@ function searchTree() {
 function clickTreeDirectory() {
     // 判断有 active 的话，就递归循环把它的父目录打开
     var treeActive = $("#tree .active");
-    if ( treeActive.length ) {
+    if (treeActive.length) {
         showActiveTree(treeActive, true);
     }
 
     // 点击目录，就触发折叠动画效果
-    $(document).on("click", "#tree a[class='directory']", function (e) {
+    $(document).on("click", "#tree a[class='directory']", function(e) {
         // 用来清空所有绑定的其他事件
         e.preventDefault();
 
@@ -271,23 +308,23 @@ function clickTreeDirectory() {
 
 // 循环递归展开父节点
 function showActiveTree(jqNode, isSiblings) {
-    if ( jqNode.attr("id") === "tree"  ) { return; }
-    if ( jqNode.is("ul") ) {
+    if (jqNode.attr("id") === "tree") { return; }
+    if (jqNode.is("ul")) {
         jqNode.css("display", "block");
 
         // 这个 isSiblings 是给搜索用的
         // true 就显示开同级兄弟节点
         // false 就是给搜索用的，值需要展示它自己就好了，不展示兄弟节点
-        if ( isSiblings ) {
+        if (isSiblings) {
             jqNode.siblings().css("display", "block");
             jqNode.siblings("a").css("display", "inline");
             jqNode.siblings("a").find(".fa-plus-square-o").removeClass("fa-plus-square-o").addClass("fa-minus-square-o");
         }
     }
-    jqNode.each(function(){ showActiveTree($(this).parent(), isSiblings); });
+    jqNode.each(function() { showActiveTree($(this).parent(), isSiblings); });
 }
 
-function scrollOn(){
+function scrollOn() {
     var $sidebar = $('#tree-sidebar'),
         $content = $('#content'),
         $nav = $('#nav'),
@@ -308,7 +345,8 @@ function scrollOn(){
         $footer.removeClass('off');
     }
 }
-function scrollOff(){
+
+function scrollOff() {
     var $sidebar = $('#tree-sidebar'),
         $content = $('#content'),
         $nav = $('#nav'),

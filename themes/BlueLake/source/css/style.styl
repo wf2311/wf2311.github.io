@@ -1104,7 +1104,7 @@ table
 @media print,screen and (max-width: 48em)
   .nav
     margin-bottom: 0
-  .layout-l
+  .layout-c
     width: 100%
   .layout-r
     width: 100%
@@ -1471,3 +1471,18 @@ pre[class*="language-"] {
   color: #e8eaf6;
   white-space: pre-wrap !important;
 }
+
+.spoiler.expanded .spoiler-title:before {
+    content: "▲ 隐藏" !important;
+}
+
+.spoiler.collapsed .spoiler-title:before {
+    content: "▼ 显示" !important;
+}
+
+p code, li code, .hider_title code {
+    color: #c71585 !important;
+    background: #fffafa !important;
+    margin: 2px;
+}
+

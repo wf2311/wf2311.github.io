@@ -14,7 +14,7 @@ $(function () {
                     .text("复制成功")
                     .animate({
                         opacity: 1,
-                        top: 30
+                        top: -30
                     }, 450, function () {
                         setTimeout(function () {
                             $(ctx).prev('.codecopy_notice').animate({

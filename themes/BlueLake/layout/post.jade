@@ -6,7 +6,7 @@ block title
 block content
   .post
     include _partial/title_icon
-    h1.post-title= page.title + ' '
+    h1.post-title(id="article-title")= page.title + ' '
     .post-meta
       if theme.comment
         include _partial/comment_count

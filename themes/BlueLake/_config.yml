@@ -23,9 +23,9 @@ menu:
   - page: archive
     directory: archives/
     icon: fa-archive
-  - page: 书单
-    directory: books/
-    icon: fa-book
+#  - page: 书单
+#    directory: books/
+#    icon: fa-book
 
 rightMenu:
   - page: WakaTime
@@ -54,7 +54,6 @@ rightMenu:
 # Sidebar
 widgets:
   - info
-#  - tree
   - recent_posts
   - category
   - tag
@@ -90,29 +89,30 @@ scripts:
 #- /js/transition.js
 #- /js/scroll.js
 - /js/common.js
-- /js/lib/codeBlock/codeBlockFuction.js #代码块功能依赖
-- /js/lib/codeBlock/codeLang.js #代码语言
-- /js/lib/codeBlock/codeCopy.js #代码块复制
-#- /js/lib/codeBlock/codeShrink.js #代码块收缩
+- /js/third-party/velocity.min.js
+- /js/third-party/velocity.ui.min.js
 
 # cdn for third-party library
 # ---------------
 cdn:
   css:
-    fontawesome: //cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css
-    fancybox: //cdn.bootcss.com/fancybox/3.5.6/jquery.fancybox.min.css
+    fontawesome: //cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
+    fancybox: //cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css
+    highlightjs: //cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/styles/darcula.min.css
   js:
 #    anime: /js/third-party/anime.min.js
 #    jquery: /js/third-party/jquery.min.js
 #    fancybox: /js/third-party/jquery.fancybox.min.js
 #    velocity: /js/third-party/velocity.min.js
 #    velocity-ui: /js/third-party/velocity.ui.min.js
-    anime: //cdn.bootcss.com/animejs/2.2.0/anime.min.js
-    jquery: //cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js
+    anime: //cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js
+    jquery: //cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js
     jquery-pjax: //cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js
-    fancybox: //cdn.bootcss.com/fancybox/3.5.6/jquery.fancybox.min.js
-    velocity: //cdn.bootcss.com/velocity/1.5.2/velocity.min.js
-    velocity-ui: //cdn.bootcss.com/velocity/1.5.2/velocity.ui.min.js
+    highlightjs: //cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js
+    fancybox: //cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js
+    # fontawesome: //cdn.jsdelivr.net/npm/font-awesome@4.7.0/js/fontawesome.min.js
+#    velocity: //cdn.bootcss.com/velocity/1.5.2/velocity.min.js
+#    velocity-ui: //cdn.bootcss.com/velocity/1.5.2/velocity.ui.min.js
 
 # mermaid chart see https://github.com/webappdevelp/hexo-filter-mermaid-diagrams
 mermaid: ## mermaid url https://github.com/knsv/mermaid

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "hexo": "^5.4.0",
+    "hexo-blog-encrypt": "^3.1.6",
     "hexo-browsersync": "^0.2.0",
     "hexo-deployer-ftpsync": "^0.1.1",
     "hexo-deployer-git": "^3.0.0",
@@ -34,6 +35,7 @@
     "hexo-renderer-marked": "^4.0.0",
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^2.0.0",
+    "hexo-sliding-spoiler": "^1.2.1",
     "hexo-wordcount": "^3.0.2",
     "lodash": "^4.17.21"
   }

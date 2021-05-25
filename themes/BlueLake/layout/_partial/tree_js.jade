@@ -4,8 +4,8 @@ mixin showTree(input)
     -   if ( node.children == 0 ) {
         - var clz=is_post() && node.post._id == page._id ? ' active' : ''
             ul
-                li(class='file ' + clz)
-                    a(href=url_for(node.post.path))=node.title
+                li(class='file' + clz,data-post-id=node.post._id,data-page-id=page._id)
+                    a(href='/'+node.post.path)=node.title
                 div(class="article-toc",style="display: none;")
     - } else {
             ul
